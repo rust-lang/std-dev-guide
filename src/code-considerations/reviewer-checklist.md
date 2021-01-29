@@ -12,7 +12,8 @@ r? @user
 
 ## Before you review
 
-- [ ] Are there any `#[stable]` attributes involved?
+- [ ] Is this a [stabilization](../feature-lifecycle/stabilization.md) or [deprecation](../feature-lifecycle/deprecation.md)?
+    - [ ] Make sure there's a completed FCP somewhere for it.
     - [ ] Ping `@rust-lang/libs` for input.
 
 ## As you review
@@ -29,8 +30,8 @@ Look out for code considerations:
 
 - [ ] Is the commit log tidy? Avoid merge commits, these can be squashed down.
 - [ ] Can this change be rolled up?
-- [ ] Is this a new unstable feature?
-    - [ ] Create a tracking issue.
+- [ ] Is this a [new unstable feature](../feature-lifecycle/landing-new-features.md)?
+    - [ ] Create a [tracking issue](../feature-lifecycle/tracking-issues.md).
     - [ ] Update the `#[unstable]` attributes to point to it.
 
 ## When you're ready
