@@ -1,5 +1,7 @@
 # About this guide
 
+**Status:** Stub
+
 This guide is for contributors and reviewers to Rust's standard library.
 
 ## Other places to find information
