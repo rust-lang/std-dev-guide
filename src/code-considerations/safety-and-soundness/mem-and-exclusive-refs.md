@@ -6,11 +6,9 @@ Any value behind a `&mut` reference can be replaced with a new one using `mem::r
 
 ## `mem::forget`
 
-Rust doesn't guarantee destructors will run when a value is leaked (which can be done with `mem::forget`), so code should avoid relying on them for maintaining safety. Remember, [everyone poops][Everyone Poops].
+Rust doesn't guarantee destructors will run when a value is leaked (which can be done with `mem::forget`), so code should avoid relying on them for maintaining safety. Remember, [everyone poops](http://cglab.ca/~abeinges/blah/everyone-poops).
 
-It's ok not to run a destructor when a value is leaked because its storage isn't deallocated or repurposed. If the storage is initialized and is being deallocated or repurposed then destructors need to be run first, because [memory may be pinned][Drop guarantee]. Having said that, there can still be exceptions for skipping destructors when deallocating if you can guarantee there's never pinning involved.
-
-[Drop guarantee]: https://doc.rust-lang.org/nightly/std/pin/index.html#drop-guarantee
+It's ok not to run a destructor when a value is leaked because its storage isn't deallocated or repurposed. If the storage is initialized and is being deallocated or repurposed then destructors need to be run first, because [memory may be pinned](https://doc.rust-lang.org/nightly/std/pin/index.html#drop-guarantee). Having said that, there can still be exceptions for skipping destructors when deallocating if you can guarantee there's never pinning involved.
 
 ## For reviewers
 

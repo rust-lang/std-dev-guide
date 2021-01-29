@@ -1,8 +1,8 @@
 # Drop and `#[may_dangle]`
 
-A generic `Type<T>` that manually implements `Drop` should consider whether a `#[may_dangle]` attribute is appropriate on `T`. The [Nomicon][dropck] has some details on what `#[may_dangle]` is all about.
+A generic `Type<T>` that manually implements `Drop` should consider whether a `#[may_dangle]` attribute is appropriate on `T`. The [Nomicon](https://doc.rust-lang.org/nomicon/dropck.html) has some details on what `#[may_dangle]` is all about.
 
-If a generic `Type<T>` has a manual drop implementation that may also involve dropping `T` then dropck needs to know about it. If `Type<T>`'s ownership of `T` is expressed through types that don't drop `T` themselves such as `ManuallyDrop<T>`, `*mut T`, or `MaybeUninit<T>` then `Type<T>` also [needs a `PhantomData<T>` field][RFC 0769 PhantomData] to tell dropck that `T` may be dropped. Types in the standard library that use the internal `Unique<T>` pointer type don't need a `PhantomData<T>` marker field. That's taken care of for them by `Unique<T>`.
+If a generic `Type<T>` has a manual drop implementation that may also involve dropping `T` then dropck needs to know about it. If `Type<T>`'s ownership of `T` is expressed through types that don't drop `T` themselves such as `ManuallyDrop<T>`, `*mut T`, or `MaybeUninit<T>` then `Type<T>` also [needs a `PhantomData<T>` field](https://rust-lang.github.io/rfcs/0769-sound-generic-drop.html#phantom-data) to tell dropck that `T` may be dropped. Types in the standard library that use the internal `Unique<T>` pointer type don't need a `PhantomData<T>` marker field. That's taken care of for them by `Unique<T>`.
 
 As a real-world example of where this can go wrong, consider an `OptionCell<T>` that looks something like this:
 
@@ -35,9 +35,6 @@ struct OptionCell<T> {
 - impl<T> Drop for OptionCell<T> {
 + unsafe impl<#[may_dangle] T> Drop for OptionCell<T> {
 ```
-
-[dropck]: https://doc.rust-lang.org/nomicon/dropck.html
-[RFC 0769 PhantomData]: https://github.com/rust-lang/rfcs/blob/master/text/0769-sound-generic-drop.md#phantom-data
 
 ## For reviewers
 

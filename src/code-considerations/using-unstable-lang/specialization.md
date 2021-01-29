@@ -1,6 +1,6 @@
 # Using specialization
 
-Specialization is currently unstable. You can track its progress [here][rust/issues/31844].
+Specialization is currently unstable. You can track its progress [here](https://github.com/rust-lang/rust/issues/31844).
 
 We try to avoid leaning on specialization too heavily, limiting its use to optimizing specific implementations. These specialized optimizations use a private trait to find the correct implementation, rather than specializing the public method itself. Any use of specialization that changes how methods are dispatched for external callers should be carefully considered.
 

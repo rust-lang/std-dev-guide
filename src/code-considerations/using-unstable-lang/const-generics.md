@@ -2,7 +2,9 @@
 
 **Status:** Stub
 
-Const generics are ok to use in public APIs, so long as they fit in the [`min_const_generics` subset](https://github.com/rust-lang/rust/pull/79135).
+Complete const generics are currently unstable. You can track their progress [here](https://github.com/rust-lang/rust/issues/44580).
+
+Const generics are ok to use in public APIs, so long as they fit in the [`min_const_generics` subset](https://github.com/rust-lang/rust/issues/74878).
 
 ## For reviewers
 

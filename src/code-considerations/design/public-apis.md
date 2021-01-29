@@ -2,9 +2,7 @@
 
 **Status:** Stub
 
-Standard library APIs typically follow the [API Guidelines], which were originally spawned from the standard library itself.
-
-[API Guidelines]: https://rust-lang.github.io/api-guidelines/
+Standard library APIs typically follow the [API Guidelines](https://rust-lang.github.io/api-guidelines/), which were originally spawned from the standard library itself.
 
 ## For reviewers
 

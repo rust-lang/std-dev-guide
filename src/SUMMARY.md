@@ -23,7 +23,7 @@
     - [New trait impls](./code-considerations/breaking-changes/new-trait-impls.md)
     - [`#[fundamental]` types](./code-considerations/breaking-changes/fundamental.md)
 - [Safety and soundness](./code-considerations/safety-and-soundness/summary.md)
-    - [Generic impls and soundness](./code-considerations/safety-and-soundness/generic-impls-and-soundness.md)
+    - [Generics and unsafe](./code-considerations/safety-and-soundness/generics-and-unsafe.md)
     - [Drop and `#[may_dangle]`](./code-considerations/safety-and-soundness/may-dangle.md)
     - [`std::mem` and exclusive references](./code-considerations/safety-and-soundness/mem-and-exclusive-refs.md)
 - [Using unstable language features](./code-considerations/using-unstable-lang/summary.md)
@@ -32,6 +32,8 @@
 - [Performance](./code-considerations/performance/summary.md)
     - [When to `#[inline]`](./code-considerations/performance/inline.md)
 
----
+# Tools and bots
 
-[Appendix A: Glossary](./appendix/glossary.md)
+- [`@bors`](./tools-and-bots/bors.md)
+- [`@rust-timer`](./tools-and-bots/timer.md)
+- [`@craterbot`](./tools-and-bots/crater.md)

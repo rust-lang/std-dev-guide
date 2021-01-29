@@ -2,9 +2,7 @@
 
 **Status:** Stub
 
-## Before you review
-
-Check the [getting started](./getting-started.md) guide for an introduction to developing in the standard library.
+Check the [getting started](../getting-started.md) guide for an introduction to developing in the standard library.
 
 If you'd like to reassign the PR, you can:
 
@@ -12,18 +10,20 @@ If you'd like to reassign the PR, you can:
 r? @user
 ```
 
+## Before you review
+
 - [ ] Are there any `#[stable]` attributes involved?
     - [ ] Ping `@rust-lang/libs` for input.
 
 ## As you review
 
-Look out for:
+Look out for code considerations:
 
-- [ ] [Breaking changes](./code-considerations/breaking-changes/summary.md)
-- [ ] [Safety and soundness](./code-considerations/safety-and-soundness/summary.md)
-- [ ] [Quality](./code-considerations/quality/summary.md)
-- [ ] [Use of unstable language features](./code-considerations/using-unstable-lang/summary.md)
-- [ ] [Performance](./code-considerations/performance/summary.md)
+- [ ] [Design](./design/summary.md)
+- [ ] [Breaking changes](./breaking-changes/summary.md)
+- [ ] [Safety and soundness](./safety-and-soundness/summary.md)
+- [ ] [Use of unstable language features](./using-unstable-lang/summary.md)
+- [ ] [Performance](./performance/summary.md)
 
 ## Before you merge
 
@@ -35,7 +35,7 @@ Look out for:
 
 ## When you're ready
 
-For Libs PRs, rolling up is usually fine, in particular if it's only a new unstable addition or if it only touches docs. See the [rollup guidelines] for more details on when to rollup.
+For Libs PRs, rolling up is usually fine, in particular if it's only a new unstable addition or if it only touches docs. See the [rollup guidelines](https://forge.rust-lang/org/compiler/reviews.md#rollups) for more details on when to rollup.
 
 To roll up:
 
@@ -48,5 +48,3 @@ or just:
 ```
 @bors r+
 ```
-
-[rollup guidelines]: https://forge.rust-lang/org/compiler/reviews.md#rollups

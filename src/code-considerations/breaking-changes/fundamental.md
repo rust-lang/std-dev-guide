@@ -2,7 +2,7 @@
 
 **Status:** Stub
 
-Type annotated with the `#[fundamental]` attribute have different coherence rules. See [RFC 1023] for details. That includes:
+Type annotated with the `#[fundamental]` attribute have different coherence rules. See [RFC 1023](https://rust-lang.github.io/rfcs/1023-rebalancing-coherence.html) for details. That includes:
 
 - `&T`
 - `&mut T`
@@ -28,4 +28,4 @@ where
 
 unless the blanket implementation is being stabilized along with `PublicTrait`. In cases where we really want to do this, a [crater] run can help estimate the scope of the breakage.
 
-[crater]: ./crater.md
+[crater]: ../../tools-and-bots/crater.md

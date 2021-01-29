@@ -67,9 +67,7 @@ let c = a + &b;
 
 will no longer compile, because we won't attempt to use deref to coerce the `&String` into `&str`.
 
-This kind of breakage can be ok, but a [crater] run should estimate the scope.
-
-[crater]: ./crater.md
+This kind of breakage can be ok, but a [crater](../../tools-and-bots/crater.md) run should estimate the scope.
 
 ## For reviewers
 

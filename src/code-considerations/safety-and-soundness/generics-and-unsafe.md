@@ -1,4 +1,4 @@
-# Relying on generic trait impls for soundness
+# Generics and unsafe
 
 Be careful of generic types that interact with unsafe code. Unless the generic type is bounded by an unsafe trait that specifies its contract, we can't rely on the results of generic types being reliable or correct.
 
