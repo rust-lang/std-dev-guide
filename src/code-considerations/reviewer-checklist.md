@@ -30,7 +30,7 @@ Look out for code considerations:
 
 - [ ] Is the commit log tidy? Avoid merge commits, these can be squashed down.
 - [ ] Can this change be rolled up?
-- [ ] Is this a [new unstable feature](../feature-lifecycle/landing-new-features.md)?
+- [ ] Is this a [new unstable feature](../feature-lifecycle/new-unstable-features.md)?
     - [ ] Create a [tracking issue](../feature-lifecycle/tracking-issues.md).
     - [ ] Update the `#[unstable]` attributes to point to it.
 

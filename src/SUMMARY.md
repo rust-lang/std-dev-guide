@@ -8,12 +8,17 @@
 
 # The feature lifecycle
 
-- [Landing new features](./feature-lifecycle/landing-new-features.md)
+This section describes the processes around how standard library features are developed and stabilized.
+
+- [Landing a new feature](./feature-lifecycle/new-unstable-features.md)
 - [Tracking issues](./feature-lifecycle/tracking-issues.md)
-- [Stabilization](./feature-lifecycle/stabilization.md)
-- [Deprecation](./feature-lifecycle/deprecation.md)
+- [Working on an unstable feature](./feature-lifecycle/working-on-unstable-features.md)
+- [Stabilizing a feature](./feature-lifecycle/stabilization.md)
+- [Deprecating a feature](./feature-lifecycle/deprecation.md)
 
 # Code considerations
+
+This section includes things to keep in mind when writing and reviewing standard library code. Most topics are relevant for both contributors and reviewers.
 
 - [Reviewer checklist](./code-considerations/reviewer-checklist.md)
 - [Design](./code-considerations/design/summary.md)
@@ -33,6 +38,8 @@
     - [When to `#[inline]`](./code-considerations/performance/inline.md)
 
 # Tools and bots
+
+This section lists tools and bots that support the development process on the standard library. Most can be interacted with through GitHub mentions.
 
 - [`@bors`](./tools-and-bots/bors.md)
 - [`@rust-timer`](./tools-and-bots/timer.md)

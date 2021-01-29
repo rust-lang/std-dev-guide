@@ -2,6 +2,8 @@
 
 A lot of PRs to the standard library are adding new impls for already stable traits, which can break consumers in many weird and wonderful ways. The following sections gives some examples of breakage from new trait impls that may not be obvious just from the change made to the standard library.
 
+Also see [`#[fundamental]` types](./fundamental.md) for special considerations for types like `&T`, `&mut T`, `Box<T>`, and other core smart pointers.
+
 ## Inference breaks when a second generic impl is introduced
 
 Rust will use the fact that there's only a single impl for a generic trait during inference. This breaks once a second impl makes the type of that generic ambiguous. Say we have:
