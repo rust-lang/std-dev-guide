@@ -2,11 +2,21 @@
 
 **Status:** Stub
 
-Feature stabilization involves replacing `#[unstable]` attributes for a feature with `#[stable]` ones.
+Feature stabilization involves adding `#[stable]` attributes. They may be introduced alongside new trait impls or replace existing `#[unstable]` attributes.
+
+Stabilization goes through the Libs FCP process, which occurs on the [tracking issue](./tracking-issues.md) for the feature.
 
 ## Before writing a PR to stabilize a feature
 
-Check to see if a FCP has completed on the [tracking issue](./tracking-issues.md). If not, either ping `@rust-lang/libs` or leave a comment asking about the status of the feature.
+Check to see if a FCP has completed first. If not, either ping `@rust-lang/libs` or leave a comment asking about the status of the feature.
+
+This will save you from opening a stabilization PR and having it need regular rebasing while the FCP process runs its course.
+
+## Writing a stabilization PR
+
+- Replace any `#[unstable]` attributes for the given feature with stable ones. The value of the `since` field is usually the current `nightly` version.
+- Remove any `#![feature()]` attributes that were previously required.
+- Submit a PR with a stabilization report.
 
 ## When there's `const` involved
 
