@@ -1,4 +1,4 @@
-# Stabilizing a feature
+# Stabilizing features
 
 **Status:** Stub
 

@@ -1,4 +1,4 @@
-# Landing a new features
+# Landing new features
 
 **Status:** Stub
 

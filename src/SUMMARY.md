@@ -10,11 +10,10 @@
 
 This section describes the processes around how standard library features are developed and stabilized.
 
-- [Landing a new feature](./feature-lifecycle/new-unstable-features.md)
-- [Tracking issues](./feature-lifecycle/tracking-issues.md)
-- [Working on an unstable feature](./feature-lifecycle/working-on-unstable-features.md)
-- [Stabilizing a feature](./feature-lifecycle/stabilization.md)
-- [Deprecating a feature](./feature-lifecycle/deprecation.md)
+- [Landing new features](./feature-lifecycle/new-unstable-features.md)
+- [Using tracking issues](./feature-lifecycle/tracking-issues.md)
+- [Stabilizing features](./feature-lifecycle/stabilization.md)
+- [Deprecating features](./feature-lifecycle/deprecation.md)
 
 # Code considerations
 

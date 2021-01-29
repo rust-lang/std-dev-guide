@@ -1,4 +1,4 @@
-# Deprecating a feature
+# Deprecating features
 
 **Status:** Stub
 
