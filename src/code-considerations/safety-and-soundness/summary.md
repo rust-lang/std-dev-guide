@@ -9,3 +9,5 @@ The rules around what's sound and what's not can be subtle. See the [Unsafe Code
 ## For reviewers
 
 Look out for any unsafe blocks. If they're optimizations consider whether they're actually necessary. If the unsafe code is necessary then always feel free to ping somebody to help review it.
+
+Look at the level of test coverage for the new unsafe code. Tests do catch bugs!

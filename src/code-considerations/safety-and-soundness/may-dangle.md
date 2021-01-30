@@ -38,4 +38,4 @@ struct OptionCell<T> {
 
 ## For reviewers
 
-If there's a manual `Drop` implementation, consider whether `#[may_dangle]` is appropriate. If it is, make sure there's a `PhantomData<T>` too either through `Unique<T>` or manually.
+If there's a manual `Drop` implementation, consider whether `#[may_dangle]` is appropriate. If it is, make sure there's a `PhantomData<T>` too either through `Unique<T>` or as a field directly.
