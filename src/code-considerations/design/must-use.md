@@ -23,7 +23,7 @@ a.saturating_add(b);
 Combinators produced by the `Iterator` trait are `#[must_use]` because failing to consider them might indicate a caller didn't realize `Iterator`s are lazy and won't actually do anything unless you drive them:
 
 ```rust
-// A caller might not realise none of this code won't do anything
+// A caller might not realise this code won't do anything
 // unless they call `collect`, `count`, etc.
 slice.iter().filter(|v| v > 10).map(|v| v + 2);
 ```
