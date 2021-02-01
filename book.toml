@@ -12,9 +12,15 @@ create-missing = false
 [rust]
 edition = "2018"
 
+[preprocessor.toc]
+command = "mdbook-toc"
+renderer = ["html"]
+
+[output.linkcheck]
+
 [output.html]
 default-theme = "rust"
 git-repository-url = "https://github.com/rust-lang/std-dev-guide"
 git-repository-icon = "fa-github"
 
-# [output.linkcheck]  # enable the "mdbook-linkcheck" renderer, disabled due to gh-actions
+
