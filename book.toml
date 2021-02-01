@@ -1,0 +1,20 @@
+[book]
+title = "Standard library developers Guide"
+authors = ["the rust-lang authors"]
+description = "Guide for standard library developers"
+language = "en"
+multilingual = false
+src = "./src"
+
+[build]
+create-missing = false
+
+[rust]
+edition = "2018"
+
+[output.html]
+default-theme = "rust"
+git-repository-url = "https://github.com/rust-lang/std-dev-guide"
+git-repository-icon = "fa-github"
+
+# [output.linkcheck]  # enable the "mdbook-linkcheck" renderer, disabled due to gh-actions
