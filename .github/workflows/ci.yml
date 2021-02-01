@@ -79,5 +79,5 @@ jobs:
           cargo install mdbook-linkcheck --version ${{ steps.mdbook-version.outputs.MDBOOK_LINKCHECK_VERSION }}
           cargo install mdbook-toc --version ${{ steps.mdbook-version.outputs.MDBOOK_TOC_VERSION }}
 
-      - name: Test book
+      - name: Build book for testing
         run: mdbook build
