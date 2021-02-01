@@ -4,7 +4,7 @@ Be careful of generic types that interact with unsafe code. Unless the generic t
 
 A place where this commonly comes up is with the `RangeBounds` trait. You might assume that the start and end bounds given by a `RangeBounds` implementation will remain the same since it works through shared references. That's not necessarily the case though, an adversarial implementation may change the bounds between calls:
 
-```rust
+```rust,ignore
 struct EvilRange(Cell<bool>);
 
 impl RangeBounds<usize> for EvilRange {

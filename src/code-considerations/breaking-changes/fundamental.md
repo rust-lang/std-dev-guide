@@ -17,7 +17,7 @@ Typically, the scope of [breakage in new trait impls](./reviewing-code/breakage/
 
 Look out for blanket trait implementations for fundamental types, like:
 
-```rust
+```rust,ignore
 impl<'a, T> PublicTrait for &'a T
 where
     T: SomeBound,

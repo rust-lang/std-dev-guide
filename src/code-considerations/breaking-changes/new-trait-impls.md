@@ -8,12 +8,12 @@ Also see [`#[fundamental]` types](./fundamental.md) for special considerations f
 
 Rust will use the fact that there's only a single impl for a generic trait during inference. This breaks once a second impl makes the type of that generic ambiguous. Say we have:
 
-```rust
+```rust,ignore
 // in `std`
 impl From<&str> for Arc<str> { .. }
 ```
 
-```rust
+```rust,ignore
 // in an external `lib`
 let b = Arc::from("a");
 ```
@@ -27,7 +27,7 @@ impl From<&str> for Arc<str> { .. }
 
 then
 
-```rust
+```rust,ignore
 let b = Arc::from("a");
 ```
 
@@ -39,14 +39,14 @@ This kind of breakage can be ok, but a [crater] run should estimate the scope.
 
 Rust will use deref coercion to find a valid trait impl if the arguments don't type check directly. This only seems to occur if there's a single impl so introducing a new one may break consumers relying on deref coercion. Say we have:
 
-```rust
+```rust,ignore
 // in `std`
 impl Add<&str> for String { .. }
 
 impl Deref for String { type Target = str; .. }
 ```
 
-```rust
+```rust,ignore
 // in an external `lib`
 let a = String::from("a");
 let b = String::from("b");
@@ -56,14 +56,14 @@ let c = a + &b;
 
 then we add:
 
-```diff
+```diff,ignore
 impl Add<&str> for String { .. }
 + impl Add<char> for String { .. }
 ```
 
 then
 
-```rust
+```rust,ignore
 let c = a + &b;
 ```
 
