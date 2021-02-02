@@ -1,4 +1,4 @@
-[![Travis CI badge](https://api.travis-ci.com/rust-lang/std-dev-guide.svg?branch=master)](https://travis-ci.com/github/rust-lang/std-dev-guide)
+[![GitHub Actions Badge](https://github.com/rust-lang/std-dev-guide/workflows/Continuous%20Integration/badge.svg)](https://github.com/rust-lang/std-dev-guide/actions)
 
 Welcome to the Standard Library Development Guide! This book is for anybody who is contributing to, or who is reviewing contributions to, the standard library. It aims to capture everything you need to know through the whole lifecycle of a standard library feature, from inception through to an initial unstable implementation, through to stabilization, and eventually maybe deprecation.
 
