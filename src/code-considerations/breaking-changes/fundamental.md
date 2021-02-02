@@ -9,7 +9,7 @@ Type annotated with the `#[fundamental]` attribute have different coherence rule
 - `Box<T>`
 - `Pin<T>`
 
-Typically, the scope of [breakage in new trait impls](./reviewing-code/breakage/new-trait-impls.md) is limited to inference and deref-coercion. New trait impls on `#[fundamental]` types may overlap with downstream impls and cause other kinds of breakage.
+Typically, the scope of [breakage in new trait impls](./new-trait-impls.md) is limited to inference and deref-coercion. New trait impls on `#[fundamental]` types may overlap with downstream impls and cause other kinds of breakage.
 
 [RFC 1023]: https://rust-lang.github.io/rfcs/1023-rebalancing-coherence.html
 
