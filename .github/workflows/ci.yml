@@ -1,0 +1,83 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  book-test:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Read .env
+        id: mdbook-version
+        run: |
+          . ./.env
+          echo "::set-output name=MDBOOK_VERSION::${MDBOOK_VERSION}"
+          echo "::set-output name=MDBOOK_LINKCHECK_VERSION::${MDBOOK_LINKCHECK_VERSION}"
+          echo "::set-output name=MDBOOK_TOC_VERSION::${MDBOOK_TOC_VERSION}"
+          
+      - name: Cache binaries
+        id: mdbook-cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cargo/bin
+          key: ${{ runner.os }}-${{ steps.mdbook-version.outputs.MDBOOK_VERSION }}--${{ steps.mdbook-version.outputs.DBOOK_LINKCHECK_VERSION }}--${{ steps.mdbook-version.outputs.MDBOOK_TOC_VERSION }}
+
+      - name: Install latest stable Rust toolchain
+        if: steps.mdbook-cache.outputs.cache-hit != 'true'
+        uses: actions-rs/toolchain@v1
+        with:
+            toolchain: stable
+            override: true
+
+      - name: Install Dependencies
+        if: steps.mdbook-cache.outputs.cache-hit != 'true'
+        run: | 
+          cargo install mdbook --version ${{ steps.mdbook-version.outputs.MDBOOK_VERSION }}
+          cargo install mdbook-linkcheck --version ${{ steps.mdbook-version.outputs.MDBOOK_LINKCHECK_VERSION }}
+          cargo install mdbook-toc --version ${{ steps.mdbook-version.outputs.MDBOOK_TOC_VERSION }}
+
+      - name: Test book
+        run: mdbook test
+
+  book-build:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Read .env
+        id: mdbook-version
+        run: |
+          . ./.env
+          echo "::set-output name=MDBOOK_VERSION::${MDBOOK_VERSION}"
+          echo "::set-output name=MDBOOK_LINKCHECK_VERSION::${MDBOOK_LINKCHECK_VERSION}"
+          echo "::set-output name=MDBOOK_TOC_VERSION::${MDBOOK_TOC_VERSION}"
+          
+      - name: Cache binaries
+        id: mdbook-cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cargo/bin
+          key: ${{ runner.os }}-${{ steps.mdbook-version.outputs.MDBOOK_VERSION }}--${{ steps.mdbook-version.outputs.DBOOK_LINKCHECK_VERSION }}--${{ steps.mdbook-version.outputs.MDBOOK_TOC_VERSION }}
+
+      - name: Install latest stable Rust toolchain
+        if: steps.mdbook-cache.outputs.cache-hit != 'true'
+        uses: actions-rs/toolchain@v1
+        with:
+            toolchain: stable
+            override: true
+
+      - name: Install Dependencies
+        if: steps.mdbook-cache.outputs.cache-hit != 'true'
+        run: | 
+          cargo install mdbook --version ${{ steps.mdbook-version.outputs.MDBOOK_VERSION }}
+          cargo install mdbook-linkcheck --version ${{ steps.mdbook-version.outputs.MDBOOK_LINKCHECK_VERSION }}
+          cargo install mdbook-toc --version ${{ steps.mdbook-version.outputs.MDBOOK_TOC_VERSION }}
+
+      - name: Build book for testing
+        run: mdbook build
