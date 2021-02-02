@@ -1,0 +1,644 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Standard library developers Guide</title>
+        
+        <meta name="robots" content="noindex" />
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Guide for standard library developers">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="favicon.png">
+        
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        
+        <link rel="stylesheet" href="css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="about-this-guide.html">About this guide</a></li><li class="chapter-item expanded affix "><a href="getting-started.html">Getting started</a></li><li class="chapter-item expanded affix "><a href="reviewer-checklist.html">Reviewer checklist</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="feature-lifecycle/summary.html"><strong aria-hidden="true">1.</strong> The feature lifecycle</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="feature-lifecycle/new-unstable-features.html"><strong aria-hidden="true">1.1.</strong> Landing new features</a></li><li class="chapter-item expanded "><a href="feature-lifecycle/tracking-issues.html"><strong aria-hidden="true">1.2.</strong> Using tracking issues</a></li><li class="chapter-item expanded "><a href="feature-lifecycle/stabilization.html"><strong aria-hidden="true">1.3.</strong> Stabilizing features</a></li><li class="chapter-item expanded "><a href="feature-lifecycle/deprecation.html"><strong aria-hidden="true">1.4.</strong> Deprecating features</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="code-considerations/summary.html"><strong aria-hidden="true">2.</strong> Code considerations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="code-considerations/design/summary.html"><strong aria-hidden="true">2.1.</strong> Design</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="code-considerations/design/public-apis.html"><strong aria-hidden="true">2.1.1.</strong> Public APIs</a></li></ol></li><li class="chapter-item expanded "><a href="code-considerations/breaking-changes/summary.html"><strong aria-hidden="true">2.2.</strong> Breaking changes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="code-considerations/breaking-changes/behavior.html"><strong aria-hidden="true">2.2.1.</strong> Breakage from changing behavior</a></li><li class="chapter-item expanded "><a href="code-considerations/breaking-changes/new-trait-impls.html"><strong aria-hidden="true">2.2.2.</strong> Breakage from new trait impls</a></li><li class="chapter-item expanded "><a href="code-considerations/breaking-changes/fundamental.html"><strong aria-hidden="true">2.2.3.</strong> #[fundamental] types</a></li></ol></li><li class="chapter-item expanded "><a href="code-considerations/safety-and-soundness/summary.html"><strong aria-hidden="true">2.3.</strong> Safety and soundness</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="code-considerations/safety-and-soundness/generics-and-unsafe.html"><strong aria-hidden="true">2.3.1.</strong> Generics and unsafe</a></li><li class="chapter-item expanded "><a href="code-considerations/safety-and-soundness/may-dangle.html"><strong aria-hidden="true">2.3.2.</strong> Drop and #[may_dangle]</a></li><li class="chapter-item expanded "><a href="code-considerations/safety-and-soundness/mem-and-exclusive-refs.html"><strong aria-hidden="true">2.3.3.</strong> std::mem and exclusive references</a></li></ol></li><li class="chapter-item expanded "><a href="code-considerations/using-unstable-lang/summary.html"><strong aria-hidden="true">2.4.</strong> Using unstable language features</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="code-considerations/using-unstable-lang/const-generics.html"><strong aria-hidden="true">2.4.1.</strong> Const generics</a></li><li class="chapter-item expanded "><a href="code-considerations/using-unstable-lang/specialization.html"><strong aria-hidden="true">2.4.2.</strong> Specialization</a></li></ol></li><li class="chapter-item expanded "><a href="code-considerations/performance/summary.html"><strong aria-hidden="true">2.5.</strong> Performance</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="code-considerations/performance/inline.html"><strong aria-hidden="true">2.5.1.</strong> When to #[inline]</a></li><li class="spacer"></li></ol></li></ol></li><li class="chapter-item expanded "><a href="tools-and-bots/summary.html"><strong aria-hidden="true">3.</strong> Tools and bots</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="tools-and-bots/bors.html"><strong aria-hidden="true">3.1.</strong> @bors</a></li><li class="chapter-item expanded "><a href="tools-and-bots/timer.html"><strong aria-hidden="true">3.2.</strong> @rust-timer</a></li><li class="chapter-item expanded "><a href="tools-and-bots/crater.html"><strong aria-hidden="true">3.3.</strong> @craterbot</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Standard library developers Guide</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                        <a href="https://github.com/rust-lang/std-dev-guide" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#about-this-guide" id="about-this-guide">About this guide</a></h1>
+<p><strong>Status:</strong> Stub</p>
+<p>This guide is for contributors and reviewers to Rust's standard library.</p>
+<h2><a class="header" href="#other-places-to-find-information" id="other-places-to-find-information">Other places to find information</a></h2>
+<p>You might also find the following sites useful:</p>
+<ul>
+<li><a href="https://doc.rust-lang.org/nightly/std/">std API docs</a> -- rustdoc documentation for the standard library itself</li>
+<li><a href="https://forge.rust-lang.org/">Forge</a> -- contains documentation about rust infrastructure, team procedures, and more</li>
+<li><a href="https://github.com/rust-lang/libs-team/">libs-team</a> -- the home-base for the rust Library Team, with description
+of the team procedures, active working groups, and the team calendar.</li>
+</ul>
+<h1><a class="header" href="#getting-started" id="getting-started">Getting started</a></h1>
+<p><strong>Status:</strong> Stub</p>
+<p>Welcome to the standard library!</p>
+<p>This guide is an effort to capture some of the context needed to develop and maintain the Rust standard library. Its goal is to help members of the Libs team share the process and experience they bring to working on the standard library so other members can benefit. It’ll probably accumulate a lot of trivia that might also be interesting to members of the wider Rust community.</p>
+<h2><a class="header" href="#where-to-get-help" id="where-to-get-help">Where to get help</a></h2>
+<p>Maintaining the standard library can feel like a daunting responsibility!</p>
+<p>Ping the <code>@rust-lang/libs-impl</code> or <code>@rust-lang/libs</code> teams on GitHub anytime.</p>
+<p>You can also reach out in the <a href="https://rust-lang.zulipchat.com/#narrow/stream/219381-t-libs/"><code>t-libs</code> stream on Zulip</a>.</p>
+<h2><a class="header" href="#a-tour-of-the-standard-library" id="a-tour-of-the-standard-library">A tour of the standard library</a></h2>
+<p><strong>Status:</strong> Stub</p>
+<p>The standard library codebase lives in the <a href="https://github.com/rust-lang/rust"><code>rust-lang/rust</code></a> repository under the <code>/library</code> directory.</p>
+<p>The standard library is made up of three crates that exist in a loose hierarchy:</p>
+<ul>
+<li><code>core</code>: dependency free and makes minimal assumptions about the runtime environment.</li>
+<li><code>alloc</code>: depends on <code>core</code>, assumes allocator support. <code>alloc</code> doesn't re-export <code>core</code>'s public API, so it's not strictly above it in the layering.</li>
+<li><code>std</code>: depends on <code>core</code> and <code>alloc</code> and re-exports both of their public APIs.</li>
+</ul>
+<h1><a class="header" href="#reviewer-checklist" id="reviewer-checklist">Reviewer checklist</a></h1>
+<p><strong>Status:</strong> Stub</p>
+<p>Check the <a href="./getting-started.html">getting started</a> guide for an introduction to developing in the standard library.</p>
+<p>If you'd like to reassign the PR, you can:</p>
+<pre><code class="language-ignore">r? @user
+</code></pre>
+<h2><a class="header" href="#before-you-review" id="before-you-review">Before you review</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Is this a <a href="./feature-lifecycle/stabilization.html">stabilization</a> or <a href="./feature-lifecycle/deprecation.html">deprecation</a>?
+<ul>
+<li><input disabled="" type="checkbox"/>
+Make sure there's a completed FCP somewhere for it.</li>
+<li><input disabled="" type="checkbox"/>
+Ping <code>@rust-lang/libs</code> for input.</li>
+</ul>
+</li>
+</ul>
+<h2><a class="header" href="#as-you-review" id="as-you-review">As you review</a></h2>
+<p>Look out for code considerations:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+<a href="./code-considerations/design/summary.html">Design</a></li>
+<li><input disabled="" type="checkbox"/>
+<a href="./code-considerations/breaking-changes/summary.html">Breaking changes</a></li>
+<li><input disabled="" type="checkbox"/>
+<a href="./code-considerations/safety-and-soundness/summary.html">Safety and soundness</a></li>
+<li><input disabled="" type="checkbox"/>
+<a href="./code-considerations/using-unstable-lang/summary.html">Use of unstable language features</a></li>
+<li><input disabled="" type="checkbox"/>
+<a href="./code-considerations/performance/summary.html">Performance</a></li>
+</ul>
+<h2><a class="header" href="#before-you-merge" id="before-you-merge">Before you merge</a></h2>
+<ul>
+<li><input disabled="" type="checkbox"/>
+Is the commit log tidy? Avoid merge commits, these can be squashed down.</li>
+<li><input disabled="" type="checkbox"/>
+Can this change be rolled up?</li>
+<li><input disabled="" type="checkbox"/>
+Is this a <a href="./feature-lifecycle/new-unstable-features.html">new unstable feature</a>?
+<ul>
+<li><input disabled="" type="checkbox"/>
+Create a <a href="./feature-lifecycle/tracking-issues.html">tracking issue</a>.</li>
+<li><input disabled="" type="checkbox"/>
+Update the <code>#[unstable]</code> attributes to point to it.</li>
+</ul>
+</li>
+</ul>
+<h2><a class="header" href="#when-youre-ready" id="when-youre-ready">When you're ready</a></h2>
+<p>Use <a href="./tools-and-bots/bors.html"><code>@bors</code></a> to merge the pull request.</p>
+<p>To roll up:</p>
+<pre><code class="language-ignore">@bors r+ rollup
+</code></pre>
+<p>or just:</p>
+<pre><code class="language-ignore">@bors r+
+</code></pre>
+<h1><a class="header" href="#the-feature-lifecycle" id="the-feature-lifecycle">The feature lifecycle</a></h1>
+<p><strong>Status:</strong> Stub</p>
+<h1><a class="header" href="#landing-new-features" id="landing-new-features">Landing new features</a></h1>
+<p><strong>Status:</strong> Stub</p>
+<p>New unstable features can be added and approved without going through a Libs FCP. There should be some buy-in from Libs that a feature is desirable and likely to be stabilized at some point before landing though.</p>
+<p>If you're not sure, open an issue against <code>rust-lang/rust</code> first suggesting the feature before developing it.</p>
+<p>All public items in the standard library need a <code>#[stable]</code> or <code>#[unstable]</code> attribute on them. When a feature is first added, it gets a <code>#[unstable]</code> attribute.</p>
+<p>Before a new feature is merged, those <code>#[unstable]</code> attributes need to be linked to a <a href="feature-lifecycle/./tracking-issues.html">tracking issue</a>.</p>
+<h1><a class="header" href="#using-tracking-issues" id="using-tracking-issues">Using tracking issues</a></h1>
+<p><strong>Status:</strong> Stub</p>
+<p>Tracking issues are used to facilitate discussion and report on the status of standard library features. All public APIs need a dedicated tracking issue. Some larger internal units of work may also use them.</p>
+<h2><a class="header" href="#creating-a-tracking-issue" id="creating-a-tracking-issue">Creating a tracking issue</a></h2>
+<p>There's a template that can be used to fill out the initial tracking issue. The Libs team also maintains <a href="https://github.com/rust-lang/libs-team/tree/main/tools/unstable-api">a Cargo tool</a> that can be used to quickly dump the public API of an unstable feature.</p>
+<h2><a class="header" href="#working-on-an-unstable-feature" id="working-on-an-unstable-feature">Working on an unstable feature</a></h2>
+<p>The current state of an unstable feature should be outlined in its tracking issue.</p>
+<p>If there's a change you'd like to make to an unstable feature, it can be discussed on the tracking issue first.</p>
+<h1><a class="header" href="#stabilizing-features" id="stabilizing-features">Stabilizing features</a></h1>
+<p><strong>Status:</strong> Stub</p>
+<p>Feature stabilization involves adding <code>#[stable]</code> attributes. They may be introduced alongside new trait impls or replace existing <code>#[unstable]</code> attributes.</p>
+<p>Stabilization goes through the Libs FCP process, which occurs on the <a href="feature-lifecycle/./tracking-issues.html">tracking issue</a> for the feature.</p>
+<h2><a class="header" href="#before-writing-a-pr-to-stabilize-a-feature" id="before-writing-a-pr-to-stabilize-a-feature">Before writing a PR to stabilize a feature</a></h2>
+<p>Check to see if a FCP has completed first. If not, either ping <code>@rust-lang/libs</code> or leave a comment asking about the status of the feature.</p>
+<p>This will save you from opening a stabilization PR and having it need regular rebasing while the FCP process runs its course.</p>
+<h2><a class="header" href="#writing-a-stabilization-pr" id="writing-a-stabilization-pr">Writing a stabilization PR</a></h2>
+<ul>
+<li>Replace any <code>#[unstable]</code> attributes for the given feature with stable ones. The value of the <code>since</code> field is usually the current <code>nightly</code> version.</li>
+<li>Remove any <code>#![feature()]</code> attributes that were previously required.</li>
+<li>Submit a PR with a stabilization report.</li>
+</ul>
+<h2><a class="header" href="#when-theres-const-involved" id="when-theres-const-involved">When there's <code>const</code> involved</a></h2>
+<p>Const functions can be stabilized in a PR that replaces <code>#[rustc_const_unstable]</code> attributes with <code>#[rustc_const_stable]</code> ones. The <a href="https://github.com/rust-lang/const-eval">Constant Evaluation WG</a> should be pinged for input on whether or not the <code>const</code>-ness is something we want to commit to. If it is an intrinsic being exposed that is const-stabilized then <code>@rust-lang/lang</code> should also be included in the FCP.</p>
+<p>Check whether the function internally depends on other unstable <code>const</code> functions through <code>#[allow_internal_unstable]</code> attributes and consider how the function could be implemented if its internally unstable calls were removed. See the <em>Stability attributes</em> page for more details on <code>#[allow_internal_unstable]</code>.</p>
+<p>Where <code>unsafe</code> and <code>const</code> is involved, e.g., for operations which are &quot;unconst&quot;, that the const safety argument for the usage also be documented. That is, a <code>const fn</code> has additional determinism (e.g. run-time/compile-time results must correspond and the function's output only depends on its inputs...) restrictions that must be preserved, and those should be argued when <code>unsafe</code> is used.</p>
+<h1><a class="header" href="#deprecating-features" id="deprecating-features">Deprecating features</a></h1>
+<p><strong>Status:</strong> Stub</p>
+<p>Public APIs aren't deleted from the standard library. If something shouldn't be used anymore it gets deprecated by adding a <code>#[rustc_deprecated]</code> attribute. Deprecating need to go through a Libs FCP, just like stabilizations do.</p>
+<p>To try reduce noise in the docs from deprecated items, they should be moved to the bottom of the module or <code>impl</code> block so they're rendered at the bottom of the docs page. The docs should then be cut down to focus on why the item is deprecated rather than how you might use it.</p>
+<h1><a class="header" href="#code-considerations" id="code-considerations">Code considerations</a></h1>
+<p>Code considerations capture our experiences working on the standard library for all contributors. If you come across something new or unexpected then a code consideration is a great place to record it. Then other contributors and reviewers can find it by searching the guide.</p>
+<h2><a class="header" href="#how-to-write-a-code-consideration" id="how-to-write-a-code-consideration">How to write a code consideration</a></h2>
+<p>Code considerations are a bit like guidelines. They should try make concrete recommendations that reviewers and contributors can refer to in discussions. A link to a real case where this was discussed or tripped us up is good to include.</p>
+<p>Code considerations should also try include a <em>For reviewers</em> section. These can call out specific things to look out for in reviews that could suggest the consideration applies. They can also include advice on how to apply it.</p>
+<p>It's more important that we capture these experiences <em>somehow</em> though, so don't be afraid to drop some sketchy notes in and debate the details later!</p>
+<h1><a class="header" href="#design" id="design">Design</a></h1>
+<p><strong>Status:</strong> Stub</p>
+<p>Most of the considerations in this guide are quality in some sense. This section has some general advice on maintaining code quality in the standard library.</p>
+<h2><a class="header" href="#for-reviewers" id="for-reviewers">For reviewers</a></h2>
+<p>Think about how you would implement a feature and whether your approach would differ from what's being proposed. What trade-offs are being made? Is the weighting of those trade-offs the most appropriate?</p>
+<h1><a class="header" href="#public-api-design" id="public-api-design">Public API design</a></h1>
+<p><strong>Status:</strong> Stub</p>
+<p>Standard library APIs typically follow the <a href="https://rust-lang.github.io/api-guidelines/">API Guidelines</a>, which were originally spawned from the standard library itself.</p>
+<h2><a class="header" href="#for-reviewers-1" id="for-reviewers-1">For reviewers</a></h2>
+<p>For new unstable features, look for any prior discussion of the proposed API to see what options and tradeoffs have already been considered. If in doubt, ping <code>@rust-lang/libs</code> for input.</p>
+<h1><a class="header" href="#breaking-changes" id="breaking-changes">Breaking changes</a></h1>
+<p>Breaking changes should be avoided when possible. <a href="https://rust-lang.github.io/rfcs/1105-api-evolution.html">RFC 1105</a> lays the foundations for what constitutes a breaking change. Breakage may be deemed acceptable or not based on its actual impact, which can be approximated with a <a href="code-considerations/breaking-changes/../../tools-and-bots/crater.html">crater</a> run.</p>
+<p>There are strategies for mitigating breakage depending on the impact.</p>
+<p>For changes where the value is high and the impact is high too:</p>
+<ul>
+<li>Using compiler lints to try phase out broken behavior.</li>
+</ul>
+<p>If the impact isn't too high:</p>
+<ul>
+<li>Looping in maintainers of broken crates and submitting PRs to fix them.</li>
+</ul>
+<h2><a class="header" href="#for-reviewers-2" id="for-reviewers-2">For reviewers</a></h2>
+<p>Look out for changes to documented behavior and new trait impls for existing stable traits.</p>
+<h1><a class="header" href="#breakage-from-changing-behavior" id="breakage-from-changing-behavior">Breakage from changing behavior</a></h1>
+<p>Breaking changes aren't just limited to compilation failures. Behavioral changes to stable functions generally can't be accepted. See <a href="https://github.com/rust-lang/rust/pull/46799">the <code>home_dir</code> issue</a> for an example.</p>
+<p>An exception is when a behavior is specified in an RFC (such as IETF specifications for IP addresses). If a behavioral change fixes non-conformance then it can be considered a bug fix. In these cases, <code>@rust-lang/libs</code> should still be pinged for input.</p>
+<h2><a class="header" href="#for-reviewers-3" id="for-reviewers-3">For reviewers</a></h2>
+<p>Look out for changes in existing implementations for stable functions, especially if assertions in test cases have been changed.</p>
+<h1><a class="header" href="#breakage-from-new-trait-impls" id="breakage-from-new-trait-impls">Breakage from new trait impls</a></h1>
+<p>A lot of PRs to the standard library are adding new impls for already stable traits, which can break consumers in many weird and wonderful ways. The following sections gives some examples of breakage from new trait impls that may not be obvious just from the change made to the standard library.</p>
+<p>Also see <a href="code-considerations/breaking-changes/./fundamental.html"><code>#[fundamental]</code> types</a> for special considerations for types like <code>&amp;T</code>, <code>&amp;mut T</code>, <code>Box&lt;T&gt;</code>, and other core smart pointers.</p>
+<h2><a class="header" href="#inference-breaks-when-a-second-generic-impl-is-introduced" id="inference-breaks-when-a-second-generic-impl-is-introduced">Inference breaks when a second generic impl is introduced</a></h2>
+<p>Rust will use the fact that there's only a single impl for a generic trait during inference. This breaks once a second impl makes the type of that generic ambiguous. Say we have:</p>
+<pre><code class="language-rust ignore">// in `std`
+impl From&lt;&amp;str&gt; for Arc&lt;str&gt; { .. }
+</code></pre>
+<pre><code class="language-rust ignore">// in an external `lib`
+let b = Arc::from(&quot;a&quot;);
+</code></pre>
+<p>then we add:</p>
+<pre><code class="language-diff">impl From&lt;&amp;str&gt; for Arc&lt;str&gt; { .. }
++ impl From&lt;&amp;str&gt; for Arc&lt;String&gt; { .. }
+</code></pre>
+<p>then</p>
+<pre><code class="language-rust ignore">let b = Arc::from(&quot;a&quot;);
+</code></pre>
+<p>will no longer compile, because we've previously been relying on inference to figure out the <code>T</code> in <code>Box&lt;T&gt;</code>.</p>
+<p>This kind of breakage can be ok, but a <a href="code-considerations/breaking-changes/../../tools-and-bots/crater.html">crater</a> run should estimate the scope.</p>
+<h2><a class="header" href="#deref-coercion-breaks-when-a-new-impl-is-introduced" id="deref-coercion-breaks-when-a-new-impl-is-introduced">Deref coercion breaks when a new impl is introduced</a></h2>
+<p>Rust will use deref coercion to find a valid trait impl if the arguments don't type check directly. This only seems to occur if there's a single impl so introducing a new one may break consumers relying on deref coercion. Say we have:</p>
+<pre><code class="language-rust ignore">// in `std`
+impl Add&lt;&amp;str&gt; for String { .. }
+
+impl Deref for String { type Target = str; .. }
+</code></pre>
+<pre><code class="language-rust ignore">// in an external `lib`
+let a = String::from(&quot;a&quot;);
+let b = String::from(&quot;b&quot;);
+
+let c = a + &amp;b;
+</code></pre>
+<p>then we add:</p>
+<pre><code class="language-diff ignore">impl Add&lt;&amp;str&gt; for String { .. }
++ impl Add&lt;char&gt; for String { .. }
+</code></pre>
+<p>then</p>
+<pre><code class="language-rust ignore">let c = a + &amp;b;
+</code></pre>
+<p>will no longer compile, because we won't attempt to use deref to coerce the <code>&amp;String</code> into <code>&amp;str</code>.</p>
+<p>This kind of breakage can be ok, but a <a href="code-considerations/breaking-changes/../../tools-and-bots/crater.html">crater</a> run should estimate the scope.</p>
+<h2><a class="header" href="#for-reviewers-4" id="for-reviewers-4">For reviewers</a></h2>
+<p>Look out for new <code>#[stable]</code> trait implementations for existing stable traits.</p>
+<h1><a class="header" href="#fundamental-types" id="fundamental-types"><code>#[fundamental]</code> types</a></h1>
+<p><strong>Status:</strong> Stub</p>
+<p>Type annotated with the <code>#[fundamental]</code> attribute have different coherence rules. See <a href="https://rust-lang.github.io/rfcs/1023-rebalancing-coherence.html">RFC 1023</a> for details. That includes:</p>
+<ul>
+<li><code>&amp;T</code></li>
+<li><code>&amp;mut T</code></li>
+<li><code>Box&lt;T&gt;</code></li>
+<li><code>Pin&lt;T&gt;</code></li>
+</ul>
+<p>Typically, the scope of <a href="code-considerations/breaking-changes/./new-trait-impls.html">breakage in new trait impls</a> is limited to inference and deref-coercion. New trait impls on <code>#[fundamental]</code> types may overlap with downstream impls and cause other kinds of breakage.</p>
+<h2><a class="header" href="#for-reviewers-5" id="for-reviewers-5">For reviewers</a></h2>
+<p>Look out for blanket trait implementations for fundamental types, like:</p>
+<pre><code class="language-rust ignore">impl&lt;'a, T&gt; PublicTrait for &amp;'a T
+where
+    T: SomeBound,
+{
+
+}
+</code></pre>
+<p>unless the blanket implementation is being stabilized along with <code>PublicTrait</code>. In cases where we really want to do this, a <a href="code-considerations/breaking-changes/../../tools-and-bots/crater.html">crater</a> run can help estimate the scope of the breakage.</p>
+<h1><a class="header" href="#safety-and-soundness" id="safety-and-soundness">Safety and soundness</a></h1>
+<p><strong>Status:</strong> Stub</p>
+<p>Unsafe code blocks in the standard library need a comment explaining why they're <a href="https://doc.rust-lang.org/nomicon">ok</a>. There's a lint that checks this. The unsafe code also needs to actually be ok.</p>
+<p>The rules around what's sound and what's not can be subtle. See the <a href="https://github.com/rust-lang/unsafe-code-guidelines">Unsafe Code Guidelines WG</a> for current thinking, and consider pinging <code>@rust-lang/libs-impl</code>, <code>@rust-lang/lang</code>, and/or somebody from the WG if you're in <em>any</em> doubt. We love debating the soundness of unsafe code, and the more eyes on it the better!</p>
+<h2><a class="header" href="#for-reviewers-6" id="for-reviewers-6">For reviewers</a></h2>
+<p>Look out for any unsafe blocks. If they're optimizations consider whether they're actually necessary. If the unsafe code is necessary then always feel free to ping somebody to help review it.</p>
+<p>Look at the level of test coverage for the new unsafe code. Tests do catch bugs!</p>
+<h1><a class="header" href="#generics-and-unsafe" id="generics-and-unsafe">Generics and unsafe</a></h1>
+<p>Be careful of generic types that interact with unsafe code. Unless the generic type is bounded by an unsafe trait that specifies its contract, we can't rely on the results of generic types being reliable or correct.</p>
+<p>A place where this commonly comes up is with the <code>RangeBounds</code> trait. You might assume that the start and end bounds given by a <code>RangeBounds</code> implementation will remain the same since it works through shared references. That's not necessarily the case though, an adversarial implementation may change the bounds between calls:</p>
+<pre><code class="language-rust ignore">struct EvilRange(Cell&lt;bool&gt;);
+
+impl RangeBounds&lt;usize&gt; for EvilRange {
+    fn start_bound(&amp;self) -&gt; Bound&lt;&amp;usize&gt; {
+        Bound::Included(if self.0.get() {
+            &amp;1
+        } else {
+            self.0.set(true);
+            &amp;0
+        })
+    }
+    fn end_bound(&amp;self) -&gt; Bound&lt;&amp;usize&gt; {
+        Bound::Unbounded
+    }
+}
+</code></pre>
+<p>This has <a href="https://github.com/rust-lang/rust/issues/81138">caused problems in the past</a> for code making safety assumptions based on bounds without asserting they stay the same.</p>
+<p>Code using generic types to interact with unsafe should try convert them into known types first, then work with those instead of the generic. For our example with <code>RangeBounds</code>, this may mean converting into a concrete <code>Range</code>, or a tuple of <code>(Bound, Bound)</code>.</p>
+<h2><a class="header" href="#for-reviewers-7" id="for-reviewers-7">For reviewers</a></h2>
+<p>Look out for generic functions that also contain unsafe blocks and consider how adversarial implementations of those generics could violate safety.</p>
+<h1><a class="header" href="#drop-and-may_dangle" id="drop-and-may_dangle">Drop and <code>#[may_dangle]</code></a></h1>
+<p>A generic <code>Type&lt;T&gt;</code> that manually implements <code>Drop</code> should consider whether a <code>#[may_dangle]</code> attribute is appropriate on <code>T</code>. The <a href="https://doc.rust-lang.org/nomicon/dropck.html">Nomicon</a> has some details on what <code>#[may_dangle]</code> is all about.</p>
+<p>If a generic <code>Type&lt;T&gt;</code> has a manual drop implementation that may also involve dropping <code>T</code> then dropck needs to know about it. If <code>Type&lt;T&gt;</code>'s ownership of <code>T</code> is expressed through types that don't drop <code>T</code> themselves such as <code>ManuallyDrop&lt;T&gt;</code>, <code>*mut T</code>, or <code>MaybeUninit&lt;T&gt;</code> then <code>Type&lt;T&gt;</code> also <a href="https://rust-lang.github.io/rfcs/0769-sound-generic-drop.html#phantom-data">needs a <code>PhantomData&lt;T&gt;</code> field</a> to tell dropck that <code>T</code> may be dropped. Types in the standard library that use the internal <code>Unique&lt;T&gt;</code> pointer type don't need a <code>PhantomData&lt;T&gt;</code> marker field. That's taken care of for them by <code>Unique&lt;T&gt;</code>.</p>
+<p>As a real-world example of where this can go wrong, consider an <code>OptionCell&lt;T&gt;</code> that looks something like this:</p>
+<pre><code class="language-rust ignore">struct OptionCell&lt;T&gt; {
+    is_init: bool,
+    value: MaybeUninit&lt;T&gt;,
+}
+
+impl&lt;T&gt; Drop for OptionCell&lt;T&gt; {
+    fn drop(&amp;mut self) {
+        if self.is_init {
+            // Safety: `value` is guaranteed to be fully initialized when `is_init` is true.
+            // Safety: The cell is being dropped, so it can't be accessed again.
+            unsafe { self.value.assume_init_drop() };
+        }
+    }
+}
+</code></pre>
+<p>Adding a <code>#[may_dangle]</code> attribute to this <code>OptionCell&lt;T&gt;</code> that didn't have a <code>PhantomData&lt;T&gt;</code> marker field opened up <a href="https://github.com/rust-lang/rust/issues/76367">a soundness hole</a> for <code>T</code>'s that didn't strictly outlive the <code>OptionCell&lt;T&gt;</code>, and so could be accessed after being dropped in their own <code>Drop</code> implementations. The correct application of <code>#[may_dangle]</code> also required a <code>PhantomData&lt;T&gt;</code> field:</p>
+<pre><code class="language-diff ignore">struct OptionCell&lt;T&gt; {
+    is_init: bool,
+    value: MaybeUninit&lt;T&gt;,
++   _marker: PhantomData&lt;T&gt;,
+}
+
+- impl&lt;T&gt; Drop for OptionCell&lt;T&gt; {
++ unsafe impl&lt;#[may_dangle] T&gt; Drop for OptionCell&lt;T&gt; {
+</code></pre>
+<h2><a class="header" href="#for-reviewers-8" id="for-reviewers-8">For reviewers</a></h2>
+<p>If there's a manual <code>Drop</code> implementation, consider whether <code>#[may_dangle]</code> is appropriate. If it is, make sure there's a <code>PhantomData&lt;T&gt;</code> too either through <code>Unique&lt;T&gt;</code> or as a field directly.</p>
+<h1><a class="header" href="#using-mem-to-break-assumptions" id="using-mem-to-break-assumptions">Using <code>mem</code> to break assumptions</a></h1>
+<h2><a class="header" href="#memreplace-and-memswap" id="memreplace-and-memswap"><code>mem::replace</code> and <code>mem::swap</code></a></h2>
+<p>Any value behind a <code>&amp;mut</code> reference can be replaced with a new one using <code>mem::replace</code> or <code>mem::swap</code>, so code shouldn't assume any reachable mutable references can't have their internals changed by replacing.</p>
+<h2><a class="header" href="#memforget" id="memforget"><code>mem::forget</code></a></h2>
+<p>Rust doesn't guarantee destructors will run when a value is leaked (which can be done with <code>mem::forget</code>), so code should avoid relying on them for maintaining safety. Remember, <a href="http://cglab.ca/%7Eabeinges/blah/everyone-poops">everyone poops</a>.</p>
+<p>It's ok not to run a destructor when a value is leaked because its storage isn't deallocated or repurposed. If the storage is initialized and is being deallocated or repurposed then destructors need to be run first, because <a href="https://doc.rust-lang.org/nightly/std/pin/index.html#drop-guarantee">memory may be pinned</a>. Having said that, there can still be exceptions for skipping destructors when deallocating if you can guarantee there's never pinning involved.</p>
+<h2><a class="header" href="#for-reviewers-9" id="for-reviewers-9">For reviewers</a></h2>
+<p>If there's a <code>Drop</code> impl involved, look out for possible soundness issues that could come from that destructor never running.</p>
+<h1><a class="header" href="#using-unstable-language-features" id="using-unstable-language-features">Using unstable language features</a></h1>
+<p>The standard library codebase is a great place to try unstable language features, but we have to be careful about exposing them publicly. The following is a list of unstable language features that are ok to use within the standard library itself along with any caveats:</p>
+<ul>
+<li><a href="code-considerations/using-unstable-lang/./const-generics.html">Const generics</a></li>
+<li><a href="code-considerations/using-unstable-lang/./specialization.html">Specialization</a></li>
+<li><em>Something missing?</em> Please submit a PR to keep this list up-to-date!</li>
+</ul>
+<h2><a class="header" href="#for-reviewers-10" id="for-reviewers-10">For reviewers</a></h2>
+<p>Look out for any use of unstable language features in PRs, especially if any new <code>#![feature]</code> attributes have been added.</p>
+<h1><a class="header" href="#using-const-generics" id="using-const-generics">Using const generics</a></h1>
+<p><strong>Status:</strong> Stub</p>
+<p>Complete const generics are currently unstable. You can track their progress <a href="https://github.com/rust-lang/rust/issues/44580">here</a>.</p>
+<p>Const generics are ok to use in public APIs, so long as they fit in the <a href="https://github.com/rust-lang/rust/issues/74878"><code>min_const_generics</code> subset</a>.</p>
+<h2><a class="header" href="#for-reviewers-11" id="for-reviewers-11">For reviewers</a></h2>
+<p>Look out for const operations on const generics in public APIs like:</p>
+<pre><code class="language-rust ignore">pub fn extend_array&lt;T, const N: usize, const M: usize&gt;(arr: [T; N]) -&gt; [T; N + 1] {
+    ..
+}
+</code></pre>
+<p>or for const generics that aren't integers, bools, or chars:</p>
+<pre><code class="language-rust ignore">pub fn tag&lt;const S: &amp;'static str&gt;() {
+    ..
+}
+</code></pre>
+<h1><a class="header" href="#using-specialization" id="using-specialization">Using specialization</a></h1>
+<p>Specialization is currently unstable. You can track its progress <a href="https://github.com/rust-lang/rust/issues/31844">here</a>.</p>
+<p>We try to avoid leaning on specialization too heavily, limiting its use to optimizing specific implementations. These specialized optimizations use a private trait to find the correct implementation, rather than specializing the public method itself. Any use of specialization that changes how methods are dispatched for external callers should be carefully considered.</p>
+<p>As an example of how to use specialization in the standard library, consider the case of creating an <code>Rc&lt;[T]&gt;</code> from a <code>&amp;[T]</code>:</p>
+<pre><code class="language-rust ignore">impl&lt;T: Clone&gt; From&lt;&amp;[T]&gt; for Rc&lt;[T]&gt; {
+    #[inline]
+    fn from(v: &amp;[T]) -&gt; Rc&lt;[T]&gt; {
+        unsafe { Self::from_iter_exact(v.iter().cloned(), v.len()) }
+    }
+}
+</code></pre>
+<p>It would be nice to have an optimized implementation for the case where <code>T: Copy</code>:</p>
+<pre><code class="language-rust ignore">impl&lt;T: Copy&gt; From&lt;&amp;[T]&gt; for Rc&lt;[T]&gt; {
+    #[inline]
+    fn from(v: &amp;[T]) -&gt; Rc&lt;[T]&gt; {
+        unsafe { Self::copy_from_slice(v) }
+    }
+}
+</code></pre>
+<p>Unfortunately we couldn't have both of these impls normally, because they'd overlap. This is where private specialization can be used to choose the right implementation internally. In this case, we use a trait called <code>RcFromSlice</code> that switches the implementation:</p>
+<pre><code class="language-rust ignore">impl&lt;T: Clone&gt; From&lt;&amp;[T]&gt; for Rc&lt;[T]&gt; {
+    #[inline]
+    fn from(v: &amp;[T]) -&gt; Rc&lt;[T]&gt; {
+        &lt;Self as RcFromSlice&lt;T&gt;&gt;::from_slice(v)
+    }
+}
+
+/// Specialization trait used for `From&lt;&amp;[T]&gt;`.
+trait RcFromSlice&lt;T&gt; {
+    fn from_slice(slice: &amp;[T]) -&gt; Self;
+}
+
+impl&lt;T: Clone&gt; RcFromSlice&lt;T&gt; for Rc&lt;[T]&gt; {
+    #[inline]
+    default fn from_slice(v: &amp;[T]) -&gt; Self {
+        unsafe { Self::from_iter_exact(v.iter().cloned(), v.len()) }
+    }
+}
+
+impl&lt;T: Copy&gt; RcFromSlice&lt;T&gt; for Rc&lt;[T]&gt; {
+    #[inline]
+    fn from_slice(v: &amp;[T]) -&gt; Self {
+        unsafe { Self::copy_from_slice(v) }
+    }
+}
+</code></pre>
+<p>Only specialization using the <code>min_specialization</code> feature should be used. The full <code>specialization</code> feature is known to be unsound.</p>
+<h2><a class="header" href="#for-reviewers-12" id="for-reviewers-12">For reviewers</a></h2>
+<p>Look out for any <code>default</code> annotations on public trait implementations. These will need to be refactored into a private dispatch trait. Also look out for uses of specialization that do more than pick a more optimized implementation.</p>
+<h1><a class="header" href="#performance" id="performance">Performance</a></h1>
+<p><strong>Status:</strong> Stub</p>
+<p>Changes to hot code might impact performance in consumers, for better or for worse. Appropriate benchmarks should give an idea of how performance characteristics change. For changes that affect <code>rustc</code> itself, you can also do a <a href="code-considerations/performance/../../tools-and-bots/timer.html"><code>rust-timer</code></a> run.</p>
+<h2><a class="header" href="#for-reviewers-13" id="for-reviewers-13">For reviewers</a></h2>
+<p>If a PR is focused on performance then try get some idea of what the impact is. Also consider marking the PR as <code>rollup=never</code>.</p>
+<h1><a class="header" href="#when-to-inline" id="when-to-inline">When to <code>#[inline]</code></a></h1>
+<p>Inlining is a trade-off between potential execution speed, compile time and code size. There's some discussion about it in <a href="https://github.com/rust-lang/hashbrown/pull/119">this PR to the <code>hashbrown</code> crate</a>. From the thread:</p>
+<blockquote>
+<p><code>#[inline]</code> is very different than simply just an inline hint. As I mentioned before, there's no equivalent in C++ for what <code>#[inline]</code> does. In debug mode rustc basically ignores <code>#[inline]</code>, pretending you didn't even write it. In release mode the compiler will, by default, codegen an <code>#[inline]</code> function into every single referencing codegen unit, and then it will also add <code>inlinehint</code>. This means that if you have 16 CGUs and they all reference an item, every single one is getting the entire item's implementation inlined into it.</p>
+</blockquote>
+<p>You can add <code>#[inline]</code>:</p>
+<ul>
+<li>To public, small, non-generic functions.</li>
+</ul>
+<p>You shouldn't need <code>#[inline]</code>:</p>
+<ul>
+<li>On methods that have any generics in scope.</li>
+<li>On methods on traits that don't have a default implementation.</li>
+</ul>
+<p><code>#[inline]</code> can always be introduced later, so if you're in doubt they can just be removed.</p>
+<h2><a class="header" href="#what-about-inlinealways" id="what-about-inlinealways">What about <code>#[inline(always)]</code>?</a></h2>
+<p>You should just about never need <code>#[inline(always)]</code>. It may be beneficial for private helper methods that are used in a limited number of places or for trivial operators. A micro benchmark should justify the attribute.</p>
+<h2><a class="header" href="#for-reviewers-14" id="for-reviewers-14">For reviewers</a></h2>
+<p><code>#[inline]</code> can always be added later, so if there's any debate about whether it's appropriate feel free to defer it by removing the annotations for a start.</p>
+<h1><a class="header" href="#tools-and-bots" id="tools-and-bots">Tools and bots</a></h1>
+<p><strong>Status:</strong> Stub</p>
+<h1><a class="header" href="#bors" id="bors"><code>@bors</code></a></h1>
+<p><strong>Status:</strong> Stub</p>
+<p>PRs to the standard library aren’t merged manually using GitHub’s UI or by pushing remote branches. Everything goes through <a href="https://github.com/rust-lang/homu"><code>@bors</code></a>.</p>
+<p>You can approve a PR with:</p>
+<pre><code class="language-ignore">@bors r+
+</code></pre>
+<h2><a class="header" href="#rolling-up" id="rolling-up">Rolling up</a></h2>
+<p>For Libs PRs, rolling up is usually fine, in particular if it's only a new unstable addition or if it only touches docs. See the <a href="https://forge.rust-lang/org/compiler/reviews.md#rollups">rollup guidelines</a> for more details on when to rollup.</p>
+<h1><a class="header" href="#rust-timer" id="rust-timer"><code>@rust-timer</code></a></h1>
+<p><strong>Status:</strong> Stub</p>
+<p>You can kick off a performance test using <code>@rust-timer</code>:</p>
+<pre><code class="language-ignore">@bors try @rust-timer queue
+</code></pre>
+<h1><a class="header" href="#craterbot" id="craterbot"><code>@craterbot</code></a></h1>
+<p><strong>Status:</strong> Stub</p>
+<p><a href="https://github.com/rust-lang/crater">Crater</a> is a tool that can test PRs against a public subset of the Rust ecosystem to estimate the scale of potential breakage.</p>
+<p>You can kick off a crater run by first calling:</p>
+<pre><code class="language-ignore">@bors try
+</code></pre>
+<p>Once that finishes, you can then call:</p>
+<pre><code class="language-ignore">@craterbot check
+</code></pre>
+<p>to ensure crates compile, or:</p>
+<pre><code class="language-ignore">@craterbot run mode=build-and-test
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+        
+        
+
+    </body>
+</html>
