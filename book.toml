@@ -22,5 +22,3 @@ renderer = ["html"]
 default-theme = "rust"
 git-repository-url = "https://github.com/rust-lang/std-dev-guide"
 git-repository-icon = "fa-github"
-
-
