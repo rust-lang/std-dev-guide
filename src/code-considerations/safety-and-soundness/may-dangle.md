@@ -6,7 +6,7 @@ If a generic `Type<T>` has a manual drop implementation that may also involve dr
 
 As a real-world example of where this can go wrong, consider an `OptionCell<T>` that looks something like this:
 
-```rust
+```rust,ignore
 struct OptionCell<T> {
     is_init: bool,
     value: MaybeUninit<T>,
@@ -25,7 +25,7 @@ impl<T> Drop for OptionCell<T> {
 
 Adding a `#[may_dangle]` attribute to this `OptionCell<T>` that didn't have a `PhantomData<T>` marker field opened up [a soundness hole](https://github.com/rust-lang/rust/issues/76367) for `T`'s that didn't strictly outlive the `OptionCell<T>`, and so could be accessed after being dropped in their own `Drop` implementations. The correct application of `#[may_dangle]` also required a `PhantomData<T>` field:
 
-```diff
+```diff,ignore
 struct OptionCell<T> {
     is_init: bool,
     value: MaybeUninit<T>,

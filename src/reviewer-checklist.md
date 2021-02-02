@@ -6,7 +6,7 @@ Check the [getting started](./getting-started.md) guide for an introduction to d
 
 If you'd like to reassign the PR, you can:
 
-```
+```ignore
 r? @user
 ```
 
@@ -40,12 +40,12 @@ Use [`@bors`](./tools-and-bots/bors.md) to merge the pull request.
 
 To roll up:
 
-```
+```ignore
 @bors r+ rollup
 ```
 
 or just:
 
-```
+```ignore
 @bors r+
 ```

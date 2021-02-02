@@ -6,18 +6,18 @@
 
 You can kick off a crater run by first calling:
 
-```
+```ignore
 @bors try
 ```
 
 Once that finishes, you can then call:
 
-```
+```ignore
 @craterbot check
 ```
 
 to ensure crates compile, or:
 
-```
+```ignore
 @craterbot run mode=build-and-test
 ```

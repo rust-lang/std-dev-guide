@@ -6,7 +6,7 @@ We try to avoid leaning on specialization too heavily, limiting its use to optim
 
 As an example of how to use specialization in the standard library, consider the case of creating an `Rc<[T]>` from a `&[T]`:
 
-```rust
+```rust,ignore
 impl<T: Clone> From<&[T]> for Rc<[T]> {
     #[inline]
     fn from(v: &[T]) -> Rc<[T]> {
@@ -17,7 +17,7 @@ impl<T: Clone> From<&[T]> for Rc<[T]> {
 
 It would be nice to have an optimized implementation for the case where `T: Copy`:
 
-```rust
+```rust,ignore
 impl<T: Copy> From<&[T]> for Rc<[T]> {
     #[inline]
     fn from(v: &[T]) -> Rc<[T]> {
@@ -28,7 +28,7 @@ impl<T: Copy> From<&[T]> for Rc<[T]> {
 
 Unfortunately we couldn't have both of these impls normally, because they'd overlap. This is where private specialization can be used to choose the right implementation internally. In this case, we use a trait called `RcFromSlice` that switches the implementation:
 
-```rust
+```rust,ignore
 impl<T: Clone> From<&[T]> for Rc<[T]> {
     #[inline]
     fn from(v: &[T]) -> Rc<[T]> {

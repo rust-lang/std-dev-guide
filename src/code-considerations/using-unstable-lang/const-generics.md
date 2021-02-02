@@ -10,7 +10,7 @@ Const generics are ok to use in public APIs, so long as they fit in the [`min_co
 
 Look out for const operations on const generics in public APIs like:
 
-```rust
+```rust,ignore
 pub fn extend_array<T, const N: usize, const M: usize>(arr: [T; N]) -> [T; N + 1] {
     ..
 }
@@ -18,7 +18,7 @@ pub fn extend_array<T, const N: usize, const M: usize>(arr: [T; N]) -> [T; N + 1
 
 or for const generics that aren't integers, bools, or chars:
 
-```rust
+```rust,ignore
 pub fn tag<const S: &'static str>() {
     ..
 }
