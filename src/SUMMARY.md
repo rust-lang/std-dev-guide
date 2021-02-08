@@ -19,6 +19,7 @@
 - [Code considerations](./code-considerations/summary.md)
     - [Design](./code-considerations/design/summary.md)
         - [Public APIs](./code-considerations/design/public-apis.md)
+        - [When to add `#[must_use]`](./code-considerations/design/must-use.md)
     - [Breaking changes](./code-considerations/breaking-changes/summary.md)
         - [Breakage from changing behavior](./code-considerations/breaking-changes/behavior.md)
         - [Breakage from new trait impls](./code-considerations/breaking-changes/new-trait-impls.md)
