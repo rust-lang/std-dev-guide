@@ -42,8 +42,11 @@ jobs:
           cargo install mdbook-toc --version ${{ steps.mdbook-version.outputs.MDBOOK_TOC_VERSION }}
 
       - name: Build book
-        run: mdbook build
-      
+        run: |
+          . ./.env
+          mdbook build
+          cp CNAME $GIT_DEPLOY_DIR
+
       - name: Deploy to gh-pages
         run: |
           git config --global user.email "Runner@GH Actions Deployment"
