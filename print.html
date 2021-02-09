@@ -309,39 +309,23 @@ Update the <code>#[unstable]</code> attributes to point to it.</li>
 <h1><a class="header" href="#when-to-add-must_use" id="when-to-add-must_use">When to add <code>#[must_use]</code></a></h1>
 <p>The <code>#[must_use]</code> attribute can be applied to types or functions when failing to explicitly consider them or their output is almost certainly a bug.</p>
 <p>As an example, <code>Result</code> is <code>#[must_use]</code> because failing to consider it may indicate a caller didn't realise a method was fallible:</p>
-<pre><pre class="playground"><code class="language-rust edition2018">
-<span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>// Is `check_status` infallible? Or did we forget to look at its `Result`?
+<pre><code class="language-rust ignore">// Is `check_status` infallible? Or did we forget to look at its `Result`?
 check_status();
-<span class="boring">}
-</span></code></pre></pre>
+</code></pre>
 <p>Operators like <code>saturating_add</code> are also <code>#[must_use]</code> because failing to consider their output might indicate a caller didn't realise they don't mutate the left-hand-side:</p>
-<pre><pre class="playground"><code class="language-rust edition2018">
-<span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>// A caller might assume this method mutates `a`
+<pre><code class="language-rust ignore">// A caller might assume this method mutates `a`
 a.saturating_add(b);
-<span class="boring">}
-</span></code></pre></pre>
+</code></pre>
 <p>Combinators produced by the <code>Iterator</code> trait are <code>#[must_use]</code> because failing to use them might indicate a caller didn't realize <code>Iterator</code>s are lazy and won't actually do anything unless you drive them:</p>
-<pre><pre class="playground"><code class="language-rust edition2018">
-<span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>// A caller might not realise this code won't do anything
+<pre><code class="language-rust ignore">// A caller might not realise this code won't do anything
 // unless they call `collect`, `count`, etc.
 v.iter().map(|x| println!(&quot;{}&quot;, x));
-<span class="boring">}
-</span></code></pre></pre>
+</code></pre>
 <p>On the other hand, <code>thread::JoinHandle</code> isn't <code>#[must_use]</code> because spawning fire-and-forget work is a legitimate pattern and forcing callers to explicitly ignore handles could be a nuisance rather than an indication of a bug:</p>
-<pre><pre class="playground"><code class="language-rust edition2018">
-<span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>thread::spawn(|| {
+<pre><code class="language-rust ignore">thread::spawn(|| {
     // this background work isn't waited on
 });
-<span class="boring">}
-</span></code></pre></pre>
+</code></pre>
 <h2><a class="header" href="#for-reviewers-2" id="for-reviewers-2">For reviewers</a></h2>
 <p>Look for any legitimate use-cases where <code>#[must_use]</code> will cause callers to explicitly ignore values. If these are common then <code>#[must_use]</code> probably isn't appropriate.</p>
 <p>The <code>#[must_use]</code> attribute only produces warnings, so it can technically be introduced at any time. To avoid accumulating nuisance warnings though ping <code>@rust-lang/libs</code> for input before adding new <code>#[must_use]</code> attributes to existing types and functions.</p>
