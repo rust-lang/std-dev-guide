@@ -1,0 +1,1 @@
+- [doc alias policy](./doc-alias-policy.md)

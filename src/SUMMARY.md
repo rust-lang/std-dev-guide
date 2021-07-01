@@ -36,6 +36,11 @@
 
 ---
 
+- [Documentation](./documentation/summary.md)
+    - [doc alias policy](./documentation/doc-alias-policy.md)
+
+---
+
 - [Tools and bots](./tools-and-bots/summary.md)
     - [`@bors`](./tools-and-bots/bors.md)
     - [`@rust-timer`](./tools-and-bots/timer.md)
