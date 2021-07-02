@@ -27,8 +27,9 @@ cases where we add doc aliases, and the cases where we omit those aliases.
   and expect to find it ("what did Rust call `mkdir`").
 - There must be an obvious single target for the alias that is an *exact*
   analogue of the aliased name. We will not add the same alias to multiple
-  declarations. We will also not add an alias for a function that's only
-  somewhat similar or related.
+  declarations. (`const` and non-`const` versions of the same function are
+  fine.) We will also not add an alias for a function that's only somewhat
+  similar or related.
 - The alias must not conflict with the actual name of any existing declaration.
 - As a special case for stdarch, aliases from exact assembly instruction names
   to the corresponding intrinsic function are welcome, as long as they don't
