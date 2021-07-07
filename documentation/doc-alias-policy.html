@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>@bors - Standard library developers Guide</title>
+        <title>doc alias policy - Standard library developers Guide</title>
         
         
 
@@ -95,7 +95,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../about-this-guide.html">About this guide</a></li><li class="chapter-item expanded affix "><a href="../getting-started.html">Getting started</a></li><li class="chapter-item expanded affix "><a href="../reviewer-checklist.html">Reviewer checklist</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../feature-lifecycle/summary.html"><strong aria-hidden="true">1.</strong> The feature lifecycle</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../feature-lifecycle/new-unstable-features.html"><strong aria-hidden="true">1.1.</strong> Landing new features</a></li><li class="chapter-item expanded "><a href="../feature-lifecycle/tracking-issues.html"><strong aria-hidden="true">1.2.</strong> Using tracking issues</a></li><li class="chapter-item expanded "><a href="../feature-lifecycle/stabilization.html"><strong aria-hidden="true">1.3.</strong> Stabilizing features</a></li><li class="chapter-item expanded "><a href="../feature-lifecycle/deprecation.html"><strong aria-hidden="true">1.4.</strong> Deprecating features</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../code-considerations/summary.html"><strong aria-hidden="true">2.</strong> Code considerations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../code-considerations/design/summary.html"><strong aria-hidden="true">2.1.</strong> Design</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../code-considerations/design/public-apis.html"><strong aria-hidden="true">2.1.1.</strong> Public APIs</a></li><li class="chapter-item expanded "><a href="../code-considerations/design/must-use.html"><strong aria-hidden="true">2.1.2.</strong> When to add #[must_use]</a></li></ol></li><li class="chapter-item expanded "><a href="../code-considerations/breaking-changes/summary.html"><strong aria-hidden="true">2.2.</strong> Breaking changes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../code-considerations/breaking-changes/behavior.html"><strong aria-hidden="true">2.2.1.</strong> Breakage from changing behavior</a></li><li class="chapter-item expanded "><a href="../code-considerations/breaking-changes/new-trait-impls.html"><strong aria-hidden="true">2.2.2.</strong> Breakage from new trait impls</a></li><li class="chapter-item expanded "><a href="../code-considerations/breaking-changes/fundamental.html"><strong aria-hidden="true">2.2.3.</strong> #[fundamental] types</a></li></ol></li><li class="chapter-item expanded "><a href="../code-considerations/safety-and-soundness/summary.html"><strong aria-hidden="true">2.3.</strong> Safety and soundness</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../code-considerations/safety-and-soundness/generics-and-unsafe.html"><strong aria-hidden="true">2.3.1.</strong> Generics and unsafe</a></li><li class="chapter-item expanded "><a href="../code-considerations/safety-and-soundness/may-dangle.html"><strong aria-hidden="true">2.3.2.</strong> Drop and #[may_dangle]</a></li><li class="chapter-item expanded "><a href="../code-considerations/safety-and-soundness/mem-and-exclusive-refs.html"><strong aria-hidden="true">2.3.3.</strong> std::mem and exclusive references</a></li></ol></li><li class="chapter-item expanded "><a href="../code-considerations/using-unstable-lang/summary.html"><strong aria-hidden="true">2.4.</strong> Using unstable language features</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../code-considerations/using-unstable-lang/const-generics.html"><strong aria-hidden="true">2.4.1.</strong> Const generics</a></li><li class="chapter-item expanded "><a href="../code-considerations/using-unstable-lang/specialization.html"><strong aria-hidden="true">2.4.2.</strong> Specialization</a></li></ol></li><li class="chapter-item expanded "><a href="../code-considerations/performance/summary.html"><strong aria-hidden="true">2.5.</strong> Performance</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../code-considerations/performance/inline.html"><strong aria-hidden="true">2.5.1.</strong> When to #[inline]</a></li><li class="spacer"></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../documentation/summary.html"><strong aria-hidden="true">3.</strong> Documentation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../documentation/doc-alias-policy.html"><strong aria-hidden="true">3.1.</strong> doc alias policy</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../tools-and-bots/summary.html"><strong aria-hidden="true">4.</strong> Tools and bots</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tools-and-bots/bors.html" class="active"><strong aria-hidden="true">4.1.</strong> @bors</a></li><li class="chapter-item expanded "><a href="../tools-and-bots/timer.html"><strong aria-hidden="true">4.2.</strong> @rust-timer</a></li><li class="chapter-item expanded "><a href="../tools-and-bots/crater.html"><strong aria-hidden="true">4.3.</strong> @craterbot</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../about-this-guide.html">About this guide</a></li><li class="chapter-item expanded affix "><a href="../getting-started.html">Getting started</a></li><li class="chapter-item expanded affix "><a href="../reviewer-checklist.html">Reviewer checklist</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../feature-lifecycle/summary.html"><strong aria-hidden="true">1.</strong> The feature lifecycle</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../feature-lifecycle/new-unstable-features.html"><strong aria-hidden="true">1.1.</strong> Landing new features</a></li><li class="chapter-item expanded "><a href="../feature-lifecycle/tracking-issues.html"><strong aria-hidden="true">1.2.</strong> Using tracking issues</a></li><li class="chapter-item expanded "><a href="../feature-lifecycle/stabilization.html"><strong aria-hidden="true">1.3.</strong> Stabilizing features</a></li><li class="chapter-item expanded "><a href="../feature-lifecycle/deprecation.html"><strong aria-hidden="true">1.4.</strong> Deprecating features</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../code-considerations/summary.html"><strong aria-hidden="true">2.</strong> Code considerations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../code-considerations/design/summary.html"><strong aria-hidden="true">2.1.</strong> Design</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../code-considerations/design/public-apis.html"><strong aria-hidden="true">2.1.1.</strong> Public APIs</a></li><li class="chapter-item expanded "><a href="../code-considerations/design/must-use.html"><strong aria-hidden="true">2.1.2.</strong> When to add #[must_use]</a></li></ol></li><li class="chapter-item expanded "><a href="../code-considerations/breaking-changes/summary.html"><strong aria-hidden="true">2.2.</strong> Breaking changes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../code-considerations/breaking-changes/behavior.html"><strong aria-hidden="true">2.2.1.</strong> Breakage from changing behavior</a></li><li class="chapter-item expanded "><a href="../code-considerations/breaking-changes/new-trait-impls.html"><strong aria-hidden="true">2.2.2.</strong> Breakage from new trait impls</a></li><li class="chapter-item expanded "><a href="../code-considerations/breaking-changes/fundamental.html"><strong aria-hidden="true">2.2.3.</strong> #[fundamental] types</a></li></ol></li><li class="chapter-item expanded "><a href="../code-considerations/safety-and-soundness/summary.html"><strong aria-hidden="true">2.3.</strong> Safety and soundness</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../code-considerations/safety-and-soundness/generics-and-unsafe.html"><strong aria-hidden="true">2.3.1.</strong> Generics and unsafe</a></li><li class="chapter-item expanded "><a href="../code-considerations/safety-and-soundness/may-dangle.html"><strong aria-hidden="true">2.3.2.</strong> Drop and #[may_dangle]</a></li><li class="chapter-item expanded "><a href="../code-considerations/safety-and-soundness/mem-and-exclusive-refs.html"><strong aria-hidden="true">2.3.3.</strong> std::mem and exclusive references</a></li></ol></li><li class="chapter-item expanded "><a href="../code-considerations/using-unstable-lang/summary.html"><strong aria-hidden="true">2.4.</strong> Using unstable language features</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../code-considerations/using-unstable-lang/const-generics.html"><strong aria-hidden="true">2.4.1.</strong> Const generics</a></li><li class="chapter-item expanded "><a href="../code-considerations/using-unstable-lang/specialization.html"><strong aria-hidden="true">2.4.2.</strong> Specialization</a></li></ol></li><li class="chapter-item expanded "><a href="../code-considerations/performance/summary.html"><strong aria-hidden="true">2.5.</strong> Performance</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../code-considerations/performance/inline.html"><strong aria-hidden="true">2.5.1.</strong> When to #[inline]</a></li><li class="spacer"></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../documentation/summary.html"><strong aria-hidden="true">3.</strong> Documentation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../documentation/doc-alias-policy.html" class="active"><strong aria-hidden="true">3.1.</strong> doc alias policy</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../tools-and-bots/summary.html"><strong aria-hidden="true">4.</strong> Tools and bots</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tools-and-bots/bors.html"><strong aria-hidden="true">4.1.</strong> @bors</a></li><li class="chapter-item expanded "><a href="../tools-and-bots/timer.html"><strong aria-hidden="true">4.2.</strong> @rust-timer</a></li><li class="chapter-item expanded "><a href="../tools-and-bots/crater.html"><strong aria-hidden="true">4.3.</strong> @craterbot</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -167,27 +167,57 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#bors" id="bors"><code>@bors</code></a></h1>
-<p><strong>Status:</strong> Stub</p>
-<p>PRs to the standard library aren’t merged manually using GitHub’s UI or by pushing remote branches. Everything goes through <a href="https://github.com/rust-lang/homu"><code>@bors</code></a>.</p>
-<p>You can approve a PR with:</p>
-<pre><code class="language-ignore">@bors r+
-</code></pre>
-<h2><a class="header" href="#rolling-up" id="rolling-up">Rolling up</a></h2>
-<p>For Libs PRs, rolling up is usually fine, in particular if it's only a new unstable addition or if it only touches docs. See the <a href="https://forge.rust-lang.org/compiler/reviews.html#rollups">rollup guidelines</a> for more details on when to rollup.</p>
+                        <h1><a class="header" href="#doc-alias-policy" id="doc-alias-policy">doc alias policy</a></h1>
+<p>Rust's documentation supports adding aliases to any declaration (such as a
+function, type, or constant), using the syntax <code>#[doc(alias = &quot;name&quot;)]</code>. We
+want to use doc aliases to help people find what they're looking for, while
+keeping those aliases maintainable and high-value. This policy outlines the
+cases where we add doc aliases, and the cases where we omit those aliases.</p>
+<ul>
+<li>We must have a reasonable expectation that people might search for the term
+in the documentation search. Rust's documentation provides a name search, not
+a full-text search; as such, we expect that people may search for plausible
+names, but that for more general documentation searches they'll turn to a web
+search engine.
+<ul>
+<li>Related: we don't expect that people are currently searching Rust
+documentation for language-specific names from arbitrary languages they're
+familiar with, and we don't want to add that as a new documentation search
+feature; please don't add aliases based on your favorite language. Those
+mappings should live in separate guides or references. We do expect that
+people might look for the Rust name of a function they reasonably expect to
+exist in Rust (e.g. a system function or a C library function), to try to
+figure out what Rust called that function.</li>
+</ul>
+</li>
+<li>The proposed alias must be a name we would plausibly have used for the
+declaration. For instance, <code>mkdir</code> for <code>create_dir</code>, or <code>rmdir</code> for
+<code>remove_dir</code>, or <code>popcnt</code> and <code>popcount</code> for <code>count_ones</code>, or <code>umask</code> for
+<code>mode</code>. This feeds into the reasonable expectation that someone might search
+for the name and expect to find it (&quot;what did Rust call <code>mkdir</code>&quot;).</li>
+<li>There must be an obvious single target for the alias that is an <em>exact</em>
+analogue of the aliased name. We will not add the same alias to multiple
+declarations. (<code>const</code> and non-<code>const</code> versions of the same function are
+fine.) We will also not add an alias for a function that's only somewhat
+similar or related.</li>
+<li>The alias must not conflict with the actual name of any existing declaration.</li>
+<li>As a special case for stdarch, aliases from exact assembly instruction names
+to the corresponding intrinsic function are welcome, as long as they don't
+conflict with other names.</li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="../tools-and-bots/summary.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../documentation/summary.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="../tools-and-bots/timer.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../tools-and-bots/summary.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -199,13 +229,13 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a rel="prev" href="../tools-and-bots/summary.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../documentation/summary.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a rel="next" href="../tools-and-bots/timer.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../tools-and-bots/summary.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
