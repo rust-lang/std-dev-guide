@@ -13,7 +13,7 @@ cases where we add doc aliases, and the cases where we omit those aliases.
   names, but that for more general documentation searches they'll turn to a web
   search engine.
   - Related: we don't expect that people are currently searching Rust
-    documentation for language-specific name from arbitrary languages they're
+    documentation for language-specific names from arbitrary languages they're
     familiar with, and we don't want to add that as a new documentation search
     feature; please don't add aliases based on your favorite language. Those
     mappings should live in separate guides or references. We do expect that
