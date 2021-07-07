@@ -21,10 +21,10 @@ cases where we add doc aliases, and the cases where we omit those aliases.
     exist in Rust (e.g. a system function or a C library function), to try to
     figure out what Rust called that function.
 - The proposed alias must be a name we would plausibly have used for the
-  declaration. For instance, `rmdir` for `remove_dir`, or `popcnt` and
-  `popcount` for `count_ones`, or `umask` for `mode`, or `mkdir` for
-  `create_dir`. This feeds into the reasonable expectation that someone might
-  search for the name and expect to find it ("what did Rust call `mkdir`").
+  declaration. For instance, `mkdir` for `create_dir`, or `rmdir` for
+  `remove_dir`, or `popcnt` and `popcount` for `count_ones`, or `umask` for
+  `mode`. This feeds into the reasonable expectation that someone might search
+  for the name and expect to find it ("what did Rust call `mkdir`").
 - There must be an obvious single target for the alias that is an *exact*
   analogue of the aliased name. We will not add the same alias to multiple
   declarations. (`const` and non-`const` versions of the same function are
