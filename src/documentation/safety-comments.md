@@ -1,6 +1,6 @@
 # Safety comments
 
-Using [`unsafe`] blocks in often required in the Rust compiler or standard
+Using [`unsafe`] blocks is often required in the Rust compiler or standard
 library, but this is not done without rules: each `unsafe` block should have
 a `SAFETY:` comment explaining why the block is safe, which invariants are
 used and must be respected. Below are some examples taken from the standard
@@ -14,6 +14,8 @@ This one shows how an `unsafe` function can pass the requirements through to its
 caller with the use of documentation in a `# Safety` section while still having
 more invariants needed that are not required from callers. `clippy` has a
 lint for `# Safety` sections by the way.
+
+[See the example on github][as_bytes_mut]
 
 ```rust
 /// Converts a mutable string slice to a mutable byte slice.
@@ -35,8 +37,6 @@ pub unsafe fn as_bytes_mut(&mut self) -> &mut [u8] {
 }
 ```
 
-[See the function on github][as_bytes_mut]
-
 This example is for a function but the same principle applies to `unsafe trait`s
 like [`Send`] or [`Sync`] for example, though they have no `# Safety` section
 since their entire documentation is about why they are `unsafe`.
@@ -54,13 +54,15 @@ their `unsafe` parts.
 ## Inside *safe* elements
 
 Inside safe elements, a `SAFETY:` comment must not depend on anything from the
-caller beside properly contruscted types and values (i.e, if your function
-receive a reference that is unaligned or null, it's the caller fault if it fails
-and not yours).
+caller beside properly constructed types and values (i.e, if your function
+receives a reference that is unaligned or null, it is the caller fault if it
+fails and not yours).
 
 `SAFETY` comments in *safe* elements often rely on checks that are done before
 the `unsafe` block or on type invariants, like a division by `NonZeroU8` would
 not check for `0` before dividing.
+
+[See the example on github][split_at]
 
 ```rust
 pub fn split_at(&self, mid: usize) -> (&str, &str) {
@@ -73,7 +75,5 @@ pub fn split_at(&self, mid: usize) -> (&str, &str) {
     }
 }
 ```
-
-[See the function on github][split_at]
 
 [split_at]: https://github.com/rust-lang/rust/blob/a08f25a7ef2800af5525762e981c24d96c14febe/library/core/src/str/mod.rs#L570
