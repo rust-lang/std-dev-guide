@@ -24,6 +24,7 @@
         - [Breakage from changing behavior](./code-considerations/breaking-changes/behavior.md)
         - [Breakage from new trait impls](./code-considerations/breaking-changes/new-trait-impls.md)
         - [`#[fundamental]` types](./code-considerations/breaking-changes/fundamental.md)
+        - [Breakage from changing the prelude](./code-considerations/breaking-changes/prelude.md)
     - [Safety and soundness](./code-considerations/safety-and-soundness/summary.md)
         - [Generics and unsafe](./code-considerations/safety-and-soundness/generics-and-unsafe.md)
         - [Drop and `#[may_dangle]`](./code-considerations/safety-and-soundness/may-dangle.md)
