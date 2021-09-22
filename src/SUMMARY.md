@@ -4,7 +4,10 @@
 
 [Getting started](./getting-started.md)
 
-[Reviewer checklist](./reviewer-checklist.md)
+- [The library team](./team.md)
+  - [Meetings](./meetings.md)
+  - [Membership](./membership.md)
+  - [Reviewing](./reviewing.md)
 
 ---
 
