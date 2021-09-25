@@ -22,7 +22,7 @@ As a result, we are very careful with stabilizing additions to the standard libr
 Once something is stable, we're basically stuck with it forever.
 
 To guard the stability and prevent us from adding things we'll regret later,
-we have a team that specifically focusses on the public API.
+we have a team that specifically focuses on the public API.
 Every RFC and stabilization of a library addition/change goes through a FCP process
 in which the members of the Library API Team are asked to sign off on the change.
 
