@@ -28,7 +28,7 @@ However, members of this list should be on at least one of the three library tea
 If the bot assigns you a PR for which you do not have the time or expertise to review it,
 feel free to reassign it to someone else.
 To assign it to another random person picked from the high-five rotation,
-use `r? libs`.
+use `r? rust-lang/libs`.
 
 If you find yourself unable to keep up with reviews,
 it might be a good idea to (temporarily) remove yourself from the list.
