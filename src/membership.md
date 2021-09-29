@@ -22,7 +22,7 @@ In all cases, the process of adding a new members goes as follows:
    - A few specific examples of cases where this person clearly communicated their ideas.
    - A few specific examples that show this person understands what are and what aren't acceptable changes.\
      Someone who makes significant contributions but usually needs to make large adjustments to their PRs might be a wonderful external contributor,
-     but might not yet be a good match for membership with review persmissions expecting to judge other contributions.
+     but might not yet be a good match for membership with review permissions expecting to judge other contributions.
 2. Every single team member is asked for their input. No team member must have any objections.
    - Objections are ideally shared with the entire team, but may also be shared privately with the team lead or the moderation team.
    - Objections ideally include examples showing behavior not in line with the expectations described under step 1
