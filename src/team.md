@@ -49,8 +49,7 @@ See [Membership](./membership.md) for details.
 ### r+ permission
 
 All members of the Library Team, the Library API Team, and the Library Contributors
-can approve any PR, as long as they are confident in their review
-and are sure no one else needs to be involved in the review.
+have the permission to approve PRs, and are expected handle this with care.
 See [Reviewing](./reviewing.md) for details.
 
 ### high-five rotation
