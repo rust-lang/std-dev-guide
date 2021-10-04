@@ -58,6 +58,39 @@ impl<T: Copy> RcFromSlice<T> for Rc<[T]> {
 
 Only specialization using the `min_specialization` feature should be used. The full `specialization` feature is known to be unsound.
 
+## Specialization attributes
+
+There are two unstable attributes that can be used to allow a trait bound in a specializing implementation that does not appear in the default implementation.
+
+`rustc_specialization_trait` restricts the implementations of a trait to be "always applicable". Implementing traits annotated with `rustc_specialization_trait` is unstable, so this should not be used on any stable traits exported from the standard library. `Sized` is an exception, and can have this attribute because it already cannot be implemented by an `impl` block.
+
+`rustc_unsafe_specialization_marker` allows specializing on a trait with no associated items. The attribute is `unsafe` because lifetime constraints from the implementations of the trait are not considered when specializing. In the following example, the specialized implementation is used for *all* shared reference types, not just those with `'static` lifetime.
+
+```rust,ignore
+#[rustc_unsafe_specialization_marker]
+trait StaticRef {}
+
+impl<T> StaticRef for &'static T {}
+
+trait DoThing: Sized {
+    fn do_thing(self);
+}
+
+impl<T> DoThing for T {
+    default fn do_thing(self) {
+        // slow impl
+    }
+}
+
+impl<T: StaticRef> DoThing for T {
+    fn do_thing(self) {
+        // fast impl
+    }
+}
+```
+
+`rustc_unsafe_specialization_marker` exists to allow existing specializations that are based on marker traits exported from `std`, such as `Copy`, `FusedIterator` or `Eq`. New uses of `rustc_unsafe_specialization_marker` should be avoided.
+
 ## For reviewers
 
 Look out for any `default` annotations on public trait implementations. These will need to be refactored into a private dispatch trait. Also look out for uses of specialization that do more than pick a more optimized implementation.
