@@ -30,7 +30,7 @@ feel free to reassign it to someone else.
 To assign it to another random person picked from the high-five rotation,
 use `r? rust-lang/libs`.
 
-If you find yourself unable to keep up with reviews,
+If you find yourself unable to do any reviews for an extended period of time,
 it might be a good idea to (temporarily) remove yourself from the list.
 To add or remove yourself from the list, send a PR to change the
 [high-five configuration file](https://github.com/rust-lang/highfive/blob/master/highfive/configs/rust-lang/rust.json).
