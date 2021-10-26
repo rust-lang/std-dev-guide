@@ -7,7 +7,7 @@ multilingual = false
 src = "./src"
 
 [build]
-create-missing = false
+create-missing = true
 
 [rust]
 edition = "2018"
@@ -19,6 +19,6 @@ renderer = ["html"]
 [output.linkcheck]
 
 [output.html]
-default-theme = "rust"
-git-repository-url = "https://github.com/rust-lang/std-dev-guide"
 git-repository-icon = "fa-github"
+git-repository-url = "https://github.com/rust-lang/std-dev-guide"
+edit-url-template = "https://github.com/rust-lang/std-dev-guide/edit/master/{path}"
