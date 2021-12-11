@@ -11,6 +11,11 @@
 
 ---
 
+- [Building and debugging libraries](./development/building-and-debugging.md)
+
+
+---
+
 - [The feature lifecycle](./feature-lifecycle/summary.md)
     - [Landing new features](./feature-lifecycle/new-unstable-features.md)
     - [Using tracking issues](./feature-lifecycle/tracking-issues.md)
