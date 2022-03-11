@@ -29,7 +29,7 @@ This will save you from opening a stabilization PR and having it need regular re
 
 ## Partial Stabilizations
 
-When you only wish to stabilize a subset of an existing feature your first step should be to split the feature into multiple features, each with their own tracking issues. How you split up that feature is situational and depends on the specific feature and how you're splitting it up, so in some cases you may want to create a new tracking issue for the portion being stabilized, and in other situations you may want to use the new tracking issue to track the portion being left unstable. If you're unsure how to split up the issue you can always ask a libs-api team member for guidance in the original tracking issue or in the [libs team zulip](https://rust-lang.zulipchat.com/#narrow/stream/219381-t-libs).
+When you only wish to stabilize a subset of an existing feature your first step should be to split the feature into multiple features, each with their own tracking issues. When you're splitting up the feature, you should always introduce a new feature name for the portion being stabilized and leave the existing feature for the portions left unstable, that way existing users of that feature are not left in a broken state.
 
 You can see an example of partially stabilizing a feature with tracking issues [#71146](https://github.com/rust-lang/rust/issues/71146) and [XXXXX]() with FCP and the associated implementation PR [XXXXX]().
 
