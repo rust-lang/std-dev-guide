@@ -9,7 +9,9 @@ Stabilization goes through the Libs FCP[^1] process, which occurs on the [tracki
 
 ## When is an FCP appropriate?
 
-Once an unstable feature has been well-tested with no outstanding concerns, anyone may push for it's stabilization. If you're unsure if a feature is ready for stabilization the first step should be to ask in the relevant tracking issue and get assistance from other participants in that discussion. In some cases the tracking issue may not have many other active participants, so if you're ever having trouble getting any feedback please ping one of the [libs team reviewers](https://github.com/rust-lang/highfive/blob/master/highfive/configs/rust-lang/rust.json) directly to request assistance.
+Once an unstable feature has been well-tested with no outstanding concerns, anyone may push for it's stabilization.
+
+If you're unsure if a feature is ready for stabilization the first step should be to ask in the relevant tracking issue and get assistance from other participants in that discussion. In some cases the tracking issue may not have many other active participants, so if you're ever having trouble getting any feedback please ping one of the [libs team reviewers](https://github.com/rust-lang/highfive/blob/master/highfive/configs/rust-lang/rust.json) directly to request assistance.
 
 ## Stabilization Report
 
@@ -31,7 +33,9 @@ This will save you from opening a stabilization PR and having it need regular re
 
 When you only wish to stabilize a subset of an existing feature your first step should be to split the feature into multiple features, each with their own tracking issues. When you're splitting up the feature, you should always introduce a new feature name for the portion being stabilized and leave the existing feature for the portions left unstable, that way existing users of that feature are not left in a broken state.
 
-You can see an example of partially stabilizing a feature with tracking issues [#71146](https://github.com/rust-lang/rust/issues/71146) and [XXXXX]() with FCP and the associated implementation PR [XXXXX]().
+You can see an example of partially stabilizing a feature with tracking issue [#71146](https://github.com/rust-lang/rust/issues/71146) and partial stabilization + tracking PR [#94640](https://github.com/rust-lang/rust/pull/94640).
+
+If you're unsure if a feature is ready for partial stabilization the first step should be to ask in the relevant tracking issue and get assistance from other participants in that discussion. In some cases the tracking issue may not have many other active participants, so if you're ever having trouble getting any feedback please ping one of the [libs team reviewers](https://github.com/rust-lang/highfive/blob/master/highfive/configs/rust-lang/rust.json) directly to request assistance.
 
 ## When there's `const` involved
 
@@ -96,7 +100,7 @@ The compiler builds with nightly features allowed, so you may find uses of the f
 
 To stabilize a feature, follow these steps:
 
-0. (Optional) For partial stabilizations, create a new tracking issue for either the subset being stabilized or the subset being left unstable, whichever makes the most sense based on the situation.
+0. (Optional) For partial stabilizations, create a new partial stabilization + tracking PR for the subset of the issue being stabilized under a newly introduced feature name.
 0. Ask a **@rust-lang/libs-api** member to start an FCP on the tracking issue and wait for the FCP to complete (with `disposition-merge`).
 0. Change `#[unstable(...)]` to `#[stable(since = "version")]`. `version` should be the *current nightly*, i.e. stable+2. You can see which version is the current nightly [on Forge](https://forge.rust-lang.org/#current-release-versions).
 0. Remove `#![feature(...)]` from any test or doc-test for this API. If the feature is used in the compiler or tools, remove it from there as well.
@@ -108,3 +112,4 @@ To stabilize a feature, follow these steps:
 You can see an example of stabilizing a feature with [tracking issue #81656 with FCP](https://github.com/rust-lang/rust/issues/81656) and the associated [implementation PR #84642](https://github.com/rust-lang/rust/pull/84642).
 
 [^1]: FCP stands for final comment period
+
