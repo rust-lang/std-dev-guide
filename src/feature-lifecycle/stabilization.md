@@ -1,11 +1,33 @@
 # Stabilizing features
 
 **Status:** Current
-**Last Updated:** 2022/03/03
+**Last Updated:** 2022/03/10
 
 Feature stabilization involves adding `#[stable]` attributes. They may be introduced alongside new trait impls or replace existing `#[unstable]` attributes.
 
-Stabilization goes through the Libs FCP process, which occurs on the [tracking issue](./tracking-issues.md) for the feature.
+Stabilization goes through the Libs FCP[^1] process, which occurs on the [tracking issue](./tracking-issues.md) for the feature.
+
+## When is an FCP appropriate?
+
+Once an unstable feature has been well-tested with no outstanding concerns,
+anyone may push for it's stabilization. If you're unsure if a feature is ready
+for stabilization the first step should be to ask in the relevant tracking
+issue and get assistance from other participants in that discussion. In some
+cases the tracking issue may not have many other active participants, so if
+you're ever having trouble getting any feedback please ping one of the [libs
+team
+reviewers](https://github.com/rust-lang/highfive/blob/master/highfive/configs/rust-lang/rust.json)
+directly to request assistance.
+
+## Stabilization Report
+
+Once a feature is ready for stabilization the first step of the FCP process is writing a stabilization report. Stabilization reports consist of three primary sections, a implementation history, an API summary, and an experience report.
+
+The **Implementation History** section should summarize the initial discussion during the implementation PR, every change that has been made to the feature since the initial implementation, all issues that were raised during the lifetime of the feature, and how they were resolved.
+
+The **API Summary** section should include a precise description of what APIs are being introduced to the standard libraries. The libs team maintains a tool for this called [`cargo unstable-api`](https://github.com/rust-lang/libs-team/tree/main/tools/unstable-api) that can be used to generate these API summaries in some cases. *Note* the current implementation of this tool is fragile and does not work in all cases. We hope to have a more permanent version of this tool in the future that is built ontop of either rustdoc or rustc's own APIs.
+
+The **Experience Report** section should include links to projects that use the feature being stabilized, or when applicable, projects that use crates that export the same API and describe the experience of using the feature in question.
 
 ## Before writing a PR to stabilize a feature
 
@@ -93,3 +115,4 @@ To stabilize a feature, follow these steps:
 
 You can see an example of stabilizing a feature with [tracking issue #81656 with FCP](https://github.com/rust-lang/rust/issues/81656) and the associated [implementation PR #84642](https://github.com/rust-lang/rust/pull/84642).
 
+[^1]: FCP stands for final comment period
