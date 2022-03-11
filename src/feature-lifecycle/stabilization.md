@@ -1,7 +1,7 @@
 # Stabilizing features
 
-**Status:** Current
-**Last Updated:** 2022/03/10
+* **Status:** Current
+* **Last Updated:** 2022/03/10
 
 Feature stabilization involves adding `#[stable]` attributes. They may be introduced alongside new trait impls or replace existing `#[unstable]` attributes.
 
@@ -23,6 +23,8 @@ The **API Summary** section should include a precise description of what APIs ar
 
 The **Experience Report** section should include links to projects that use the feature being stabilized, or when applicable, projects that use crates that export the same API and describe the experience of using the feature in question.
 
+You can see examples of stabilization reports in tracking issues [#88581](https://github.com/rust-lang/rust/issues/88581#issuecomment-1054642118) and [#29553](https://github.com/rust-lang/rust/issues/29553).
+
 ## Before writing a PR to stabilize a feature
 
 Check to see if a FCP has completed first. If not, either ping `@rust-lang/libs` or leave a comment asking about the status of the feature.
@@ -31,11 +33,11 @@ This will save you from opening a stabilization PR and having it need regular re
 
 ## Partial Stabilizations
 
-When you only wish to stabilize a subset of an existing feature your first step should be to split the feature into multiple features, each with their own tracking issues. When you're splitting up the feature, you should always introduce a new feature name for the portion being stabilized and leave the existing feature for the portions left unstable, that way existing users of that feature are not left in a broken state.
-
-You can see an example of partially stabilizing a feature with tracking issue [#71146](https://github.com/rust-lang/rust/issues/71146) and partial stabilization + tracking PR [#94640](https://github.com/rust-lang/rust/pull/94640).
+When you only wish to stabilize a subset of an existing feature you should skip creating a new tracking issue and instead create a partial stabilization + tracking PR for the subset of the feature being stabilized. When you're splitting up the feature, you should always introduce a new feature name for the portion being stabilized and leave the existing feature for the portions left unstable, that way existing users of that feature are not left in a broken state.
 
 If you're unsure if a feature is ready for partial stabilization the first step should be to ask in the relevant tracking issue and get assistance from other participants in that discussion. In some cases the tracking issue may not have many other active participants, so if you're ever having trouble getting any feedback please ping one of the [libs team reviewers](https://github.com/rust-lang/highfive/blob/master/highfive/configs/rust-lang/rust.json) directly to request assistance.
+
+You can see an example of partially stabilizing a feature with tracking issue [#71146](https://github.com/rust-lang/rust/issues/71146) and partial stabilization + tracking PR [#94640](https://github.com/rust-lang/rust/pull/94640).
 
 ## When there's `const` involved
 
@@ -100,6 +102,7 @@ The compiler builds with nightly features allowed, so you may find uses of the f
 
 To stabilize a feature, follow these steps:
 
+0. Create a stabiliation report in the tracking issue for the feature being stabilized.
 0. (Optional) For partial stabilizations, create a new partial stabilization + tracking PR for the subset of the issue being stabilized under a newly introduced feature name.
 0. Ask a **@rust-lang/libs-api** member to start an FCP on the tracking issue and wait for the FCP to complete (with `disposition-merge`).
 0. Change `#[unstable(...)]` to `#[stable(since = "version")]`. `version` should be the *current nightly*, i.e. stable+2. You can see which version is the current nightly [on Forge](https://forge.rust-lang.org/#current-release-versions).
