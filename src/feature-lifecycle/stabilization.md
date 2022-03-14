@@ -1,7 +1,7 @@
 # Stabilizing features
 
 * **Status:** Current
-* **Last Updated:** 2022/03/10
+* **Last Updated:** 2022-03-10
 
 Feature stabilization involves adding `#[stable]` attributes. They may be introduced alongside new trait impls or replace existing `#[unstable]` attributes.
 
@@ -9,7 +9,7 @@ Stabilization goes through the Libs FCP[^1] process, which occurs on the [tracki
 
 ## When is an FCP appropriate?
 
-Once an unstable feature has been well-tested with no outstanding concerns, anyone may push for it's stabilization.
+Once an unstable feature has been well-tested with no outstanding concerns, anyone may push for its stabilization.
 
 If you're unsure if a feature is ready for stabilization the first step should be to ask in the relevant tracking issue and get assistance from other participants in that discussion. In some cases the tracking issue may not have many other active participants, so if you're ever having trouble getting any feedback please ping one of the [libs team reviewers](https://github.com/rust-lang/highfive/blob/master/highfive/configs/rust-lang/rust.json) directly to request assistance.
 
@@ -110,7 +110,7 @@ To stabilize a feature, follow these steps:
 0. If applicable, change `#[rustc_const_unstable(...)]` to `#[rustc_const_stable(since = "version")]`.
 0. Open a PR against `rust-lang/rust`.
    - Add the appropriate labels: `@rustbot modify labels: +T-libs-api`.
-   - Link to the tracking issue and say "Closes #XXXXX".
+   - Link to the tracking issue by adding "Closes #XXXXX".
 
 You can see an example of stabilizing a feature with [tracking issue #81656 with FCP](https://github.com/rust-lang/rust/issues/81656) and the associated [implementation PR #84642](https://github.com/rust-lang/rust/pull/84642).
 
