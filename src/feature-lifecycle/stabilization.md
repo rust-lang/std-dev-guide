@@ -9,7 +9,7 @@ Stabilization goes through the Libs FCP[^1] process, which occurs on the [tracki
 
 ## When is an FCP appropriate?
 
-Once an unstable feature has been well-tested with no outstanding concerns, anyone may push for its stabilization.
+Once an unstable feature's API design space (e.g. alternative APIs) has been fully explored with no outstanding concerns, anyone may push for its stabilization.
 
 If you're unsure if a feature is ready for stabilization the first step should be to ask in the relevant tracking issue and get assistance from other participants in that discussion. In some cases the tracking issue may not have many other active participants, so if you're ever having trouble getting any feedback please ping one of the [libs team reviewers](https://github.com/rust-lang/highfive/blob/master/highfive/configs/rust-lang/rust.json) directly to request assistance.
 
