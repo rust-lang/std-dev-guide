@@ -33,7 +33,7 @@ This will save you from opening a stabilization PR and having it need regular re
 
 ## Partial Stabilizations
 
-When you only wish to stabilize a subset of an existing feature you should skip creating a new tracking issue and instead create a partial stabilization PR for the subset of the feature being stabilized. When you're splitting up the feature, you should always introduce a new feature name for the portion being stabilized and leave the existing feature for the portions left unstable, that way existing users of that feature are not left in a broken state.
+When you only wish to stabilize a subset of an existing feature you should skip creating a new tracking issue and instead create a partial stabilization PR for the subset of the feature being stabilized.
 
 If you're unsure if a feature is ready for partial stabilization the first step should be to ask in the relevant tracking issue and get assistance from other participants in that discussion. In some cases the tracking issue may not have many other active participants, so if you're ever having trouble getting any feedback please ping one of the [libs team reviewers](https://github.com/rust-lang/highfive/blob/master/highfive/configs/rust-lang/rust.json) directly to request assistance.
 
@@ -103,7 +103,7 @@ The compiler builds with nightly features allowed, so you may find uses of the f
 To stabilize a feature, follow these steps:
 
 0. Create a stabiliation report in the tracking issue for the feature being stabilized.
-0. (Optional) For partial stabilizations, create a new partial stabilization PR for the subset of the issue being stabilized under a newly introduced feature name.
+0. (Optional) For partial stabilizations, create a new partial stabilization PR for the subset of the issue being stabilized.
 0. Ask a **@rust-lang/libs-api** member to start an FCP on the tracking issue and wait for the FCP to complete (with `disposition-merge`).
 0. Change `#[unstable(...)]` to `#[stable(since = "version")]`. `version` should be the *current nightly*, i.e. stable+2. You can see which version is the current nightly in [`src/version`](https://github.com/rust-lang/rust/blob/master/src/version) on the master branch of `rust-lang/rust`.
 0. Remove `#![feature(...)]` from any test or doc-test for this API. If the feature is used in the compiler or tools, remove it from there as well.
