@@ -15,13 +15,13 @@ If you're unsure if a feature is ready for stabilization the first step should b
 
 ## Stabilization Report
 
-Once a feature is ready for stabilization the first step of the FCP process is writing a stabilization report. Stabilization reports consist of three primary sections, a implementation history, an API summary, and an experience report.
+Once a feature is ready for stabilization the first step of the FCP process is writing a stabilization report. Stabilization reports are not mandatory but they are heavily encouraged, and may be mandated by library API team members if they feel it necessary. The purpose of stabilization reports is to help reviewers more quickly make decisions and to simplify the process of documenting stabilized APIs in release notes. Stabilization reports consist of three primary sections, a implementation history, an API summary, and an experience report.
 
 The **Implementation History** section should summarize the initial discussion during the implementation PR, every change that has been made to the feature since the initial implementation, all issues that were raised during the lifetime of the feature, and how they were resolved.
 
 The **API Summary** section should include a precise description of what APIs are being introduced to the standard libraries. This can often be a simple link back to the top level comment if it's up to date, but in situations it may not be possible to edit the original tracking issue to fix outdated information, such as when the author of the stabilization report is not the author of the tracking issue itself. The libs team maintains a tool for this called [`cargo unstable-api`](https://github.com/rust-lang/libs-team/tree/main/tools/unstable-api) that can be used to generate these API summaries in some cases. *Note* the current implementation of this tool is fragile and does not work in all cases. We hope to have a more permanent version of this tool in the future that is built ontop of either rustdoc or rustc's own APIs.
 
-The **Experience Report** section should include links to projects that use the feature being stabilized, or when applicable, projects that use crates that export the same API and describe the experience of using the feature in question.
+The **Experience Report** section should include concrete usecases of users who have wanted to use the feature and who have tested that it works for their needs. The experience report should include a brief summary of the experience of using that feature. Ideally this would include links to commits or branches where the feature was integrated with their project, but this is not a requirement. Alternatively, users can provide usage examples of crates that export an identical API to the one being stabilized.
 
 You can see examples of stabilization reports in tracking issues [#88581](https://github.com/rust-lang/rust/issues/88581#issuecomment-1054642118) and [#29553](https://github.com/rust-lang/rust/issues/29553).
 
