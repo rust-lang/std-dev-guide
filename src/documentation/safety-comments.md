@@ -17,7 +17,7 @@ lint for `# Safety` sections by the way.
 
 [See the example on github][as_bytes_mut]
 
-```rust
+```rust,ignore
 /// Converts a mutable string slice to a mutable byte slice.
 ///
 /// # Safety
@@ -64,7 +64,7 @@ not check for `0` before dividing.
 
 [See the example on github][split_at]
 
-```rust
+```rust,ignore
 pub fn split_at(&self, mid: usize) -> (&str, &str) {
     // is_char_boundary checks that the index is in [0, .len()]
     if self.is_char_boundary(mid) {
