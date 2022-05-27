@@ -1,11 +1,11 @@
 # Stabilizing features
 
 * **Status:** Current
-* **Last Updated:** 2022-03-10
+* **Last Updated:** 2022-05-27
 
 Feature stabilization involves adding `#[stable]` attributes. They may be introduced alongside new trait impls or replace existing `#[unstable]` attributes.
 
-Stabilization goes through the Libs FCP[^1] process, which typically occurs on the [tracking issue](./tracking-issues.md) for the feature.
+Stabilization goes through the Libs FCP (Final Comment Period) process, which typically occurs on the [tracking issue](./tracking-issues.md) for the feature.
 
 ## When is an FCP appropriate?
 
@@ -19,11 +19,13 @@ Once a feature is ready for stabilization the first step of the FCP process is w
 
 The **Implementation History** section should summarize the initial discussion during the implementation PR, every change that has been made to the feature since the initial implementation, all issues that were raised during the lifetime of the feature, and how they were resolved.
 
-The **API Summary** section should include a precise description of what APIs are being introduced to the standard libraries. This can often be a simple link back to the top level comment if it's up to date, but in situations it may not be possible to edit the original tracking issue to fix outdated information, such as when the author of the stabilization report is not the author of the tracking issue itself. The libs team maintains a tool for this called [`cargo unstable-api`](https://github.com/rust-lang/libs-team/tree/main/tools/unstable-api) that can be used to generate these API summaries in some cases. *Note* the current implementation of this tool is fragile and does not work in all cases. We hope to have a more permanent version of this tool in the future that is built ontop of either rustdoc or rustc's own APIs.
+The **API Summary** section should include a precise description of what APIs are being introduced to the standard libraries. This can often be a simple link back to the top level comment if it's up to date, but in some situations it may not be possible to edit the original tracking issue to fix outdated information, such as when the author of the stabilization report is not the author of the tracking issue itself.
+
+The libs team maintains a tool for this called [`cargo unstable-api`](https://github.com/rust-lang/libs-team/tree/main/tools/unstable-api) that can be used to generate these API summaries in some cases. *Note* the current implementation of this tool is fragile and does not work in all cases. We hope to have a more permanent version of this tool in the future that is built ontop of either rustdoc or rustc's own APIs.
 
 The **Experience Report** section should include concrete usecases of users who have wanted to use the feature and who have tested that it works for their needs. The experience report should include a brief summary of the experience of using that feature. Ideally this would include links to commits or branches where the feature was integrated with their project, but this is not a requirement. Alternatively, users can provide usage examples of crates that export an identical API to the one being stabilized.
 
-You can see examples of stabilization reports in tracking issues [#88581](https://github.com/rust-lang/rust/issues/88581#issuecomment-1054642118) and [#29553](https://github.com/rust-lang/rust/issues/29553).
+You can see an example of a stabilization report in [#88581](https://github.com/rust-lang/rust/issues/88581#issuecomment-1054642118).
 
 ## Before writing a PR to stabilize a feature
 
@@ -68,7 +70,7 @@ You'll need to change that to a `#[stable]` attribute with a version:
 #[stable(feature = "total_cmp", since = "1.61.0")]
 ```
 
-Note that, the version number is updated to be the version number of the stable release where this feature will appear. This can be found by consulting [`src/version`](https://github.com/rust-lang/rust/blob/master/src/version) on the current master branch of `rust-lang/rust`. Specifically, you'll want to use the version labelled "Nightly". That's two versions higher than the current stable release, as what's currently in beta will be the next stable release, and any change you're making now will be in the one after that.
+Note that, the version number is updated to be the version number of the stable release where this feature will appear. This can be found by consulting [`src/version`](https://github.com/rust-lang/rust/blob/master/src/version) on the current master branch of `rust-lang/rust`.
 
 ### Remove feature gates from doctests
 
@@ -113,6 +115,4 @@ To stabilize a feature, follow these steps:
    - Link to the tracking issue by adding "Closes #XXXXX".
 
 You can see an example of stabilizing a feature with [tracking issue #81656 with FCP](https://github.com/rust-lang/rust/issues/81656) and the associated [implementation PR #84642](https://github.com/rust-lang/rust/pull/84642).
-
-[^1]: FCP stands for final comment period
 
