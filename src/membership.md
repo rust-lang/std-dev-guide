@@ -16,7 +16,7 @@ and have already been involved in relevant library work.
 
 In all cases, the process of adding a new members goes as follows:
 
-1. A member of the Library (API) Team proposes the addition of a contributor on our private mailing list.
+1. A member of the Library (API) Team proposes the addition of a contributor on our private Zulip channel.
    This proposal includes:
    - A short description of what this person has been working on; how they have been contributing.
    - A few specific examples of cases where this person clearly communicated their ideas.
