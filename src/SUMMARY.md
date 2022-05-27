@@ -42,6 +42,7 @@
 
 - [Documentation](./documentation/summary.md)
     - [doc alias policy](./documentation/doc-alias-policy.md)
+    - [safety comments policy](./documentation/safety-comments.md)
 
 ---
 
