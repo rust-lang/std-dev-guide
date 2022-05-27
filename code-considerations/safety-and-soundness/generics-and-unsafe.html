@@ -4,37 +4,25 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Generics and unsafe - Standard library developers Guide</title>
-        
-        
 
 
         <!-- Custom HTML head -->
         
-
-
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="Guide for standard library developers">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        
         <link rel="icon" href="../../favicon.svg">
-        
-        
         <link rel="shortcut icon" href="../../favicon.png">
-        
         <link rel="stylesheet" href="../../css/variables.css">
         <link rel="stylesheet" href="../../css/general.css">
         <link rel="stylesheet" href="../../css/chrome.css">
-        
         <link rel="stylesheet" href="../../css/print.css" media="print">
-        
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
-        
         <link rel="stylesheet" href="../../fonts/fonts.css">
-        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../../highlight.css">
@@ -42,9 +30,7 @@
         <link rel="stylesheet" href="../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
 
-        
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -95,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../about-this-guide.html">About this guide</a></li><li class="chapter-item expanded affix "><a href="../../getting-started.html">Getting started</a></li><li class="chapter-item expanded "><a href="../../team.html"><strong aria-hidden="true">1.</strong> The library team</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../meetings.html"><strong aria-hidden="true">1.1.</strong> Meetings</a></li><li class="chapter-item expanded "><a href="../../membership.html"><strong aria-hidden="true">1.2.</strong> Membership</a></li><li class="chapter-item expanded "><a href="../../reviewing.html"><strong aria-hidden="true">1.3.</strong> Reviewing</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../../feature-lifecycle/summary.html"><strong aria-hidden="true">2.</strong> The feature lifecycle</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../feature-lifecycle/new-unstable-features.html"><strong aria-hidden="true">2.1.</strong> Landing new features</a></li><li class="chapter-item expanded "><a href="../../feature-lifecycle/tracking-issues.html"><strong aria-hidden="true">2.2.</strong> Using tracking issues</a></li><li class="chapter-item expanded "><a href="../../feature-lifecycle/stabilization.html"><strong aria-hidden="true">2.3.</strong> Stabilizing features</a></li><li class="chapter-item expanded "><a href="../../feature-lifecycle/deprecation.html"><strong aria-hidden="true">2.4.</strong> Deprecating features</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../../code-considerations/summary.html"><strong aria-hidden="true">3.</strong> Code considerations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../code-considerations/design/summary.html"><strong aria-hidden="true">3.1.</strong> Design</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../code-considerations/design/public-apis.html"><strong aria-hidden="true">3.1.1.</strong> Public APIs</a></li><li class="chapter-item expanded "><a href="../../code-considerations/design/must-use.html"><strong aria-hidden="true">3.1.2.</strong> When to add #[must_use]</a></li></ol></li><li class="chapter-item expanded "><a href="../../code-considerations/breaking-changes/summary.html"><strong aria-hidden="true">3.2.</strong> Breaking changes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../code-considerations/breaking-changes/behavior.html"><strong aria-hidden="true">3.2.1.</strong> Breakage from changing behavior</a></li><li class="chapter-item expanded "><a href="../../code-considerations/breaking-changes/new-trait-impls.html"><strong aria-hidden="true">3.2.2.</strong> Breakage from new trait impls</a></li><li class="chapter-item expanded "><a href="../../code-considerations/breaking-changes/fundamental.html"><strong aria-hidden="true">3.2.3.</strong> #[fundamental] types</a></li><li class="chapter-item expanded "><a href="../../code-considerations/breaking-changes/prelude.html"><strong aria-hidden="true">3.2.4.</strong> Breakage from changing the prelude</a></li></ol></li><li class="chapter-item expanded "><a href="../../code-considerations/safety-and-soundness/summary.html"><strong aria-hidden="true">3.3.</strong> Safety and soundness</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../code-considerations/safety-and-soundness/generics-and-unsafe.html" class="active"><strong aria-hidden="true">3.3.1.</strong> Generics and unsafe</a></li><li class="chapter-item expanded "><a href="../../code-considerations/safety-and-soundness/may-dangle.html"><strong aria-hidden="true">3.3.2.</strong> Drop and #[may_dangle]</a></li><li class="chapter-item expanded "><a href="../../code-considerations/safety-and-soundness/mem-and-exclusive-refs.html"><strong aria-hidden="true">3.3.3.</strong> std::mem and exclusive references</a></li></ol></li><li class="chapter-item expanded "><a href="../../code-considerations/using-unstable-lang/summary.html"><strong aria-hidden="true">3.4.</strong> Using unstable language features</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../code-considerations/using-unstable-lang/const-generics.html"><strong aria-hidden="true">3.4.1.</strong> Const generics</a></li><li class="chapter-item expanded "><a href="../../code-considerations/using-unstable-lang/specialization.html"><strong aria-hidden="true">3.4.2.</strong> Specialization</a></li></ol></li><li class="chapter-item expanded "><a href="../../code-considerations/performance/summary.html"><strong aria-hidden="true">3.5.</strong> Performance</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../code-considerations/performance/inline.html"><strong aria-hidden="true">3.5.1.</strong> When to #[inline]</a></li><li class="spacer"></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../documentation/summary.html"><strong aria-hidden="true">4.</strong> Documentation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../documentation/doc-alias-policy.html"><strong aria-hidden="true">4.1.</strong> doc alias policy</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../../tools-and-bots/summary.html"><strong aria-hidden="true">5.</strong> Tools and bots</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../tools-and-bots/bors.html"><strong aria-hidden="true">5.1.</strong> @bors</a></li><li class="chapter-item expanded "><a href="../../tools-and-bots/timer.html"><strong aria-hidden="true">5.2.</strong> @rust-timer</a></li><li class="chapter-item expanded "><a href="../../tools-and-bots/crater.html"><strong aria-hidden="true">5.3.</strong> @craterbot</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../about-this-guide.html">About this guide</a></li><li class="chapter-item expanded affix "><a href="../../getting-started.html">Getting started</a></li><li class="chapter-item expanded "><a href="../../team.html"><strong aria-hidden="true">1.</strong> The library team</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../meetings.html"><strong aria-hidden="true">1.1.</strong> Meetings</a></li><li class="chapter-item expanded "><a href="../../membership.html"><strong aria-hidden="true">1.2.</strong> Membership</a></li><li class="chapter-item expanded "><a href="../../reviewing.html"><strong aria-hidden="true">1.3.</strong> Reviewing</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../../feature-lifecycle/summary.html"><strong aria-hidden="true">2.</strong> The feature lifecycle</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../feature-lifecycle/new-unstable-features.html"><strong aria-hidden="true">2.1.</strong> Landing new features</a></li><li class="chapter-item expanded "><a href="../../feature-lifecycle/tracking-issues.html"><strong aria-hidden="true">2.2.</strong> Using tracking issues</a></li><li class="chapter-item expanded "><a href="../../feature-lifecycle/stabilization.html"><strong aria-hidden="true">2.3.</strong> Stabilizing features</a></li><li class="chapter-item expanded "><a href="../../feature-lifecycle/deprecation.html"><strong aria-hidden="true">2.4.</strong> Deprecating features</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../../code-considerations/summary.html"><strong aria-hidden="true">3.</strong> Code considerations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../code-considerations/design/summary.html"><strong aria-hidden="true">3.1.</strong> Design</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../code-considerations/design/public-apis.html"><strong aria-hidden="true">3.1.1.</strong> Public APIs</a></li><li class="chapter-item expanded "><a href="../../code-considerations/design/must-use.html"><strong aria-hidden="true">3.1.2.</strong> When to add #[must_use]</a></li></ol></li><li class="chapter-item expanded "><a href="../../code-considerations/breaking-changes/summary.html"><strong aria-hidden="true">3.2.</strong> Breaking changes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../code-considerations/breaking-changes/behavior.html"><strong aria-hidden="true">3.2.1.</strong> Breakage from changing behavior</a></li><li class="chapter-item expanded "><a href="../../code-considerations/breaking-changes/new-trait-impls.html"><strong aria-hidden="true">3.2.2.</strong> Breakage from new trait impls</a></li><li class="chapter-item expanded "><a href="../../code-considerations/breaking-changes/fundamental.html"><strong aria-hidden="true">3.2.3.</strong> #[fundamental] types</a></li><li class="chapter-item expanded "><a href="../../code-considerations/breaking-changes/prelude.html"><strong aria-hidden="true">3.2.4.</strong> Breakage from changing the prelude</a></li></ol></li><li class="chapter-item expanded "><a href="../../code-considerations/safety-and-soundness/summary.html"><strong aria-hidden="true">3.3.</strong> Safety and soundness</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../code-considerations/safety-and-soundness/generics-and-unsafe.html" class="active"><strong aria-hidden="true">3.3.1.</strong> Generics and unsafe</a></li><li class="chapter-item expanded "><a href="../../code-considerations/safety-and-soundness/may-dangle.html"><strong aria-hidden="true">3.3.2.</strong> Drop and #[may_dangle]</a></li><li class="chapter-item expanded "><a href="../../code-considerations/safety-and-soundness/mem-and-exclusive-refs.html"><strong aria-hidden="true">3.3.3.</strong> std::mem and exclusive references</a></li></ol></li><li class="chapter-item expanded "><a href="../../code-considerations/using-unstable-lang/summary.html"><strong aria-hidden="true">3.4.</strong> Using unstable language features</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../code-considerations/using-unstable-lang/const-generics.html"><strong aria-hidden="true">3.4.1.</strong> Const generics</a></li><li class="chapter-item expanded "><a href="../../code-considerations/using-unstable-lang/specialization.html"><strong aria-hidden="true">3.4.2.</strong> Specialization</a></li></ol></li><li class="chapter-item expanded "><a href="../../code-considerations/performance/summary.html"><strong aria-hidden="true">3.5.</strong> Performance</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../code-considerations/performance/inline.html"><strong aria-hidden="true">3.5.1.</strong> When to #[inline]</a></li><li class="spacer"></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../documentation/summary.html"><strong aria-hidden="true">4.</strong> Documentation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../documentation/doc-alias-policy.html"><strong aria-hidden="true">4.1.</strong> doc alias policy</a></li><li class="chapter-item expanded "><a href="../../documentation/safety-comments.html"><strong aria-hidden="true">4.2.</strong> safety comments policy</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../../tools-and-bots/summary.html"><strong aria-hidden="true">5.</strong> Tools and bots</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../tools-and-bots/bors.html"><strong aria-hidden="true">5.1.</strong> @bors</a></li><li class="chapter-item expanded "><a href="../../tools-and-bots/timer.html"><strong aria-hidden="true">5.2.</strong> @rust-timer</a></li><li class="chapter-item expanded "><a href="../../tools-and-bots/crater.html"><strong aria-hidden="true">5.3.</strong> @craterbot</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -103,8 +89,7 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
-                <div id="menu-bar-hover-placeholder"></div>
+                                <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
                         <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
@@ -120,33 +105,30 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title">Standard library developers Guide</h1>
 
                     <div class="right-buttons">
-                        
                         <a href="../../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
-                        
                         <a href="https://github.com/rust-lang/std-dev-guide" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                        
+                        <a href="https://github.com/rust-lang/std-dev-guide/edit/master/./src/code-considerations/safety-and-soundness/generics-and-unsafe.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -154,7 +136,6 @@
                         </ul>
                     </div>
                 </div>
-                
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
@@ -167,7 +148,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#generics-and-unsafe" id="generics-and-unsafe">Generics and unsafe</a></h1>
+                        <h1 id="generics-and-unsafe"><a class="header" href="#generics-and-unsafe">Generics and unsafe</a></h1>
 <p>Be careful of generic types that interact with unsafe code. Unless the generic type is bounded by an unsafe trait that specifies its contract, we can't rely on the results of generic types being reliable or correct.</p>
 <p>A place where this commonly comes up is with the <code>RangeBounds</code> trait. You might assume that the start and end bounds given by a <code>RangeBounds</code> implementation will remain the same since it works through shared references. That's not necessarily the case though, an adversarial implementation may change the bounds between calls:</p>
 <pre><code class="language-rust ignore">struct EvilRange(Cell&lt;bool&gt;);
@@ -188,24 +169,20 @@ impl RangeBounds&lt;usize&gt; for EvilRange {
 </code></pre>
 <p>This has <a href="https://github.com/rust-lang/rust/issues/81138">caused problems in the past</a> for code making safety assumptions based on bounds without asserting they stay the same.</p>
 <p>Code using generic types to interact with unsafe should try convert them into known types first, then work with those instead of the generic. For our example with <code>RangeBounds</code>, this may mean converting into a concrete <code>Range</code>, or a tuple of <code>(Bound, Bound)</code>.</p>
-<h2><a class="header" href="#for-reviewers" id="for-reviewers">For reviewers</a></h2>
+<h2 id="for-reviewers"><a class="header" href="#for-reviewers">For reviewers</a></h2>
 <p>Look out for generic functions that also contain unsafe blocks and consider how adversarial implementations of those generics could violate safety.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
                             <a rel="prev" href="../../code-considerations/safety-and-soundness/summary.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                        
 
-                        
                             <a rel="next" href="../../code-considerations/safety-and-soundness/may-dangle.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -213,49 +190,35 @@ impl RangeBounds&lt;usize&gt; for EvilRange {
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
                     <a rel="prev" href="../../code-considerations/safety-and-soundness/summary.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                
 
-                
                     <a rel="next" href="../../code-considerations/safety-and-soundness/may-dangle.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                
             </nav>
 
         </div>
 
-        
 
-        
 
-        
 
-        
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
-        
 
-        
 
-        
         <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
-        
 
         <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-        
 
-        
 
     </body>
 </html>

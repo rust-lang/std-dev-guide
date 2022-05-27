@@ -4,37 +4,25 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Stabilizing features - Standard library developers Guide</title>
-        
-        
 
 
         <!-- Custom HTML head -->
         
-
-
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="Guide for standard library developers">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        
         <link rel="icon" href="../favicon.svg">
-        
-        
         <link rel="shortcut icon" href="../favicon.png">
-        
         <link rel="stylesheet" href="../css/variables.css">
         <link rel="stylesheet" href="../css/general.css">
         <link rel="stylesheet" href="../css/chrome.css">
-        
         <link rel="stylesheet" href="../css/print.css" media="print">
-        
 
         <!-- Fonts -->
         <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
-        
         <link rel="stylesheet" href="../fonts/fonts.css">
-        
 
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../highlight.css">
@@ -42,9 +30,7 @@
         <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
 
-        
     </head>
     <body>
         <!-- Provide site root to javascript -->
@@ -95,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../about-this-guide.html">About this guide</a></li><li class="chapter-item expanded affix "><a href="../getting-started.html">Getting started</a></li><li class="chapter-item expanded "><a href="../team.html"><strong aria-hidden="true">1.</strong> The library team</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../meetings.html"><strong aria-hidden="true">1.1.</strong> Meetings</a></li><li class="chapter-item expanded "><a href="../membership.html"><strong aria-hidden="true">1.2.</strong> Membership</a></li><li class="chapter-item expanded "><a href="../reviewing.html"><strong aria-hidden="true">1.3.</strong> Reviewing</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../feature-lifecycle/summary.html"><strong aria-hidden="true">2.</strong> The feature lifecycle</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../feature-lifecycle/new-unstable-features.html"><strong aria-hidden="true">2.1.</strong> Landing new features</a></li><li class="chapter-item expanded "><a href="../feature-lifecycle/tracking-issues.html"><strong aria-hidden="true">2.2.</strong> Using tracking issues</a></li><li class="chapter-item expanded "><a href="../feature-lifecycle/stabilization.html" class="active"><strong aria-hidden="true">2.3.</strong> Stabilizing features</a></li><li class="chapter-item expanded "><a href="../feature-lifecycle/deprecation.html"><strong aria-hidden="true">2.4.</strong> Deprecating features</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../code-considerations/summary.html"><strong aria-hidden="true">3.</strong> Code considerations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../code-considerations/design/summary.html"><strong aria-hidden="true">3.1.</strong> Design</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../code-considerations/design/public-apis.html"><strong aria-hidden="true">3.1.1.</strong> Public APIs</a></li><li class="chapter-item expanded "><a href="../code-considerations/design/must-use.html"><strong aria-hidden="true">3.1.2.</strong> When to add #[must_use]</a></li></ol></li><li class="chapter-item expanded "><a href="../code-considerations/breaking-changes/summary.html"><strong aria-hidden="true">3.2.</strong> Breaking changes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../code-considerations/breaking-changes/behavior.html"><strong aria-hidden="true">3.2.1.</strong> Breakage from changing behavior</a></li><li class="chapter-item expanded "><a href="../code-considerations/breaking-changes/new-trait-impls.html"><strong aria-hidden="true">3.2.2.</strong> Breakage from new trait impls</a></li><li class="chapter-item expanded "><a href="../code-considerations/breaking-changes/fundamental.html"><strong aria-hidden="true">3.2.3.</strong> #[fundamental] types</a></li><li class="chapter-item expanded "><a href="../code-considerations/breaking-changes/prelude.html"><strong aria-hidden="true">3.2.4.</strong> Breakage from changing the prelude</a></li></ol></li><li class="chapter-item expanded "><a href="../code-considerations/safety-and-soundness/summary.html"><strong aria-hidden="true">3.3.</strong> Safety and soundness</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../code-considerations/safety-and-soundness/generics-and-unsafe.html"><strong aria-hidden="true">3.3.1.</strong> Generics and unsafe</a></li><li class="chapter-item expanded "><a href="../code-considerations/safety-and-soundness/may-dangle.html"><strong aria-hidden="true">3.3.2.</strong> Drop and #[may_dangle]</a></li><li class="chapter-item expanded "><a href="../code-considerations/safety-and-soundness/mem-and-exclusive-refs.html"><strong aria-hidden="true">3.3.3.</strong> std::mem and exclusive references</a></li></ol></li><li class="chapter-item expanded "><a href="../code-considerations/using-unstable-lang/summary.html"><strong aria-hidden="true">3.4.</strong> Using unstable language features</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../code-considerations/using-unstable-lang/const-generics.html"><strong aria-hidden="true">3.4.1.</strong> Const generics</a></li><li class="chapter-item expanded "><a href="../code-considerations/using-unstable-lang/specialization.html"><strong aria-hidden="true">3.4.2.</strong> Specialization</a></li></ol></li><li class="chapter-item expanded "><a href="../code-considerations/performance/summary.html"><strong aria-hidden="true">3.5.</strong> Performance</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../code-considerations/performance/inline.html"><strong aria-hidden="true">3.5.1.</strong> When to #[inline]</a></li><li class="spacer"></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../documentation/summary.html"><strong aria-hidden="true">4.</strong> Documentation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../documentation/doc-alias-policy.html"><strong aria-hidden="true">4.1.</strong> doc alias policy</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../tools-and-bots/summary.html"><strong aria-hidden="true">5.</strong> Tools and bots</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tools-and-bots/bors.html"><strong aria-hidden="true">5.1.</strong> @bors</a></li><li class="chapter-item expanded "><a href="../tools-and-bots/timer.html"><strong aria-hidden="true">5.2.</strong> @rust-timer</a></li><li class="chapter-item expanded "><a href="../tools-and-bots/crater.html"><strong aria-hidden="true">5.3.</strong> @craterbot</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../about-this-guide.html">About this guide</a></li><li class="chapter-item expanded affix "><a href="../getting-started.html">Getting started</a></li><li class="chapter-item expanded "><a href="../team.html"><strong aria-hidden="true">1.</strong> The library team</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../meetings.html"><strong aria-hidden="true">1.1.</strong> Meetings</a></li><li class="chapter-item expanded "><a href="../membership.html"><strong aria-hidden="true">1.2.</strong> Membership</a></li><li class="chapter-item expanded "><a href="../reviewing.html"><strong aria-hidden="true">1.3.</strong> Reviewing</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../feature-lifecycle/summary.html"><strong aria-hidden="true">2.</strong> The feature lifecycle</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../feature-lifecycle/new-unstable-features.html"><strong aria-hidden="true">2.1.</strong> Landing new features</a></li><li class="chapter-item expanded "><a href="../feature-lifecycle/tracking-issues.html"><strong aria-hidden="true">2.2.</strong> Using tracking issues</a></li><li class="chapter-item expanded "><a href="../feature-lifecycle/stabilization.html" class="active"><strong aria-hidden="true">2.3.</strong> Stabilizing features</a></li><li class="chapter-item expanded "><a href="../feature-lifecycle/deprecation.html"><strong aria-hidden="true">2.4.</strong> Deprecating features</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../code-considerations/summary.html"><strong aria-hidden="true">3.</strong> Code considerations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../code-considerations/design/summary.html"><strong aria-hidden="true">3.1.</strong> Design</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../code-considerations/design/public-apis.html"><strong aria-hidden="true">3.1.1.</strong> Public APIs</a></li><li class="chapter-item expanded "><a href="../code-considerations/design/must-use.html"><strong aria-hidden="true">3.1.2.</strong> When to add #[must_use]</a></li></ol></li><li class="chapter-item expanded "><a href="../code-considerations/breaking-changes/summary.html"><strong aria-hidden="true">3.2.</strong> Breaking changes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../code-considerations/breaking-changes/behavior.html"><strong aria-hidden="true">3.2.1.</strong> Breakage from changing behavior</a></li><li class="chapter-item expanded "><a href="../code-considerations/breaking-changes/new-trait-impls.html"><strong aria-hidden="true">3.2.2.</strong> Breakage from new trait impls</a></li><li class="chapter-item expanded "><a href="../code-considerations/breaking-changes/fundamental.html"><strong aria-hidden="true">3.2.3.</strong> #[fundamental] types</a></li><li class="chapter-item expanded "><a href="../code-considerations/breaking-changes/prelude.html"><strong aria-hidden="true">3.2.4.</strong> Breakage from changing the prelude</a></li></ol></li><li class="chapter-item expanded "><a href="../code-considerations/safety-and-soundness/summary.html"><strong aria-hidden="true">3.3.</strong> Safety and soundness</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../code-considerations/safety-and-soundness/generics-and-unsafe.html"><strong aria-hidden="true">3.3.1.</strong> Generics and unsafe</a></li><li class="chapter-item expanded "><a href="../code-considerations/safety-and-soundness/may-dangle.html"><strong aria-hidden="true">3.3.2.</strong> Drop and #[may_dangle]</a></li><li class="chapter-item expanded "><a href="../code-considerations/safety-and-soundness/mem-and-exclusive-refs.html"><strong aria-hidden="true">3.3.3.</strong> std::mem and exclusive references</a></li></ol></li><li class="chapter-item expanded "><a href="../code-considerations/using-unstable-lang/summary.html"><strong aria-hidden="true">3.4.</strong> Using unstable language features</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../code-considerations/using-unstable-lang/const-generics.html"><strong aria-hidden="true">3.4.1.</strong> Const generics</a></li><li class="chapter-item expanded "><a href="../code-considerations/using-unstable-lang/specialization.html"><strong aria-hidden="true">3.4.2.</strong> Specialization</a></li></ol></li><li class="chapter-item expanded "><a href="../code-considerations/performance/summary.html"><strong aria-hidden="true">3.5.</strong> Performance</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../code-considerations/performance/inline.html"><strong aria-hidden="true">3.5.1.</strong> When to #[inline]</a></li><li class="spacer"></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../documentation/summary.html"><strong aria-hidden="true">4.</strong> Documentation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../documentation/doc-alias-policy.html"><strong aria-hidden="true">4.1.</strong> doc alias policy</a></li><li class="chapter-item expanded "><a href="../documentation/safety-comments.html"><strong aria-hidden="true">4.2.</strong> safety comments policy</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../tools-and-bots/summary.html"><strong aria-hidden="true">5.</strong> Tools and bots</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tools-and-bots/bors.html"><strong aria-hidden="true">5.1.</strong> @bors</a></li><li class="chapter-item expanded "><a href="../tools-and-bots/timer.html"><strong aria-hidden="true">5.2.</strong> @rust-timer</a></li><li class="chapter-item expanded "><a href="../tools-and-bots/crater.html"><strong aria-hidden="true">5.3.</strong> @craterbot</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -103,8 +89,7 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
-                <div id="menu-bar-hover-placeholder"></div>
+                                <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
                         <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
@@ -120,33 +105,30 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title">Standard library developers Guide</h1>
 
                     <div class="right-buttons">
-                        
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
-                        
                         <a href="https://github.com/rust-lang/std-dev-guide" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                        
+                        <a href="https://github.com/rust-lang/std-dev-guide/edit/master/./src/feature-lifecycle/stabilization.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -154,7 +136,6 @@
                         </ul>
                     </div>
                 </div>
-                
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
@@ -167,38 +148,38 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#stabilizing-features" id="stabilizing-features">Stabilizing features</a></h1>
+                        <h1 id="stabilizing-features"><a class="header" href="#stabilizing-features">Stabilizing features</a></h1>
 <ul>
 <li><strong>Status:</strong> Current</li>
 <li><strong>Last Updated:</strong> 2022-05-27</li>
 </ul>
 <p>Feature stabilization involves adding <code>#[stable]</code> attributes. They may be introduced alongside new trait impls or replace existing <code>#[unstable]</code> attributes.</p>
 <p>Stabilization goes through the Libs FCP (Final Comment Period) process, which typically occurs on the <a href="./tracking-issues.html">tracking issue</a> for the feature.</p>
-<h2><a class="header" href="#when-is-an-fcp-appropriate" id="when-is-an-fcp-appropriate">When is an FCP appropriate?</a></h2>
+<h2 id="when-is-an-fcp-appropriate"><a class="header" href="#when-is-an-fcp-appropriate">When is an FCP appropriate?</a></h2>
 <p>Once an unstable feature's API design space (e.g. alternative APIs) has been fully explored with no outstanding concerns, anyone may push for its stabilization.</p>
 <p>If you're unsure if a feature is ready for stabilization the first step should be to ask in the relevant tracking issue and get assistance from other participants in that discussion. In some cases the tracking issue may not have many other active participants, so if you're ever having trouble getting any feedback please ping one of the <a href="https://github.com/rust-lang/highfive/blob/master/highfive/configs/rust-lang/rust.json">libs team reviewers</a> directly to request assistance.</p>
-<h2><a class="header" href="#stabilization-report" id="stabilization-report">Stabilization Report</a></h2>
+<h2 id="stabilization-report"><a class="header" href="#stabilization-report">Stabilization Report</a></h2>
 <p>Once a feature is ready for stabilization the first step of the FCP process is writing a stabilization report. Stabilization reports are not mandatory but they are heavily encouraged, and may be mandated by library API team members if they feel it necessary. The purpose of stabilization reports is to help reviewers more quickly make decisions and to simplify the process of documenting stabilized APIs in release notes. Stabilization reports consist of three primary sections, a implementation history, an API summary, and an experience report.</p>
 <p>The <strong>Implementation History</strong> section should summarize the initial discussion during the implementation PR, every change that has been made to the feature since the initial implementation, all issues that were raised during the lifetime of the feature, and how they were resolved.</p>
 <p>The <strong>API Summary</strong> section should include a precise description of what APIs are being introduced to the standard libraries. This can often be a simple link back to the top level comment if it's up to date, but in some situations it may not be possible to edit the original tracking issue to fix outdated information, such as when the author of the stabilization report is not the author of the tracking issue itself.</p>
 <p>The libs team maintains a tool for this called <a href="https://github.com/rust-lang/libs-team/tree/main/tools/unstable-api"><code>cargo unstable-api</code></a> that can be used to generate these API summaries in some cases. <em>Note</em> the current implementation of this tool is fragile and does not work in all cases. We hope to have a more permanent version of this tool in the future that is built ontop of either rustdoc or rustc's own APIs.</p>
 <p>The <strong>Experience Report</strong> section should include concrete usecases of users who have wanted to use the feature and who have tested that it works for their needs. The experience report should include a brief summary of the experience of using that feature. Ideally this would include links to commits or branches where the feature was integrated with their project, but this is not a requirement. Alternatively, users can provide usage examples of crates that export an identical API to the one being stabilized.</p>
 <p>You can see an example of a stabilization report in <a href="https://github.com/rust-lang/rust/issues/88581#issuecomment-1054642118">#88581</a>.</p>
-<h2><a class="header" href="#before-writing-a-pr-to-stabilize-a-feature" id="before-writing-a-pr-to-stabilize-a-feature">Before writing a PR to stabilize a feature</a></h2>
+<h2 id="before-writing-a-pr-to-stabilize-a-feature"><a class="header" href="#before-writing-a-pr-to-stabilize-a-feature">Before writing a PR to stabilize a feature</a></h2>
 <p>Check to see if a FCP has completed first. If not, either ping <code>@rust-lang/libs-api</code> or leave a comment asking about the status of the feature.</p>
 <p>This will save you from opening a stabilization PR and having it need regular rebasing while the FCP process runs its course.</p>
-<h2><a class="header" href="#partial-stabilizations" id="partial-stabilizations">Partial Stabilizations</a></h2>
+<h2 id="partial-stabilizations"><a class="header" href="#partial-stabilizations">Partial Stabilizations</a></h2>
 <p>When you only wish to stabilize a subset of an existing feature you should skip creating a new tracking issue and instead create a partial stabilization PR for the subset of the feature being stabilized.</p>
 <p>If you're unsure if a feature is ready for partial stabilization the first step should be to ask in the relevant tracking issue and get assistance from other participants in that discussion. In some cases the tracking issue may not have many other active participants, so if you're ever having trouble getting any feedback please ping one of the <a href="https://github.com/rust-lang/highfive/blob/master/highfive/configs/rust-lang/rust.json">libs team reviewers</a> directly to request assistance.</p>
 <p>You can see an example of partially stabilizing a feature with tracking issue <a href="https://github.com/rust-lang/rust/issues/71146">#71146</a> and partial stabilization PR <a href="https://github.com/rust-lang/rust/pull/94640">#94640</a>.</p>
-<h2><a class="header" href="#when-theres-const-involved" id="when-theres-const-involved">When there's <code>const</code> involved</a></h2>
+<h2 id="when-theres-const-involved"><a class="header" href="#when-theres-const-involved">When there's <code>const</code> involved</a></h2>
 <p>Const functions can be stabilized in a PR that replaces <code>#[rustc_const_unstable]</code> attributes with <code>#[rustc_const_stable]</code> ones. The <a href="https://github.com/rust-lang/const-eval">Constant Evaluation WG</a> should be pinged for input on whether or not the <code>const</code>-ness is something we want to commit to. If it is an intrinsic being exposed that is const-stabilized then <code>@rust-lang/lang</code> should also be included in the FCP.</p>
 <p>Check whether the function internally depends on other unstable <code>const</code> functions through <code>#[allow_internal_unstable]</code> attributes and consider how the function could be implemented if its internally unstable calls were removed. See the <em>Stability attributes</em> page for more details on <code>#[allow_internal_unstable]</code>.</p>
 <p>Where <code>unsafe</code> and <code>const</code> is involved, e.g., for operations which are &quot;unconst&quot;, that the const safety argument for the usage also be documented. That is, a <code>const fn</code> has additional determinism (e.g. run-time/compile-time results must correspond and the function's output only depends on its inputs...) restrictions that must be preserved, and those should be argued when <code>unsafe</code> is used.</p>
-<h2><a class="header" href="#stabilization-pr-for-library-features" id="stabilization-pr-for-library-features">Stabilization PR for Library Features</a></h2>
+<h2 id="stabilization-pr-for-library-features"><a class="header" href="#stabilization-pr-for-library-features">Stabilization PR for Library Features</a></h2>
 <p>Once we have decided to stabilize a feature, we need to have a PR that actually makes that stabilization happen. These kinds of PRs are a great way to get involved in Rust, as they're typically small -- just updating attributes.</p>
 <p>Here is a general guide to how to stabilize a feature -- every feature is different, of course, so some features may require steps beyond what this guide talks about.</p>
-<h3><a class="header" href="#update-the-stability-attributes-on-the-items" id="update-the-stability-attributes-on-the-items">Update the stability attributes on the items</a></h3>
+<h3 id="update-the-stability-attributes-on-the-items"><a class="header" href="#update-the-stability-attributes-on-the-items">Update the stability attributes on the items</a></h3>
 <p>Library items are marked unstable via the <code>#[unstable]</code> attribute, like this:</p>
 <pre><code class="language-rust ignore">#[unstable(feature = &quot;total_cmp&quot;, issue = &quot;72599&quot;)]
 pub fn total_cmp(&amp;self, other: &amp;Self) -&gt; crate::cmp::Ordering { ... }
@@ -207,7 +188,7 @@ pub fn total_cmp(&amp;self, other: &amp;Self) -&gt; crate::cmp::Ordering { ... }
 <pre><code class="language-rust ignore">#[stable(feature = &quot;total_cmp&quot;, since = &quot;1.61.0&quot;)]
 </code></pre>
 <p>Note that, the version number is updated to be the version number of the stable release where this feature will appear. This can be found by consulting <a href="https://github.com/rust-lang/rust/blob/master/src/version"><code>src/version</code></a> on the current master branch of <code>rust-lang/rust</code>.</p>
-<h3><a class="header" href="#remove-feature-gates-from-doctests" id="remove-feature-gates-from-doctests">Remove feature gates from doctests</a></h3>
+<h3 id="remove-feature-gates-from-doctests"><a class="header" href="#remove-feature-gates-from-doctests">Remove feature gates from doctests</a></h3>
 <p>All the doctests on the items being stabilized will be enabling the unstable feature, so now that it's stable those attributes are no longer needed and should be removed.</p>
 <pre><code class="language-diff"> /// # Examples
  ///
@@ -218,7 +199,7 @@ pub fn total_cmp(&amp;self, other: &amp;Self) -&gt; crate::cmp::Ordering { ... }
  /// ```
 </code></pre>
 <p>The most obvious place to find these is on the item itself, but it's worth searching the whole library.  Often you'll find other unstable methods that were also using it in their tests.</p>
-<h3><a class="header" href="#remove-feature-gates-from-the-compiler" id="remove-feature-gates-from-the-compiler">Remove feature gates from the compiler</a></h3>
+<h3 id="remove-feature-gates-from-the-compiler"><a class="header" href="#remove-feature-gates-from-the-compiler">Remove feature gates from the compiler</a></h3>
 <p>The compiler builds with nightly features allowed, so you may find uses of the feature there as well.  These also need to be removed.</p>
 <pre><code class="language-diff"> #![feature(once_cell)]
  #![feature(never_type)]
@@ -226,7 +207,7 @@ pub fn total_cmp(&amp;self, other: &amp;Self) -&gt; crate::cmp::Ordering { ... }
  #![feature(trusted_step)]
  #![feature(try_blocks)]
 </code></pre>
-<h2><a class="header" href="#stabilization-pr-checklist" id="stabilization-pr-checklist">Stabilization PR Checklist</a></h2>
+<h2 id="stabilization-pr-checklist"><a class="header" href="#stabilization-pr-checklist">Stabilization PR Checklist</a></h2>
 <p>To stabilize a feature, follow these steps:</p>
 <ol start="0">
 <li>Create a stabiliation report in the tracking issue for the feature being stabilized.</li>
@@ -248,17 +229,13 @@ pub fn total_cmp(&amp;self, other: &amp;Self) -&gt; crate::cmp::Ordering { ... }
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
                             <a rel="prev" href="../feature-lifecycle/tracking-issues.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                        
 
-                        
                             <a rel="next" href="../feature-lifecycle/deprecation.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        
 
                         <div style="clear: both"></div>
                     </nav>
@@ -266,49 +243,35 @@ pub fn total_cmp(&amp;self, other: &amp;Self) -&gt; crate::cmp::Ordering { ... }
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
                     <a rel="prev" href="../feature-lifecycle/tracking-issues.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                
 
-                
                     <a rel="next" href="../feature-lifecycle/deprecation.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                
             </nav>
 
         </div>
 
-        
 
-        
 
-        
 
-        
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
-        
 
-        
 
-        
         <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
-        
 
         <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-        
 
-        
 
     </body>
 </html>
