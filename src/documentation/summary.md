@@ -1,3 +1,4 @@
 - [doc alias policy](./doc-alias-policy.md)
 - [safety comments policy](./safety-comments.md)
 - [how to write documentation](./how-to-write-documentation.md)
+- [reviewing doc changes](./reviewing-doc-changes.md)
