@@ -48,8 +48,8 @@
 - [Documentation](./documentation/summary.md)
     - [doc alias policy](./documentation/doc-alias-policy.md)
     - [safety comments policy](./documentation/safety-comments.md)
-    - [how to write documentation](./how-to-write-documentation.md)
-    - [reviewing doc changes](./reviewing-doc-changes.md)
+    - [how to write documentation](./documentation/how-to-write-documentation.md)
+    - [reviewing doc changes](./documentation/reviewing-doc-changes.md)
 
 ---
 
