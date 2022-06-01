@@ -39,9 +39,9 @@ Intra-doc links (you can see the full explanations for the feature
 [here](https://doc.rust-lang.org/rustdoc/write-documentation/linking-to-items-by-name.html))
 should be used as much as possible whenever a type is mentioned.
 
-Little note: when you are documenting an item, no need to link to it. So if you
-write documentation for `String::push_str` method, no need to link to the method
-`push_str` or to the `String` type.
+Little note: when you are documenting an item, there is no need to link to it.
+So, if you write documentation for the `String::push_str` method, there is
+no need to link to the `push_str` method or the `String` type.
 
 If you have cases like `Vec<String>`, you need to use intra-doc links on both
 `Vec` and `String` as well. It would look like this:
