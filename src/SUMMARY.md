@@ -25,6 +25,7 @@
 ---
 
 - [Code considerations](./code-considerations/summary.md)
+    - [Criteria for inclusion in `std`](./code-considerations/criteria-for-inclusion.md)
     - [Design](./code-considerations/design/summary.md)
         - [Public APIs](./code-considerations/design/public-apis.md)
         - [When to add `#[must_use]`](./code-considerations/design/must-use.md)
@@ -48,8 +49,8 @@
 - [Documentation](./documentation/summary.md)
     - [doc alias policy](./documentation/doc-alias-policy.md)
     - [safety comments policy](./documentation/safety-comments.md)
-    - [how to write documentation](./how-to-write-documentation.md)
-    - [reviewing doc changes](./reviewing-doc-changes.md)
+    - [how to write documentation](./documentation/how-to-write-documentation.md)
+    - [reviewing doc changes](./documentation/reviewing-doc-changes.md)
 
 ---
 
