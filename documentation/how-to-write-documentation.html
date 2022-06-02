@@ -151,21 +151,6 @@
                         <h1 id="how-to-write-documentation"><a class="header" href="#how-to-write-documentation">How to write documentation</a></h1>
 <p>This document explains how to write documentation for the std/core public APIs.</p>
 <p>Let's start with some general information:</p>
-<h3 id="contractions"><a class="header" href="#contractions">Contractions</a></h3>
-<p>It is common in English to have contractions such as &quot;don't&quot; or &quot;can't&quot;. Do not
-use these in documentation. Always write their &quot;full form&quot;:</p>
-<ul>
-<li>&quot;do not&quot; instead of &quot;don't&quot;</li>
-<li>&quot;cannot&quot; instead of &quot;can't&quot;</li>
-<li>&quot;it would&quot; instead of &quot;it'd&quot;</li>
-<li>&quot;it will&quot; instead of &quot;it'll&quot;</li>
-<li>&quot;it is&quot;/&quot;it has&quot; instead of &quot;it's&quot;</li>
-<li>&quot;you are&quot; instead of &quot;you're&quot;</li>
-<li>&quot;they are&quot; instead of &quot;they're&quot;</li>
-<li>etc</li>
-</ul>
-<p>The only exception to this rule is &quot;let's&quot; as it is specific/known/common enough.</p>
-<p>The reason is simply to make the reading simpler for as many people as possible.</p>
 <h3 id="when-to-use-inline-code-blocks"><a class="header" href="#when-to-use-inline-code-blocks">When to use inline code blocks</a></h3>
 <p>Whenever you are talking about a type or anything code related, it should be in a
 inline code block. As a reminder, a inline code block is created with backticks
@@ -176,15 +161,9 @@ inline code block. As a reminder, a inline code block is created with backticks
 <p>Intra-doc links (you can see the full explanations for the feature
 <a href="https://doc.rust-lang.org/rustdoc/write-documentation/linking-to-items-by-name.html">here</a>)
 should be used as much as possible whenever a type is mentioned.</p>
-<p>Little note: when you are documenting an item, no need to link to it. So if you
-write documentation for <code>String::push_str</code> method, no need to link to the method
-<code>push_str</code> or to the <code>String</code> type.</p>
-<p>If you have cases like <code>Vec&lt;String&gt;</code>, you need to use intra-doc links on both
-<code>Vec</code> and <code>String</code> as well. It would look like this:</p>
-<pre><code class="language-text">This is a [`Vec`]`&lt;`[`String`]`&gt;`.
-</code></pre>
-<p>Extra explanations: since both <code>Vec</code> and <code>String</code> are in codeblocks, <code>&lt;</code> and <code>&gt;</code>
-should as well, otherwise it would render badly.</p>
+<p>Little note: when you are documenting an item, there is no need to link to it.
+So, if you write documentation for the <code>String::push_str</code> method, there is
+no need to link to the <code>push_str</code> method or the <code>String</code> type.</p>
 <h3 id="code-blocks"><a class="header" href="#code-blocks">Code blocks</a></h3>
 <p>With rustdoc, code blocks are tested (because they are treated as Rust code
 blocks by default). It allows us to know if the documentation is up to date. As
@@ -239,11 +218,12 @@ mentioned! This explanation needs to be prepended by a <code>Panics</code> title
 </code></pre>
 <h3 id="examples"><a class="header" href="#examples">Examples</a></h3>
 <p>As for the examples, they have to show the usage of the function/method. Just
-like the <code>panic</code> section, they need to be prepended by a <code>Examples</code> title.</p>
+like the <code>panic</code> section, they need to be prepended by a <code>Example</code> title (plural
+if there is more than one).</p>
 <p>It is better if you use <code>assert*!</code> macros at the end to ensure that the example
 is working as expected. It also allows the readers to understand more easily
 what the function is doing (or returning).</p>
-<pre><code class="language-text"># Examples
+<pre><code class="language-text"># Example
 
 ```
 let s = MyType::new(&quot;hello &quot;);
