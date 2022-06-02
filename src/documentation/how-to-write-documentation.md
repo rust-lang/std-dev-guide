@@ -4,24 +4,6 @@ This document explains how to write documentation for the std/core public APIs.
 
 Let's start with some general information:
 
-### Contractions
-
-It is common in English to have contractions such as "don't" or "can't". Do not
-use these in documentation. Always write their "full form":
-
- * "do not" instead of "don't"
- * "cannot" instead of "can't"
- * "it would" instead of "it'd"
- * "it will" instead of "it'll"
- * "it is"/"it has" instead of "it's"
- * "you are" instead of "you're"
- * "they are" instead of "they're"
- * etc
-
-The only exception to this rule is "let's" as it is specific/known/common enough.
-
-The reason is simply to make the reading simpler for as many people as possible.
-
 ### When to use inline code blocks
 
 Whenever you are talking about a type or anything code related, it should be in a
@@ -39,19 +21,9 @@ Intra-doc links (you can see the full explanations for the feature
 [here](https://doc.rust-lang.org/rustdoc/write-documentation/linking-to-items-by-name.html))
 should be used as much as possible whenever a type is mentioned.
 
-Little note: when you are documenting an item, no need to link to it. So if you
-write documentation for `String::push_str` method, no need to link to the method
-`push_str` or to the `String` type.
-
-If you have cases like `Vec<String>`, you need to use intra-doc links on both
-`Vec` and `String` as well. It would look like this:
-
-```text
-This is a [`Vec`]`<`[`String`]`>`.
-```
-
-Extra explanations: since both `Vec` and `String` are in codeblocks, `<` and `>`
-should as well, otherwise it would render badly.
+Little note: when you are documenting an item, there is no need to link to it.
+So, if you write documentation for the `String::push_str` method, there is
+no need to link to the `push_str` method or the `String` type.
 
 ### Code blocks
 
@@ -130,14 +102,15 @@ mentioned! This explanation needs to be prepended by a `Panics` title:
 ### Examples
 
 As for the examples, they have to show the usage of the function/method. Just
-like the `panic` section, they need to be prepended by a `Examples` title.
+like the `panic` section, they need to be prepended by a `Example` title (plural
+if there is more than one).
 
 It is better if you use `assert*!` macros at the end to ensure that the example
 is working as expected. It also allows the readers to understand more easily
 what the function is doing (or returning).
 
 ````text
-# Examples
+# Example
 
 ```
 let s = MyType::new("hello ");
