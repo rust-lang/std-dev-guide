@@ -1,0 +1,307 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>how to write documentation - Standard library developers Guide</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Guide for standard library developers">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../about-this-guide.html">About this guide</a></li><li class="chapter-item expanded affix "><a href="../getting-started.html">Getting started</a></li><li class="chapter-item expanded "><a href="../team.html"><strong aria-hidden="true">1.</strong> The library team</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../meetings.html"><strong aria-hidden="true">1.1.</strong> Meetings</a></li><li class="chapter-item expanded "><a href="../membership.html"><strong aria-hidden="true">1.2.</strong> Membership</a></li><li class="chapter-item expanded "><a href="../reviewing.html"><strong aria-hidden="true">1.3.</strong> Reviewing</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../development/building-and-debugging.html"><strong aria-hidden="true">2.</strong> Building and debugging libraries</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../feature-lifecycle/summary.html"><strong aria-hidden="true">3.</strong> The feature lifecycle</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../feature-lifecycle/new-unstable-features.html"><strong aria-hidden="true">3.1.</strong> Landing new features</a></li><li class="chapter-item expanded "><a href="../feature-lifecycle/tracking-issues.html"><strong aria-hidden="true">3.2.</strong> Using tracking issues</a></li><li class="chapter-item expanded "><a href="../feature-lifecycle/stabilization.html"><strong aria-hidden="true">3.3.</strong> Stabilizing features</a></li><li class="chapter-item expanded "><a href="../feature-lifecycle/deprecation.html"><strong aria-hidden="true">3.4.</strong> Deprecating features</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../code-considerations/summary.html"><strong aria-hidden="true">4.</strong> Code considerations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../code-considerations/design/summary.html"><strong aria-hidden="true">4.1.</strong> Design</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../code-considerations/design/public-apis.html"><strong aria-hidden="true">4.1.1.</strong> Public APIs</a></li><li class="chapter-item expanded "><a href="../code-considerations/design/must-use.html"><strong aria-hidden="true">4.1.2.</strong> When to add #[must_use]</a></li></ol></li><li class="chapter-item expanded "><a href="../code-considerations/breaking-changes/summary.html"><strong aria-hidden="true">4.2.</strong> Breaking changes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../code-considerations/breaking-changes/behavior.html"><strong aria-hidden="true">4.2.1.</strong> Breakage from changing behavior</a></li><li class="chapter-item expanded "><a href="../code-considerations/breaking-changes/new-trait-impls.html"><strong aria-hidden="true">4.2.2.</strong> Breakage from new trait impls</a></li><li class="chapter-item expanded "><a href="../code-considerations/breaking-changes/fundamental.html"><strong aria-hidden="true">4.2.3.</strong> #[fundamental] types</a></li><li class="chapter-item expanded "><a href="../code-considerations/breaking-changes/prelude.html"><strong aria-hidden="true">4.2.4.</strong> Breakage from changing the prelude</a></li></ol></li><li class="chapter-item expanded "><a href="../code-considerations/safety-and-soundness/summary.html"><strong aria-hidden="true">4.3.</strong> Safety and soundness</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../code-considerations/safety-and-soundness/generics-and-unsafe.html"><strong aria-hidden="true">4.3.1.</strong> Generics and unsafe</a></li><li class="chapter-item expanded "><a href="../code-considerations/safety-and-soundness/may-dangle.html"><strong aria-hidden="true">4.3.2.</strong> Drop and #[may_dangle]</a></li><li class="chapter-item expanded "><a href="../code-considerations/safety-and-soundness/mem-and-exclusive-refs.html"><strong aria-hidden="true">4.3.3.</strong> std::mem and exclusive references</a></li></ol></li><li class="chapter-item expanded "><a href="../code-considerations/using-unstable-lang/summary.html"><strong aria-hidden="true">4.4.</strong> Using unstable language features</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../code-considerations/using-unstable-lang/const-generics.html"><strong aria-hidden="true">4.4.1.</strong> Const generics</a></li><li class="chapter-item expanded "><a href="../code-considerations/using-unstable-lang/specialization.html"><strong aria-hidden="true">4.4.2.</strong> Specialization</a></li></ol></li><li class="chapter-item expanded "><a href="../code-considerations/performance/summary.html"><strong aria-hidden="true">4.5.</strong> Performance</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../code-considerations/performance/inline.html"><strong aria-hidden="true">4.5.1.</strong> When to #[inline]</a></li><li class="spacer"></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../documentation/summary.html"><strong aria-hidden="true">5.</strong> Documentation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../documentation/doc-alias-policy.html"><strong aria-hidden="true">5.1.</strong> doc alias policy</a></li><li class="chapter-item expanded "><a href="../documentation/safety-comments.html"><strong aria-hidden="true">5.2.</strong> safety comments policy</a></li><li class="chapter-item expanded "><a href="../documentation/how-to-write-documentation.html" class="active"><strong aria-hidden="true">5.3.</strong> how to write documentation</a></li><li class="chapter-item expanded "><a href="../documentation/reviewing-doc-changes.html"><strong aria-hidden="true">5.4.</strong> reviewing doc changes</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../tools-and-bots/summary.html"><strong aria-hidden="true">6.</strong> Tools and bots</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tools-and-bots/bors.html"><strong aria-hidden="true">6.1.</strong> @bors</a></li><li class="chapter-item expanded "><a href="../tools-and-bots/timer.html"><strong aria-hidden="true">6.2.</strong> @rust-timer</a></li><li class="chapter-item expanded "><a href="../tools-and-bots/crater.html"><strong aria-hidden="true">6.3.</strong> @craterbot</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Standard library developers Guide</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/rust-lang/std-dev-guide" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/rust-lang/std-dev-guide/edit/master/./src/documentation/how-to-write-documentation.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="how-to-write-documentation"><a class="header" href="#how-to-write-documentation">How to write documentation</a></h1>
+<p>This document explains how to write documentation for the std/core public APIs.</p>
+<p>Let's start with some general information:</p>
+<h3 id="contractions"><a class="header" href="#contractions">Contractions</a></h3>
+<p>It is common in English to have contractions such as &quot;don't&quot; or &quot;can't&quot;. Do not
+use these in documentation. Always write their &quot;full form&quot;:</p>
+<ul>
+<li>&quot;do not&quot; instead of &quot;don't&quot;</li>
+<li>&quot;cannot&quot; instead of &quot;can't&quot;</li>
+<li>&quot;it would&quot; instead of &quot;it'd&quot;</li>
+<li>&quot;it will&quot; instead of &quot;it'll&quot;</li>
+<li>&quot;it is&quot;/&quot;it has&quot; instead of &quot;it's&quot;</li>
+<li>&quot;you are&quot; instead of &quot;you're&quot;</li>
+<li>&quot;they are&quot; instead of &quot;they're&quot;</li>
+<li>etc</li>
+</ul>
+<p>The only exception to this rule is &quot;let's&quot; as it is specific/known/common enough.</p>
+<p>The reason is simply to make the reading simpler for as many people as possible.</p>
+<h3 id="when-to-use-inline-code-blocks"><a class="header" href="#when-to-use-inline-code-blocks">When to use inline code blocks</a></h3>
+<p>Whenever you are talking about a type or anything code related, it should be in a
+inline code block. As a reminder, a inline code block is created with backticks
+(`). For example:</p>
+<pre><code class="language-text">This a `Vec` and it has a method `push` which you can call by doing `Vec::push`.
+</code></pre>
+<h3 id="when-to-use-intra-doc-links"><a class="header" href="#when-to-use-intra-doc-links">When to use intra-doc links</a></h3>
+<p>Intra-doc links (you can see the full explanations for the feature
+<a href="https://doc.rust-lang.org/rustdoc/write-documentation/linking-to-items-by-name.html">here</a>)
+should be used as much as possible whenever a type is mentioned.</p>
+<p>Little note: when you are documenting an item, no need to link to it. So if you
+write documentation for <code>String::push_str</code> method, no need to link to the method
+<code>push_str</code> or to the <code>String</code> type.</p>
+<p>If you have cases like <code>Vec&lt;String&gt;</code>, you need to use intra-doc links on both
+<code>Vec</code> and <code>String</code> as well. It would look like this:</p>
+<pre><code class="language-text">This is a [`Vec`]`&lt;`[`String`]`&gt;`.
+</code></pre>
+<p>Extra explanations: since both <code>Vec</code> and <code>String</code> are in codeblocks, <code>&lt;</code> and <code>&gt;</code>
+should as well, otherwise it would render badly.</p>
+<h3 id="code-blocks"><a class="header" href="#code-blocks">Code blocks</a></h3>
+<p>With rustdoc, code blocks are tested (because they are treated as Rust code
+blocks by default). It allows us to know if the documentation is up to date. As
+such, please avoid using <code>ignore</code> as much as possible on code blocks! If you
+want as a language other than Rust, simply set it in the code block tags:</p>
+<pre><code class="language-text">```text
+This is not rust code!
+```
+</code></pre>
+<p>Some special cases:</p>
+<ul>
+<li>If the code example cannot be run (when documenting a I/O item for example),
+use <code>no_run</code>.</li>
+<li>If it is expected to fail, use <code>should_panic</code>.</li>
+<li>If it is expected to fail compilation (which be quite rare!), use <code>compile_fail</code>.</li>
+</ul>
+<p>You can find more information about code blocks
+<a href="https://doc.rust-lang.org/rustdoc/write-documentation/documentation-tests.html">here</a>.</p>
+<h2 id="how-to-write-documentation-for-a-module"><a class="header" href="#how-to-write-documentation-for-a-module">How to write documentation for a module</a></h2>
+<p>A module is supposed to contain &quot;similar&quot; items. As such, its documentation is
+supposed to give an overview and eventually <strong>a base</strong> to understand what the
+items it contains are doing.</p>
+<p>You can take a look at the
+<a href="https://doc.rust-lang.org/nightly/std/f32/index.html">f32 module</a> or at the
+<a href="https://doc.rust-lang.org/nightly/std/fmt/index.html">fmt module</a> to see
+good examples.</p>
+<h2 id="how-to-write-documentation-for-functionsmethods"><a class="header" href="#how-to-write-documentation-for-functionsmethods">How to write documentation for functions/methods</a></h2>
+<p>The basic format of each documented methods/functions should roughly look like this:</p>
+<pre><code class="language-text">[explanations]
+
+[example(s)]
+</code></pre>
+<h3 id="explanations"><a class="header" href="#explanations">Explanations</a></h3>
+<p>By <code>explanations</code> we mean that the text should explain what the method and what
+each of its arguments are for. Let's take this method for example:</p>
+<pre><code class="language-rust ignore">pub fn concat_str(&amp;self, s: &amp;str) -&gt; String {
+    if s.is_empty() {
+        panic!(&quot;empty concat string&quot;);
+    }
+    format!(&quot;{}{}&quot;, self.string, s)
+}
+</code></pre>
+<p>The explanation should look like this:</p>
+<pre><code class="language-text">Returns a new [`String`] which contains `&amp;self` content with `s` added at the end.
+</code></pre>
+<h3 id="panic"><a class="header" href="#panic">Panic?</a></h3>
+<p>If the function/method can panic in certain circumstances, it must to be
+mentioned! This explanation needs to be prepended by a <code>Panics</code> title:</p>
+<pre><code class="language-text"># Panics
+
+`concat_str` panics if `s` is empty.
+</code></pre>
+<h3 id="examples"><a class="header" href="#examples">Examples</a></h3>
+<p>As for the examples, they have to show the usage of the function/method. Just
+like the <code>panic</code> section, they need to be prepended by a <code>Examples</code> title.</p>
+<p>It is better if you use <code>assert*!</code> macros at the end to ensure that the example
+is working as expected. It also allows the readers to understand more easily
+what the function is doing (or returning).</p>
+<pre><code class="language-text"># Examples
+
+```
+let s = MyType::new(&quot;hello &quot;);
+assert_eq!(&quot;hello Georges&quot;, s.concat_str(&quot;Georges&quot;).as_str());
+```
+</code></pre>
+<h2 id="how-to-write-documentation-for-other-items"><a class="header" href="#how-to-write-documentation-for-other-items">How to write documentation for other items</a></h2>
+<p>It is mostly the same as for methods and functions except that the examples
+are (strongly) recommended and not mandatory.</p>
+<p>A good example often shows how to create the item.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../documentation/safety-comments.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../documentation/reviewing-doc-changes.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../documentation/safety-comments.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../documentation/reviewing-doc-changes.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </body>
+</html>
