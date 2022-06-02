@@ -60,9 +60,11 @@ blocks by default). It allows us to know if the documentation is up to date. As
 such, please avoid using `ignore` as much as possible on code blocks! If you
 want as a language other than Rust, simply set it in the code block tags:
 
-    ```text
-    This is not rust code!
-    ```
+````text
+```text
+This is not rust code!
+```
+````
 
 Some special cases:
  * If the code example cannot be run (when documenting a I/O item for example),
@@ -99,7 +101,7 @@ The basic format of each documented methods/functions should roughly look like t
 By `explanations` we mean that the text should explain what the method and what
 each of its arguments are for. Let's take this method for example:
 
-```rust
+```rust,ignore
 pub fn concat_str(&self, s: &str) -> String {
     if s.is_empty() {
         panic!("empty concat string");
@@ -134,12 +136,14 @@ It is better if you use `assert*!` macros at the end to ensure that the example
 is working as expected. It also allows the readers to understand more easily
 what the function is doing (or returning).
 
-    # Examples
+````text
+# Examples
 
-    ```
-    let s = MyType::new("hello ");
-    assert_eq!("hello Georges", s.concat_str("Georges").as_str());
-    ```
+```
+let s = MyType::new("hello ");
+assert_eq!("hello Georges", s.concat_str("Georges").as_str());
+```
+````
 
 ## How to write documentation for other items
 
