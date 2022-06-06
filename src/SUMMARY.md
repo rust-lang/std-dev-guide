@@ -17,7 +17,7 @@
 ---
 
 - [The feature lifecycle](./feature-lifecycle/summary.md)
-    - [Landing new features](./feature-lifecycle/new-unstable-features.md)
+    - [API Change Proposals](./feature-lifecycle/api-change-proposals.md)
     - [Using tracking issues](./feature-lifecycle/tracking-issues.md)
     - [Stabilizing features](./feature-lifecycle/stabilization.md)
     - [Deprecating features](./feature-lifecycle/deprecation.md)
