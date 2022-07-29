@@ -63,8 +63,9 @@ Only specialization using the `min_specialization` feature should be used. The f
 There are two unstable attributes that can be used to allow a trait bound in a specializing implementation that does not appear in the default implementation.
 
 `rustc_specialization_trait` restricts the implementations of a trait to be "always applicable". Implementing traits annotated with `rustc_specialization_trait` is unstable, so this should not be used on any stable traits exported from the standard library. `Sized` is an exception, and can have this attribute because it already cannot be implemented by an `impl` block.
+**Note**: `rustc_specialization_trait` only prevents incorrect monomorphizations, it does not prevent a type from being coerced between specialized and unspecialized types which can be important when specialization must be applied consistently. See [rust-lang/rust#85863](https://github.com/rust-lang/rust/issues/85863) for more details.
 
-`rustc_unsafe_specialization_marker` allows specializing on a trait with no associated items. The attribute is `unsafe` because lifetime constraints from the implementations of the trait are not considered when specializing. In the following example, the specialized implementation is used for *all* shared reference types, not just those with `'static` lifetime.
+`rustc_unsafe_specialization_marker` allows specializing on a trait with no associated items. The attribute is `unsafe` because lifetime constraints from the implementations of the trait are not considered when specializing. The following example demonstrates incorrect usage of `rustc_unsafe_specialization_marker`, the specialized implementation is used for *all* shared reference types, not just those with `'static` lifetime.
 
 ```rust,ignore
 #[rustc_unsafe_specialization_marker]
