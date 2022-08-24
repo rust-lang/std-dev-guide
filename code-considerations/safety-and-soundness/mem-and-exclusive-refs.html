@@ -152,7 +152,7 @@
 <h2 id="memreplace-and-memswap"><a class="header" href="#memreplace-and-memswap"><code>mem::replace</code> and <code>mem::swap</code></a></h2>
 <p>Any value behind a <code>&amp;mut</code> reference can be replaced with a new one using <code>mem::replace</code> or <code>mem::swap</code>, so code shouldn't assume any reachable mutable references can't have their internals changed by replacing.</p>
 <h2 id="memforget"><a class="header" href="#memforget"><code>mem::forget</code></a></h2>
-<p>Rust doesn't guarantee destructors will run when a value is leaked (which can be done with <code>mem::forget</code>), so code should avoid relying on them for maintaining safety. Remember, <a href="http://cglab.ca/%7Eabeinges/blah/everyone-poops">everyone poops</a>.</p>
+<p>Rust doesn't guarantee destructors will run when a value is leaked (which can be done with <code>mem::forget</code>), so code should avoid relying on them for maintaining safety. Remember, <a href="http://cglab.ca/~abeinges/blah/everyone-poops">everyone poops</a>.</p>
 <p>It's ok not to run a destructor when a value is leaked because its storage isn't deallocated or repurposed. If the storage is initialized and is being deallocated or repurposed then destructors need to be run first, because <a href="https://doc.rust-lang.org/nightly/std/pin/index.html#drop-guarantee">memory may be pinned</a>. Having said that, there can still be exceptions for skipping destructors when deallocating if you can guarantee there's never pinning involved.</p>
 <h2 id="for-reviewers"><a class="header" href="#for-reviewers">For reviewers</a></h2>
 <p>If there's a <code>Drop</code> impl involved, look out for possible soundness issues that could come from that destructor never running.</p>

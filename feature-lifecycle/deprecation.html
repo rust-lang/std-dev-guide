@@ -150,7 +150,7 @@
                     <main>
                         <h1 id="deprecating-features"><a class="header" href="#deprecating-features">Deprecating features</a></h1>
 <p><strong>Status:</strong> Stub</p>
-<p>Public APIs aren't deleted from the standard library. If something shouldn't be used anymore it gets deprecated by adding a <code>#[rustc_deprecated]</code> attribute. Deprecating need to go through a Libs FCP, just like stabilizations do.</p>
+<p>Public APIs aren't deleted from the standard library. If something shouldn't be used anymore it gets deprecated by adding a <code>#[deprecated]</code> attribute. Deprecating need to go through a Libs FCP, just like stabilizations do.</p>
 <p>To try reduce noise in the docs from deprecated items, they should be moved to the bottom of the module or <code>impl</code> block so they're rendered at the bottom of the docs page. The docs should then be cut down to focus on why the item is deprecated rather than how you might use it.</p>
 
                     </main>
