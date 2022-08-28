@@ -184,10 +184,10 @@
 <pre><code class="language-rust ignore">#[unstable(feature = &quot;total_cmp&quot;, issue = &quot;72599&quot;)]
 pub fn total_cmp(&amp;self, other: &amp;Self) -&gt; crate::cmp::Ordering { ... }
 </code></pre>
-<p>You'll need to change that to a <code>#[stable]</code> attribute with a version:</p>
-<pre><code class="language-rust ignore">#[stable(feature = &quot;total_cmp&quot;, since = &quot;1.61.0&quot;)]
+<p>You'll need to change that to a <code>#[stable]</code> attribute with the version set to the placeholder <code>CURRENT_RUSTC_VERSION</code>:</p>
+<pre><code class="language-rust ignore">#[stable(feature = &quot;total_cmp&quot;, since = &quot;CURRENT_RUSTC_VERSION&quot;)]
 </code></pre>
-<p>Note that, the version number is updated to be the version number of the stable release where this feature will appear. This can be found by consulting <a href="https://github.com/rust-lang/rust/blob/master/src/version"><code>src/version</code></a> on the current master branch of <code>rust-lang/rust</code>.</p>
+<p>Note that other <code>#[stable]</code> attributes may contain spelled out version numbers, but you should not spell out any version number as it might get outdated by the time your pull request merges.</p>
 <h3 id="remove-feature-gates-from-doctests"><a class="header" href="#remove-feature-gates-from-doctests">Remove feature gates from doctests</a></h3>
 <p>All the doctests on the items being stabilized will be enabling the unstable feature, so now that it's stable those attributes are no longer needed and should be removed.</p>
 <pre><code class="language-diff"> /// # Examples
@@ -213,9 +213,9 @@ pub fn total_cmp(&amp;self, other: &amp;Self) -&gt; crate::cmp::Ordering { ... }
 <li>Create a stabiliation report in the tracking issue for the feature being stabilized.</li>
 <li>(Optional) For partial stabilizations, create a new partial stabilization PR for the subset of the issue being stabilized.</li>
 <li>Ask a <strong>@rust-lang/libs-api</strong> member to start an FCP on the tracking issue and wait for the FCP to complete (with <code>disposition-merge</code>).</li>
-<li>Change <code>#[unstable(...)]</code> to <code>#[stable(since = &quot;version&quot;)]</code>. <code>version</code> should be the <em>current nightly</em>, i.e. stable+2. You can see which version is the current nightly in <a href="https://github.com/rust-lang/rust/blob/master/src/version"><code>src/version</code></a> on the master branch of <code>rust-lang/rust</code>.</li>
+<li>Change <code>#[unstable(...)]</code> to <code>#[stable(since = &quot;CURRENT_RUSTC_VERSION&quot;)]</code>. <code>CURRENT_RUSTC_VERSION</code> here is meant in a literal sense and not to be replaced with the spelled out version number.</li>
 <li>Remove <code>#![feature(...)]</code> from any test or doc-test for this API. If the feature is used in the compiler or tools, remove it from there as well.</li>
-<li>If applicable, change <code>#[rustc_const_unstable(...)]</code> to <code>#[rustc_const_stable(since = &quot;version&quot;)]</code>.</li>
+<li>If applicable, change <code>#[rustc_const_unstable(...)]</code> to <code>#[rustc_const_stable(since = &quot;CURRENT_RUSTC_VERSION&quot;)]</code>.</li>
 <li>Open a PR against <code>rust-lang/rust</code>.
 <ul>
 <li>Add the appropriate labels: <code>@rustbot modify labels: +T-libs-api</code>.</li>
