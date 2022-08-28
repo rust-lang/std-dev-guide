@@ -64,13 +64,13 @@ Library items are marked unstable via the `#[unstable]` attribute, like this:
 pub fn total_cmp(&self, other: &Self) -> crate::cmp::Ordering { ... }
 ```
 
-You'll need to change that to a `#[stable]` attribute with a version:
+You'll need to change that to a `#[stable]` attribute with the version set to the placeholder `CURRENT_RUSTC_VERSION`:
 
 ```rust,ignore
-#[stable(feature = "total_cmp", since = "1.61.0")]
+#[stable(feature = "total_cmp", since = "CURRENT_RUSTC_VERSION")]
 ```
 
-Note that, the version number is updated to be the version number of the stable release where this feature will appear. This can be found by consulting [`src/version`](https://github.com/rust-lang/rust/blob/master/src/version) on the current master branch of `rust-lang/rust`.
+Note that other `#[stable]` attributes may contain spelled out version numbers, but you should not spell out any version number as it might get outdated by the time your pull request merges.
 
 ### Remove feature gates from doctests
 
@@ -107,9 +107,9 @@ To stabilize a feature, follow these steps:
 0. Create a stabiliation report in the tracking issue for the feature being stabilized.
 0. (Optional) For partial stabilizations, create a new partial stabilization PR for the subset of the issue being stabilized.
 0. Ask a **@rust-lang/libs-api** member to start an FCP on the tracking issue and wait for the FCP to complete (with `disposition-merge`).
-0. Change `#[unstable(...)]` to `#[stable(since = "version")]`. `version` should be the *current nightly*, i.e. stable+2. You can see which version is the current nightly in [`src/version`](https://github.com/rust-lang/rust/blob/master/src/version) on the master branch of `rust-lang/rust`.
+0. Change `#[unstable(...)]` to `#[stable(since = "CURRENT_RUSTC_VERSION")]`. `CURRENT_RUSTC_VERSION` here is meant in a literal sense and not to be replaced with the spelled out version number.
 0. Remove `#![feature(...)]` from any test or doc-test for this API. If the feature is used in the compiler or tools, remove it from there as well.
-0. If applicable, change `#[rustc_const_unstable(...)]` to `#[rustc_const_stable(since = "version")]`.
+0. If applicable, change `#[rustc_const_unstable(...)]` to `#[rustc_const_stable(since = "CURRENT_RUSTC_VERSION")]`.
 0. Open a PR against `rust-lang/rust`.
    - Add the appropriate labels: `@rustbot modify labels: +T-libs-api`.
    - Link to the tracking issue by adding "Closes #XXXXX".
