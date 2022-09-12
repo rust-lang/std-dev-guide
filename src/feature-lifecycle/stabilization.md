@@ -104,7 +104,7 @@ The compiler builds with nightly features allowed, so you may find uses of the f
 
 To stabilize a feature, follow these steps:
 
-0. Create a stabiliation report in the tracking issue for the feature being stabilized.
+0. Create a stabilization report in the tracking issue for the feature being stabilized.
 0. (Optional) For partial stabilizations, create a new partial stabilization PR for the subset of the issue being stabilized.
 0. Ask a **@rust-lang/libs-api** member to start an FCP on the tracking issue and wait for the FCP to complete (with `disposition-merge`).
 0. Change `#[unstable(...)]` to `#[stable(since = "CURRENT_RUSTC_VERSION")]`. `CURRENT_RUSTC_VERSION` here is meant in a literal sense and not to be replaced with the spelled out version number.
