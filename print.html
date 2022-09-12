@@ -423,7 +423,7 @@ pub fn total_cmp(&amp;self, other: &amp;Self) -&gt; crate::cmp::Ordering { ... }
 <h2 id="stabilization-pr-checklist"><a class="header" href="#stabilization-pr-checklist">Stabilization PR Checklist</a></h2>
 <p>To stabilize a feature, follow these steps:</p>
 <ol start="0">
-<li>Create a stabiliation report in the tracking issue for the feature being stabilized.</li>
+<li>Create a stabilization report in the tracking issue for the feature being stabilized.</li>
 <li>(Optional) For partial stabilizations, create a new partial stabilization PR for the subset of the issue being stabilized.</li>
 <li>Ask a <strong>@rust-lang/libs-api</strong> member to start an FCP on the tracking issue and wait for the FCP to complete (with <code>disposition-merge</code>).</li>
 <li>Change <code>#[unstable(...)]</code> to <code>#[stable(since = &quot;CURRENT_RUSTC_VERSION&quot;)]</code>. <code>CURRENT_RUSTC_VERSION</code> here is meant in a literal sense and not to be replaced with the spelled out version number.</li>
