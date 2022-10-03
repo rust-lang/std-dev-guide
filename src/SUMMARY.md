@@ -12,6 +12,7 @@
 ---
 
 - [Building and debugging libraries](./development/building-and-debugging.md)
+- [Performance optimizations and benchmarking](./development/perf-benchmarking.md)
 
 
 ---
