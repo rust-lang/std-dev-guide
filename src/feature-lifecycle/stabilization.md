@@ -29,7 +29,7 @@ You can see an example of a stabilization report in [#88581](https://github.com/
 
 ## Before writing a PR to stabilize a feature
 
-Check to see if a FCP has completed first. If not, either ping `@rust-lang/libs-api` or leave a comment asking about the status of the feature.
+Check to see if a FCP has completed first. If not, leave a comment in the tracking issue asking about the status of the feature. If you are a member of the rust-lang GitHub organization, ping `@rust-lang/libs-api` in the comment.
 
 This will save you from opening a stabilization PR and having it need regular rebasing while the FCP process runs its course.
 
