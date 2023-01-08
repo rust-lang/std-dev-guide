@@ -9,7 +9,6 @@
 
         <!-- Custom HTML head -->
         
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="Guide for standard library developers">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
@@ -35,13 +34,13 @@
     </head>
     <body>
         <!-- Provide site root to javascript -->
-        <script type="text/javascript">
+        <script>
             var path_to_root = "";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script type="text/javascript">
+        <script>
             try {
                 var theme = localStorage.getItem('mdbook-theme');
                 var sidebar = localStorage.getItem('mdbook-sidebar');
@@ -57,7 +56,7 @@
         </script>
 
         <!-- Set the theme before any content is loaded, prevents flash -->
-        <script type="text/javascript">
+        <script>
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
@@ -69,7 +68,7 @@
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
-        <script type="text/javascript">
+        <script>
             var html = document.querySelector('html');
             var sidebar = 'hidden';
             if (document.body.clientWidth >= 1080) {
@@ -100,7 +99,7 @@
                             <i class="fa fa-paint-brush"></i>
                         </button>
                         <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
@@ -136,7 +135,7 @@
                 </div>
 
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script type="text/javascript">
+                <script>
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
                     document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
                     Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
@@ -312,8 +311,7 @@ it is built with the same build system, so it is recommended to read it first.</
 is not applicable here.</p>
 <p>Instead one can either extract the code that should be tested to a normal crate and add debugging statements there or
 on POSIX systems one can use the following hack:</p>
-<pre><pre class="playground"><code class="language-rust edition2018">
-<span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust edition2018"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>extern &quot;C&quot; {
     fn dprintf(fd: i32, s: *const u8, ...);
@@ -329,8 +327,7 @@ fn function_to_debug() {
     let dbg_str = format!(&quot;debug: {}\n\0&quot;, &quot;hello world&quot;);
     dbg_printf!(dbg_str.as_bytes().as_ptr());
 }
-<span class="boring">}
-</span></code></pre></pre>
+<span class="boring">}</span></code></pre></pre>
 <p>Then one can run a test which exercises the code to debug and show the error output via</p>
 <pre><code class="language-shell ignore">./x.py test library/alloc --test-args &lt;test_name&gt; --test-args --no-capture
 </code></pre>
@@ -395,11 +392,9 @@ feature lifecycle, creating a tracking issue.</p>
 <h3 id="update-the-stability-attributes-on-the-items"><a class="header" href="#update-the-stability-attributes-on-the-items">Update the stability attributes on the items</a></h3>
 <p>Library items are marked unstable via the <code>#[unstable]</code> attribute, like this:</p>
 <pre><code class="language-rust ignore">#[unstable(feature = &quot;total_cmp&quot;, issue = &quot;72599&quot;)]
-pub fn total_cmp(&amp;self, other: &amp;Self) -&gt; crate::cmp::Ordering { ... }
-</code></pre>
+pub fn total_cmp(&amp;self, other: &amp;Self) -&gt; crate::cmp::Ordering { ... }</code></pre>
 <p>You'll need to change that to a <code>#[stable]</code> attribute with the version set to the placeholder <code>CURRENT_RUSTC_VERSION</code>:</p>
-<pre><code class="language-rust ignore">#[stable(feature = &quot;total_cmp&quot;, since = &quot;CURRENT_RUSTC_VERSION&quot;)]
-</code></pre>
+<pre><code class="language-rust ignore">#[stable(feature = &quot;total_cmp&quot;, since = &quot;CURRENT_RUSTC_VERSION&quot;)]</code></pre>
 <p>Note that other <code>#[stable]</code> attributes may contain spelled out version numbers, but you should not spell out any version number as it might get outdated by the time your pull request merges.</p>
 <h3 id="remove-feature-gates-from-doctests"><a class="header" href="#remove-feature-gates-from-doctests">Remove feature gates from doctests</a></h3>
 <p>All the doctests on the items being stabilized will be enabling the unstable feature, so now that it's stable those attributes are no longer needed and should be removed.</p>
@@ -461,22 +456,18 @@ pub fn total_cmp(&amp;self, other: &amp;Self) -&gt; crate::cmp::Ordering { ... }
 <p>The <code>#[must_use]</code> attribute can be applied to types or functions when failing to explicitly consider them or their output is almost certainly a bug.</p>
 <p>As an example, <code>Result</code> is <code>#[must_use]</code> because failing to consider it may indicate a caller didn't realise a method was fallible:</p>
 <pre><code class="language-rust ignore">// Is `check_status` infallible? Or did we forget to look at its `Result`?
-check_status();
-</code></pre>
+check_status();</code></pre>
 <p>Operators like <code>saturating_add</code> are also <code>#[must_use]</code> because failing to consider their output might indicate a caller didn't realise they don't mutate the left-hand-side:</p>
 <pre><code class="language-rust ignore">// A caller might assume this method mutates `a`
-a.saturating_add(b);
-</code></pre>
+a.saturating_add(b);</code></pre>
 <p>Combinators produced by the <code>Iterator</code> trait are <code>#[must_use]</code> because failing to use them might indicate a caller didn't realize <code>Iterator</code>s are lazy and won't actually do anything unless you drive them:</p>
 <pre><code class="language-rust ignore">// A caller might not realise this code won't do anything
 // unless they call `collect`, `count`, etc.
-v.iter().map(|x| println!(&quot;{}&quot;, x));
-</code></pre>
+v.iter().map(|x| println!(&quot;{}&quot;, x));</code></pre>
 <p>On the other hand, <code>thread::JoinHandle</code> isn't <code>#[must_use]</code> because spawning fire-and-forget work is a legitimate pattern and forcing callers to explicitly ignore handles could be a nuisance rather than an indication of a bug:</p>
 <pre><code class="language-rust ignore">thread::spawn(|| {
     // this background work isn't waited on
-});
-</code></pre>
+});</code></pre>
 <h2 id="for-reviewers-2"><a class="header" href="#for-reviewers-2">For reviewers</a></h2>
 <p>Look for any legitimate use-cases where <code>#[must_use]</code> will cause callers to explicitly ignore values. If these are common then <code>#[must_use]</code> probably isn't appropriate.</p>
 <p>The <code>#[must_use]</code> attribute only produces warnings, so it can technically be introduced at any time. To avoid accumulating nuisance warnings though ping <code>@rust-lang/libs</code> for input before adding new <code>#[must_use]</code> attributes to existing types and functions.</p>
@@ -504,18 +495,15 @@ v.iter().map(|x| println!(&quot;{}&quot;, x));
 <h2 id="inference-breaks-when-a-second-generic-impl-is-introduced"><a class="header" href="#inference-breaks-when-a-second-generic-impl-is-introduced">Inference breaks when a second generic impl is introduced</a></h2>
 <p>Rust will use the fact that there's only a single impl for a generic trait during inference. This breaks once a second impl makes the type of that generic ambiguous. Say we have:</p>
 <pre><code class="language-rust ignore">// in `std`
-impl From&lt;&amp;str&gt; for Arc&lt;str&gt; { .. }
-</code></pre>
+impl From&lt;&amp;str&gt; for Arc&lt;str&gt; { .. }</code></pre>
 <pre><code class="language-rust ignore">// in an external `lib`
-let b = Arc::from(&quot;a&quot;);
-</code></pre>
+let b = Arc::from(&quot;a&quot;);</code></pre>
 <p>then we add:</p>
 <pre><code class="language-diff">impl From&lt;&amp;str&gt; for Arc&lt;str&gt; { .. }
 + impl From&lt;&amp;str&gt; for Arc&lt;String&gt; { .. }
 </code></pre>
 <p>then</p>
-<pre><code class="language-rust ignore">let b = Arc::from(&quot;a&quot;);
-</code></pre>
+<pre><code class="language-rust ignore">let b = Arc::from(&quot;a&quot;);</code></pre>
 <p>will no longer compile, because we've previously been relying on inference to figure out the <code>T</code> in <code>Box&lt;T&gt;</code>.</p>
 <p>This kind of breakage can be ok, but a <a href="code-considerations/breaking-changes/../../tools-and-bots/crater.html">crater</a> run should estimate the scope.</p>
 <h2 id="deref-coercion-breaks-when-a-new-impl-is-introduced"><a class="header" href="#deref-coercion-breaks-when-a-new-impl-is-introduced">Deref coercion breaks when a new impl is introduced</a></h2>
@@ -523,21 +511,18 @@ let b = Arc::from(&quot;a&quot;);
 <pre><code class="language-rust ignore">// in `std`
 impl Add&lt;&amp;str&gt; for String { .. }
 
-impl Deref for String { type Target = str; .. }
-</code></pre>
+impl Deref for String { type Target = str; .. }</code></pre>
 <pre><code class="language-rust ignore">// in an external `lib`
 let a = String::from(&quot;a&quot;);
 let b = String::from(&quot;b&quot;);
 
-let c = a + &amp;b;
-</code></pre>
+let c = a + &amp;b;</code></pre>
 <p>then we add:</p>
 <pre><code class="language-diff ignore">impl Add&lt;&amp;str&gt; for String { .. }
 + impl Add&lt;char&gt; for String { .. }
 </code></pre>
 <p>then</p>
-<pre><code class="language-rust ignore">let c = a + &amp;b;
-</code></pre>
+<pre><code class="language-rust ignore">let c = a + &amp;b;</code></pre>
 <p>will no longer compile, because we won't attempt to use deref to coerce the <code>&amp;String</code> into <code>&amp;str</code>.</p>
 <p>This kind of breakage can be ok, but a <a href="code-considerations/breaking-changes/../../tools-and-bots/crater.html">crater</a> run should estimate the scope.</p>
 <h2 id="for-reviewers-5"><a class="header" href="#for-reviewers-5">For reviewers</a></h2>
@@ -559,8 +544,7 @@ where
     T: SomeBound,
 {
 
-}
-</code></pre>
+}</code></pre>
 <p>unless the blanket implementation is being stabilized along with <code>PublicTrait</code>. In cases where we really want to do this, a <a href="code-considerations/breaking-changes/../../tools-and-bots/crater.html">crater</a> run can help estimate the scope of the breakage.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="breaking-changes-to-the-prelude"><a class="header" href="#breaking-changes-to-the-prelude">Breaking changes to the prelude</a></h1>
 <p>Making changes to the prelude can easily cause breakage because it impacts all Rust code. In most cases the impact is limited since prelude items have the lowest priority in name lookup (lower than glob imports), but there are two cases where this doesn't work.</p>
@@ -594,8 +578,7 @@ impl RangeBounds&lt;usize&gt; for EvilRange {
     fn end_bound(&amp;self) -&gt; Bound&lt;&amp;usize&gt; {
         Bound::Unbounded
     }
-}
-</code></pre>
+}</code></pre>
 <p>This has <a href="https://github.com/rust-lang/rust/issues/81138">caused problems in the past</a> for code making safety assumptions based on bounds without asserting they stay the same.</p>
 <p>Code using generic types to interact with unsafe should try convert them into known types first, then work with those instead of the generic. For our example with <code>RangeBounds</code>, this may mean converting into a concrete <code>Range</code>, or a tuple of <code>(Bound, Bound)</code>.</p>
 <h2 id="for-reviewers-8"><a class="header" href="#for-reviewers-8">For reviewers</a></h2>
@@ -617,8 +600,7 @@ impl&lt;T&gt; Drop for OptionCell&lt;T&gt; {
             unsafe { self.value.assume_init_drop() };
         }
     }
-}
-</code></pre>
+}</code></pre>
 <p>Adding a <code>#[may_dangle]</code> attribute to this <code>OptionCell&lt;T&gt;</code> that didn't have a <code>PhantomData&lt;T&gt;</code> marker field opened up <a href="https://github.com/rust-lang/rust/issues/76367">a soundness hole</a> for <code>T</code>'s that didn't strictly outlive the <code>OptionCell&lt;T&gt;</code>, and so could be accessed after being dropped in their own <code>Drop</code> implementations. The correct application of <code>#[may_dangle]</code> also required a <code>PhantomData&lt;T&gt;</code> field:</p>
 <pre><code class="language-diff ignore">struct OptionCell&lt;T&gt; {
     is_init: bool,
@@ -656,13 +638,11 @@ impl&lt;T&gt; Drop for OptionCell&lt;T&gt; {
 <p>Look out for const operations on const generics in public APIs like:</p>
 <pre><code class="language-rust ignore">pub fn extend_array&lt;T, const N: usize, const M: usize&gt;(arr: [T; N]) -&gt; [T; N + 1] {
     ..
-}
-</code></pre>
+}</code></pre>
 <p>or for const generics that aren't integers, bools, or chars:</p>
 <pre><code class="language-rust ignore">pub fn tag&lt;const S: &amp;'static str&gt;() {
     ..
-}
-</code></pre>
+}</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="using-specialization"><a class="header" href="#using-specialization">Using specialization</a></h1>
 <p>Specialization is currently unstable. You can track its progress <a href="https://github.com/rust-lang/rust/issues/31844">here</a>.</p>
 <p>We try to avoid leaning on specialization too heavily, limiting its use to optimizing specific implementations. These specialized optimizations use a private trait to find the correct implementation, rather than specializing the public method itself. Any use of specialization that changes how methods are dispatched for external callers should be carefully considered.</p>
@@ -672,16 +652,14 @@ impl&lt;T&gt; Drop for OptionCell&lt;T&gt; {
     fn from(v: &amp;[T]) -&gt; Rc&lt;[T]&gt; {
         unsafe { Self::from_iter_exact(v.iter().cloned(), v.len()) }
     }
-}
-</code></pre>
+}</code></pre>
 <p>It would be nice to have an optimized implementation for the case where <code>T: Copy</code>:</p>
 <pre><code class="language-rust ignore">impl&lt;T: Copy&gt; From&lt;&amp;[T]&gt; for Rc&lt;[T]&gt; {
     #[inline]
     fn from(v: &amp;[T]) -&gt; Rc&lt;[T]&gt; {
         unsafe { Self::copy_from_slice(v) }
     }
-}
-</code></pre>
+}</code></pre>
 <p>Unfortunately we couldn't have both of these impls normally, because they'd overlap. This is where private specialization can be used to choose the right implementation internally. In this case, we use a trait called <code>RcFromSlice</code> that switches the implementation:</p>
 <pre><code class="language-rust ignore">impl&lt;T: Clone&gt; From&lt;&amp;[T]&gt; for Rc&lt;[T]&gt; {
     #[inline]
@@ -707,8 +685,7 @@ impl&lt;T: Copy&gt; RcFromSlice&lt;T&gt; for Rc&lt;[T]&gt; {
     fn from_slice(v: &amp;[T]) -&gt; Self {
         unsafe { Self::copy_from_slice(v) }
     }
-}
-</code></pre>
+}</code></pre>
 <p>Only specialization using the <code>min_specialization</code> feature should be used. The full <code>specialization</code> feature is known to be unsound.</p>
 <h2 id="for-reviewers-13"><a class="header" href="#for-reviewers-13">For reviewers</a></h2>
 <p>Look out for any <code>default</code> annotations on public trait implementations. These will need to be refactored into a private dispatch trait. Also look out for uses of specialization that do more than pick a more optimized implementation.</p>
@@ -808,8 +785,7 @@ pub unsafe fn as_bytes_mut(&amp;mut self) -&gt; &amp;mut [u8] {
     // The pointer dereference is safe since it comes from a mutable reference which
     // is guaranteed to be valid for writes.
     unsafe { &amp;mut *(self as *mut str as *mut [u8]) }
-}
-</code></pre>
+}</code></pre>
 <p>This example is for a function but the same principle applies to <code>unsafe trait</code>s
 like <a href="https://doc.rust-lang.org/stable/std/marker/trait.Send.html"><code>Send</code></a> or <a href="https://doc.rust-lang.org/stable/std/marker/trait.Sync.html"><code>Sync</code></a> for example, though they have no <code># Safety</code> section
 since their entire documentation is about why they are <code>unsafe</code>.</p>
@@ -834,8 +810,7 @@ not check for <code>0</code> before dividing.</p>
     } else {
         slice_error_fail(self, 0, mid)
     }
-}
-</code></pre>
+}</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="how-to-write-documentation"><a class="header" href="#how-to-write-documentation">How to write documentation</a></h1>
 <p>This document explains how to write documentation for the std/core public APIs.</p>
 <p>Let's start with some general information:</p>
@@ -892,8 +867,7 @@ each of its arguments are for. Let's take this method for example:</p>
         panic!(&quot;empty concat string&quot;);
     }
     format!(&quot;{}{}&quot;, self.string, s)
-}
-</code></pre>
+}</code></pre>
 <p>The explanation should look like this:</p>
 <pre><code class="language-text">Returns a new [`String`] which contains `&amp;self` content with `s` added at the end.
 </code></pre>
@@ -989,22 +963,22 @@ example:</p>
 
 
 
-        <script type="text/javascript">
+        <script>
             window.playground_copyable = true;
         </script>
 
 
-        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
 
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
 
         <!-- Custom JS scripts -->
 
-        <script type="text/javascript">
+        <script>
         window.addEventListener('load', function() {
             window.setTimeout(window.print, 100);
         });
