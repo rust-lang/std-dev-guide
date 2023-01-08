@@ -29,10 +29,9 @@ jobs:
 
       - name: Install latest stable Rust toolchain
         if: steps.mdbook-cache.outputs.cache-hit != 'true'
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          override: true
+        run: |
+          rustup update stable
+          rustup override set stable
 
       - name: Install Dependencies
         if: steps.mdbook-cache.outputs.cache-hit != 'true'
@@ -67,10 +66,9 @@ jobs:
 
       - name: Install latest stable Rust toolchain
         if: steps.mdbook-cache.outputs.cache-hit != 'true'
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          override: true
+        run: |
+          rustup update stable
+          rustup override set stable
 
       - name: Install Dependencies
         if: steps.mdbook-cache.outputs.cache-hit != 'true'
