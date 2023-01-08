@@ -7,21 +7,21 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Read .env
         id: mdbook-version
         run: |
           . ./.env
-          echo "::set-output name=MDBOOK_VERSION::${MDBOOK_VERSION}"
-          echo "::set-output name=MDBOOK_LINKCHECK_VERSION::${MDBOOK_LINKCHECK_VERSION}"
-          echo "::set-output name=MDBOOK_TOC_VERSION::${MDBOOK_TOC_VERSION}"
-          
+          echo "MDBOOK_VERSION=${MDBOOK_VERSION}" >> $GITHUB_OUTPUT
+          echo "MDBOOK_LINKCHECK_VERSION=${MDBOOK_LINKCHECK_VERSION}" >> $GITHUB_OUTPUT
+          echo "MDBOOK_TOC_VERSION=${MDBOOK_TOC_VERSION}" >> $GITHUB_OUTPUT
+
       - name: Cache binaries
         id: mdbook-cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             ~/.cargo/bin
@@ -29,14 +29,13 @@ jobs:
 
       - name: Install latest stable Rust toolchain
         if: steps.mdbook-cache.outputs.cache-hit != 'true'
-        uses: actions-rs/toolchain@v1
-        with:
-            toolchain: stable
-            override: true
+        run: |
+          rustup update stable
+          rustup override set stable
 
       - name: Install Dependencies
         if: steps.mdbook-cache.outputs.cache-hit != 'true'
-        run: | 
+        run: |
           cargo install mdbook --version ${{ steps.mdbook-version.outputs.MDBOOK_VERSION }}
           cargo install mdbook-linkcheck --version ${{ steps.mdbook-version.outputs.MDBOOK_LINKCHECK_VERSION }}
           cargo install mdbook-toc --version ${{ steps.mdbook-version.outputs.MDBOOK_TOC_VERSION }}
