@@ -9,7 +9,7 @@ jobs:
   deploy:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Read .env
         id: mdbook-version
@@ -21,7 +21,7 @@ jobs:
 
       - name: Cache binaries
         id: mdbook-cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             ~/.cargo/bin
