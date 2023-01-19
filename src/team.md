@@ -49,7 +49,7 @@ See [Membership](./membership.md) for details.
 ### r+ permission
 
 All members of the Library Team, the Library API Team, and the Library Contributors
-have the permission to approve PRs, and are expected handle this with care.
+have the permission to approve PRs, and are expected to handle this with care.
 See [Reviewing](./reviewing.md) for details.
 
 ### high-five rotation
