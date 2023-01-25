@@ -11,7 +11,7 @@ Stabilization goes through the Libs FCP (Final Comment Period) process, which ty
 
 Once an unstable feature's API design space (e.g. alternative APIs) has been fully explored with no outstanding concerns, anyone may push for its stabilization.
 
-If you're unsure if a feature is ready for stabilization the first step should be to ask in the relevant tracking issue and get assistance from other participants in that discussion. In some cases the tracking issue may not have many other active participants, so if you're ever having trouble getting any feedback please ping one of the [libs team reviewers](https://github.com/rust-lang/highfive/blob/master/highfive/configs/rust-lang/rust.json) directly to request assistance.
+If you're unsure if a feature is ready for stabilization the first step should be to ask in the relevant tracking issue and get assistance from other participants in that discussion. In some cases the tracking issue may not have many other active participants, so if you're ever having trouble getting any feedback please ping one of the [libs team reviewers](https://github.com/rust-lang/rust/blob/master/triagebot.toml) directly to request assistance.
 
 ## Stabilization Report
 
@@ -21,7 +21,7 @@ The **Implementation History** section should summarize the initial discussion d
 
 The **API Summary** section should include a precise description of what APIs are being introduced to the standard libraries. This can often be a simple link back to the top level comment if it's up to date, but in some situations it may not be possible to edit the original tracking issue to fix outdated information, such as when the author of the stabilization report is not the author of the tracking issue itself.
 
-The libs team maintains a tool for this called [`cargo unstable-api`](https://github.com/rust-lang/libs-team/tree/main/tools/unstable-api) that can be used to generate these API summaries in some cases. *Note* the current implementation of this tool is fragile and does not work in all cases. We hope to have a more permanent version of this tool in the future that is built ontop of either rustdoc or rustc's own APIs.
+The libs team maintains a tool for this called [`cargo unstable-api`](https://github.com/rust-lang/libs-team/tree/main/tools/unstable-api) that can be used to generate these API summaries in some cases. *Note* the current implementation of this tool is fragile and does not work in all cases. We hope to have a more permanent version of this tool in the future that is built on top of either rustdoc or rustc's own APIs.
 
 The **Experience Report** section should include concrete usecases of users who have wanted to use the feature and who have tested that it works for their needs. The experience report should include a brief summary of the experience of using that feature. Ideally this would include links to commits or branches where the feature was integrated with their project, but this is not a requirement. Alternatively, users can provide usage examples of crates that export an identical API to the one being stabilized.
 
@@ -29,7 +29,8 @@ You can see an example of a stabilization report in [#88581](https://github.com/
 
 ## Before writing a PR to stabilize a feature
 
-Check to see if a FCP has completed first. If not, either ping `@rust-lang/libs-api` or leave a comment asking about the status of the feature.
+Check to see if a FCP has completed first. If not, either ping `@rust-lang/libs-api` if you're a member of the `rust-lang` organization,
+or leave a comment asking about the status of the feature.
 
 This will save you from opening a stabilization PR and having it need regular rebasing while the FCP process runs its course.
 
@@ -37,7 +38,7 @@ This will save you from opening a stabilization PR and having it need regular re
 
 When you only wish to stabilize a subset of an existing feature you should skip creating a new tracking issue and instead create a partial stabilization PR for the subset of the feature being stabilized.
 
-If you're unsure if a feature is ready for partial stabilization the first step should be to ask in the relevant tracking issue and get assistance from other participants in that discussion. In some cases the tracking issue may not have many other active participants, so if you're ever having trouble getting any feedback please ping one of the [libs team reviewers](https://github.com/rust-lang/highfive/blob/master/highfive/configs/rust-lang/rust.json) directly to request assistance.
+If you're unsure if a feature is ready for partial stabilization the first step should be to ask in the relevant tracking issue and get assistance from other participants in that discussion. In some cases the tracking issue may not have many other active participants, so if you're ever having trouble getting any feedback please ping one of the [libs team reviewers](https://github.com/rust-lang/rust/blob/master/triagebot.toml) directly to request assistance.
 
 You can see an example of partially stabilizing a feature with tracking issue [#71146](https://github.com/rust-lang/rust/issues/71146) and partial stabilization PR [#94640](https://github.com/rust-lang/rust/pull/94640).
 
