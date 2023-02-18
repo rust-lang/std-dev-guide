@@ -688,6 +688,32 @@ impl&lt;T: Copy&gt; RcFromSlice&lt;T&gt; for Rc&lt;[T]&gt; {
     }
 }</code></pre>
 <p>Only specialization using the <code>min_specialization</code> feature should be used. The full <code>specialization</code> feature is known to be unsound.</p>
+<h2 id="specialization-attributes"><a class="header" href="#specialization-attributes">Specialization attributes</a></h2>
+<p>There are two unstable attributes that can be used to allow a trait bound in a specializing implementation that does not appear in the default implementation.</p>
+<p><code>rustc_specialization_trait</code> restricts the implementations of a trait to be &quot;always applicable&quot;. Implementing traits annotated with <code>rustc_specialization_trait</code> is unstable, so this should not be used on any stable traits exported from the standard library. <code>Sized</code> is an exception, and can have this attribute because it already cannot be implemented by an <code>impl</code> block.
+<strong>Note</strong>: <code>rustc_specialization_trait</code> only prevents incorrect monomorphizations, it does not prevent a type from being coerced between specialized and unspecialized types which can be important when specialization must be applied consistently. See <a href="https://github.com/rust-lang/rust/issues/85863">rust-lang/rust#85863</a> for more details.</p>
+<p><code>rustc_unsafe_specialization_marker</code> allows specializing on a trait with no associated items. The attribute is <code>unsafe</code> because lifetime constraints from the implementations of the trait are not considered when specializing. The following example demonstrates a limitation of <code>rustc_unsafe_specialization_marker</code>, the specialized implementation is used for <em>all</em> shared reference types, not just those with <code>'static</code> lifetime. Because of this, new uses of <code>rustc_unsafe_specialization_marker</code> should be avoided.</p>
+<pre><code class="language-rust ignore">#[rustc_unsafe_specialization_marker]
+trait StaticRef {}
+
+impl&lt;T&gt; StaticRef for &amp;'static T {}
+
+trait DoThing: Sized {
+    fn do_thing(self);
+}
+
+impl&lt;T&gt; DoThing for T {
+    default fn do_thing(self) {
+        // slow impl
+    }
+}
+
+impl&lt;T: StaticRef&gt; DoThing for T {
+    fn do_thing(self) {
+        // fast impl
+    }
+}</code></pre>
+<p><code>rustc_unsafe_specialization_marker</code> exists to allow existing specializations that are based on marker traits exported from <code>std</code>, such as <code>Copy</code>, <code>FusedIterator</code> or <code>Eq</code>.</p>
 <h2 id="for-reviewers-13"><a class="header" href="#for-reviewers-13">For reviewers</a></h2>
 <p>Look out for any <code>default</code> annotations on public trait implementations. These will need to be refactored into a private dispatch trait. Also look out for uses of specialization that do more than pick a more optimized implementation.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="performance"><a class="header" href="#performance">Performance</a></h1>
