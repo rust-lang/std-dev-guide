@@ -13,10 +13,11 @@ and those about code size as [I-heavy T-libs](https://github.com/rust-lang/rust/
 
 ## Vectorization
 
-Currently explicit SIMD features can't be used in alloc or core because runtime feature-detection is only available in std
-and they are compiled with each target's baseline feature set.
-
-Vectorization can only be achieved by shaping code in a way that the compiler backend's auto-vectorization passes can understand.
+Currently only baseline target features (e.g. SSE2 on x86_64-unknown-linux-gnu) can be used in core and alloc because
+runtime feature-detection is only available in std.
+Where possible the preferred way to achieve vectorization is by shaping code in a way that the compiler
+backend's auto-vectorization passes can understand. This benefits user crates compiled with additional target features
+when they instantiate generic library functions, e.g. iterators.
 
 ## rustc-perf
 
@@ -47,6 +48,8 @@ reproducible:
 * ensure the system is as idle as possible
 * [disable ASLR](https://man7.org/linux/man-pages/man8/setarch.8.html)
 * [pinning](https://man7.org/linux/man-pages/man1/taskset.1.html) the benchmark process to a specific core
+* change the CPU [scaling governor](https://wiki.archlinux.org/title/CPU_frequency_scaling#Scaling_governors)
+  to a fixed-frequency one (`performance` or `powersave`)
 * [disable clock boosts](https://wiki.archlinux.org/title/CPU_frequency_scaling#Configuring_frequency_boosting),
   especially on thermal-limited systems such as laptops
 
@@ -55,11 +58,10 @@ reproducible:
 If `x` or the cargo benchmark harness get in the way it can be useful to extract the benchmark into a separate crate,
 e.g. to run it under `perf stat` or cachegrind.
 
-Build and link the [stage1](https://rustc-dev-guide.rust-lang.org/building/how-to-build-and-run.html#creating-a-rustup-toolchain)
-compiler as rustup toolchain and then use that to build the standalone benchmark with a modified standard library.
+Build the standard library and link [stage0-sysroot](https://rustc-dev-guide.rust-lang.org/building/how-to-build-and-run.html#creating-a-rustup-toolchain)
+as rustup toolchain and then use that to build the standalone benchmark with a modified standard library.
 
-[Currently](https://github.com/rust-lang/rust/issues/101691) there is no convenient way to invoke a stage0 toolchain with
-a modified standard library. To avoid the compiler rebuild it can be useful to not only extract the benchmark but also
+If the std rebuild times are too long for fast iteration it can be useful to not only extract the benchmark but also
 the code under test into a separate crate.
 
 ## Running under perf-record
