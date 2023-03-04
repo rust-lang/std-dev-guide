@@ -34,5 +34,5 @@ fn function_to_debug() {
 Then one can run a test which exercises the code to debug and show the error output via
 
 ```shell,ignore
-./x.py test library/alloc --test-args <test_name> --test-args --no-capture
+./x.py test library/alloc --test-args <test_name> --test-args --nocapture
 ```
