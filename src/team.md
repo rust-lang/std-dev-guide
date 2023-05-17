@@ -32,7 +32,7 @@ of breaking changes and how they are avoided.
 
 ## The Library Contributors
 
-In addition to the two teams above, we also have a the Library Contributors,
+In addition to the two teams above, we also have the Library Contributors,
 which is a somewhat more loosely defined team consisting of those who regularly contribute
 or review changes to the standard libraries.
 
