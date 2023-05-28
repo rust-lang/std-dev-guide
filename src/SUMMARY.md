@@ -26,6 +26,7 @@
 ---
 
 - [Code considerations](./code-considerations/summary.md)
+    - [Criteria for inclusion in `std`](./code-considerations/criteria-for-inclusion.md)
     - [Design](./code-considerations/design/summary.md)
         - [Public APIs](./code-considerations/design/public-apis.md)
         - [When to add `#[must_use]`](./code-considerations/design/must-use.md)
