@@ -40,6 +40,7 @@
         - [`std::mem` and exclusive references](./code-considerations/safety-and-soundness/mem-and-exclusive-refs.md)
     - [Using unstable language features](./code-considerations/using-unstable-lang/summary.md)
         - [Const generics](./code-considerations/using-unstable-lang/const-generics.md)
+        - [Const evaluation](./code-considerations/using-unstable-lang/const-evaluation.md)
         - [Specialization](./code-considerations/using-unstable-lang/specialization.md)
     - [Performance](./code-considerations/performance/summary.md)
         - [When to `#[inline]`](./code-considerations/performance/inline.md)
