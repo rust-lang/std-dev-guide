@@ -4,10 +4,10 @@
 
 [Getting started](./getting-started.md)
 
-- [The library team](./team.md)
-  - [Meetings](./meetings.md)
-  - [Membership](./membership.md)
-  - [Reviewing](./reviewing.md)
+- [The library team](./team/summary.md)
+  - [Meetings](./team/meetings.md)
+  - [Membership](./team/membership.md)
+  - [Reviewing](./team/reviewing.md)
 
 ---
 
