@@ -91,7 +91,3 @@ impl<T: StaticRef> DoThing for T {
 ```
 
 `rustc_unsafe_specialization_marker` exists to allow existing specializations that are based on marker traits exported from `std`, such as `Copy`, `FusedIterator` or `Eq`.
-
-## For reviewers
-
-Look out for any `default` annotations on public trait implementations. These will need to be refactored into a private dispatch trait. Also look out for uses of specialization that do more than pick a more optimized implementation.

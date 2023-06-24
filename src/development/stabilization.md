@@ -5,7 +5,7 @@
 
 Feature stabilization involves adding `#[stable]` attributes. They may be introduced alongside new trait impls or replace existing `#[unstable]` attributes.
 
-Stabilization goes through the Libs FCP (Final Comment Period) process, which typically occurs on the [tracking issue](./tracking-issues.md) for the feature.
+Stabilization goes through the Libs FCP (Final Comment Period) process, which typically occurs on the tracking issue for the feature.
 
 ## When is an FCP appropriate?
 

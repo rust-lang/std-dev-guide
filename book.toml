@@ -22,3 +22,6 @@ renderer = ["html"]
 git-repository-icon = "fa-github"
 git-repository-url = "https://github.com/rust-lang/std-dev-guide"
 edit-url-template = "https://github.com/rust-lang/std-dev-guide/edit/master/{path}"
+
+[output.html.redirect]
+"/feature-lifecycle/stabilization.html" = "/development/stabilization.html"
