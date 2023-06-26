@@ -17,6 +17,8 @@ But please keep in mind:
         Make sure to involve `@rust-lang/libs-api` on such changes.
 - Always be polite when reviewing: you are a representative of the Rust project, so it is expected that you will go above and beyond when it comes to the Code of Conduct.
 
+See https://forge.rust-lang.org/compiler/reviews.html for more information on reviewing.
+
 ## High-five rotation
 
 Some of the members of the team are part of the 'high-five rotation';
@@ -34,3 +36,12 @@ If you find yourself unable to do any reviews for an extended period of time,
 it might be a good idea to (temporarily) remove yourself from the list.
 To add or remove yourself from the list, send a PR to change the
 [triagebot configuration file](https://github.com/rust-lang/rust/blob/master/triagebot.toml).
+
+## Rolling up
+
+For library PRs, rolling up (`@bors r+ rollup`) is often fine,
+in particular if it's only a new unstable addition or if it only touches docs.
+PRs that impact performance should not be rolled up (`@bors rollup=never`),
+PRs with subtle platform specific changes might also not be great candiates for rolling up.
+See the [rollup guidelines](https://forge.rust-lang.org/compiler/reviews.html#rollups) for more
+details on when to rollup.

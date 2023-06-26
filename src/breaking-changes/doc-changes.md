@@ -1,13 +1,4 @@
-# Reviewing doc changes
-
-Most of the time, it is mostly reviewing that the documentation isn't wrong
-in any way and that it follows the
-[how to write documentation](./how-to-write-documentation.md) guideline.
-
-There is however something where we need to be extra careful: stability
-guarantees.
-
-## Stability guarantees
+# Breaking documentation changes
 
 First, short explanation about what a stability guarantee is: a statement in
 the document which explains what the item is doing in a precise case. For
