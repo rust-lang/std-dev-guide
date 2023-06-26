@@ -9,5 +9,5 @@ Contributions to this guide are very welcome.
 
 Other useful documentation:
 
-- https://forge.rust-lang.org/
-- https://rustc-dev-guide.rust-lang.org/
+- <https://forge.rust-lang.org/>
+- <https://rustc-dev-guide.rust-lang.org/>

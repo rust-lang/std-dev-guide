@@ -17,7 +17,7 @@ But please keep in mind:
         Make sure to involve `@rust-lang/libs-api` on such changes.
 - Always be polite when reviewing: you are a representative of the Rust project, so it is expected that you will go above and beyond when it comes to the Code of Conduct.
 
-See https://forge.rust-lang.org/compiler/reviews.html for more information on reviewing.
+See <https://forge.rust-lang.org/compiler/reviews.html> for more information on reviewing.
 
 ## High-five rotation
 
