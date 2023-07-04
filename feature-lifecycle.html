@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>About this Guide - Standard library developers Guide</title>
+        <title>Feature lifecycle - Standard library developers Guide</title>
 
 
         <!-- Custom HTML head -->
@@ -80,7 +80,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="about.html" class="active"><strong aria-hidden="true">1.</strong> About this Guide</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Contributing to the standard libraries</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="development/building-and-debugging.html"><strong aria-hidden="true">2.1.</strong> Building and debugging</a></li><li class="chapter-item expanded "><a href="development/perf-benchmarking.html"><strong aria-hidden="true">2.2.</strong> Performance optimizations and benchmarking</a></li><li class="chapter-item expanded "><a href="development/how-to-write-documentation.html"><strong aria-hidden="true">2.3.</strong> Writing documentation</a></li><li class="chapter-item expanded "><a href="feature-lifecycle.html"><strong aria-hidden="true">2.4.</strong> Feature lifecycle</a></li><li class="chapter-item expanded "><a href="development/stabilization.html"><strong aria-hidden="true">2.5.</strong> Stabilizing a feature</a></li></ol></li><li class="chapter-item expanded "><a href="breaking-changes/summary.html"><strong aria-hidden="true">3.</strong> Breaking changes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="breaking-changes/new-trait-impls.html"><strong aria-hidden="true">3.1.</strong> New trait implementations</a></li><li class="chapter-item expanded "><a href="breaking-changes/prelude.html"><strong aria-hidden="true">3.2.</strong> Prelude</a></li><li class="chapter-item expanded "><a href="breaking-changes/doc-changes.html"><strong aria-hidden="true">3.3.</strong> Doc changes</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Policies</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="policy/must-use.html"><strong aria-hidden="true">4.1.</strong> When to add #[must_use]</a></li><li class="chapter-item expanded "><a href="policy/specialization.html"><strong aria-hidden="true">4.2.</strong> Specialization</a></li><li class="chapter-item expanded "><a href="policy/inline.html"><strong aria-hidden="true">4.3.</strong> When to #[inline]</a></li><li class="chapter-item expanded "><a href="policy/doc-alias.html"><strong aria-hidden="true">4.4.</strong> Doc alias policy</a></li><li class="chapter-item expanded "><a href="policy/safety-comments.html"><strong aria-hidden="true">4.5.</strong> Safety comments policy</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Tricky situations</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="tricky/may-dangle.html"><strong aria-hidden="true">5.1.</strong> Drop and #[may_dangle]</a></li><li class="chapter-item expanded "><a href="tricky/generics-and-unsafe.html"><strong aria-hidden="true">5.2.</strong> Generics and unsafe</a></li></ol></li><li class="chapter-item expanded "><a href="team/summary.html"><strong aria-hidden="true">6.</strong> The library team</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="team/meetings.html"><strong aria-hidden="true">6.1.</strong> Meetings</a></li><li class="chapter-item expanded "><a href="team/membership.html"><strong aria-hidden="true">6.2.</strong> Membership</a></li><li class="chapter-item expanded "><a href="team/reviewing.html"><strong aria-hidden="true">6.3.</strong> Reviewing</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="about.html"><strong aria-hidden="true">1.</strong> About this Guide</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Contributing to the standard libraries</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="development/building-and-debugging.html"><strong aria-hidden="true">2.1.</strong> Building and debugging</a></li><li class="chapter-item expanded "><a href="development/perf-benchmarking.html"><strong aria-hidden="true">2.2.</strong> Performance optimizations and benchmarking</a></li><li class="chapter-item expanded "><a href="development/how-to-write-documentation.html"><strong aria-hidden="true">2.3.</strong> Writing documentation</a></li><li class="chapter-item expanded "><a href="feature-lifecycle.html" class="active"><strong aria-hidden="true">2.4.</strong> Feature lifecycle</a></li><li class="chapter-item expanded "><a href="development/stabilization.html"><strong aria-hidden="true">2.5.</strong> Stabilizing a feature</a></li></ol></li><li class="chapter-item expanded "><a href="breaking-changes/summary.html"><strong aria-hidden="true">3.</strong> Breaking changes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="breaking-changes/new-trait-impls.html"><strong aria-hidden="true">3.1.</strong> New trait implementations</a></li><li class="chapter-item expanded "><a href="breaking-changes/prelude.html"><strong aria-hidden="true">3.2.</strong> Prelude</a></li><li class="chapter-item expanded "><a href="breaking-changes/doc-changes.html"><strong aria-hidden="true">3.3.</strong> Doc changes</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Policies</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="policy/must-use.html"><strong aria-hidden="true">4.1.</strong> When to add #[must_use]</a></li><li class="chapter-item expanded "><a href="policy/specialization.html"><strong aria-hidden="true">4.2.</strong> Specialization</a></li><li class="chapter-item expanded "><a href="policy/inline.html"><strong aria-hidden="true">4.3.</strong> When to #[inline]</a></li><li class="chapter-item expanded "><a href="policy/doc-alias.html"><strong aria-hidden="true">4.4.</strong> Doc alias policy</a></li><li class="chapter-item expanded "><a href="policy/safety-comments.html"><strong aria-hidden="true">4.5.</strong> Safety comments policy</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Tricky situations</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="tricky/may-dangle.html"><strong aria-hidden="true">5.1.</strong> Drop and #[may_dangle]</a></li><li class="chapter-item expanded "><a href="tricky/generics-and-unsafe.html"><strong aria-hidden="true">5.2.</strong> Generics and unsafe</a></li></ol></li><li class="chapter-item expanded "><a href="team/summary.html"><strong aria-hidden="true">6.</strong> The library team</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="team/meetings.html"><strong aria-hidden="true">6.1.</strong> Meetings</a></li><li class="chapter-item expanded "><a href="team/membership.html"><strong aria-hidden="true">6.2.</strong> Membership</a></li><li class="chapter-item expanded "><a href="team/reviewing.html"><strong aria-hidden="true">6.3.</strong> Reviewing</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -118,7 +118,7 @@
                         <a href="https://github.com/rust-lang/std-dev-guide" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/std-dev-guide/edit/master/./src/about.md" title="Suggest an edit" aria-label="Suggest an edit">
+                        <a href="https://github.com/rust-lang/std-dev-guide/edit/master/./src/feature-lifecycle.md" title="Suggest an edit" aria-label="Suggest an edit">
                             <i id="git-edit-button" class="fa fa-edit"></i>
                         </a>
 
@@ -147,23 +147,17 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="about-this-guide"><a class="header" href="#about-this-guide">About this Guide</a></h1>
-<p>Welcome to the std dev guide.</p>
-<p>This guide is maintained by the library team.</p>
-<p>The guide is not very complete yet.
-Contributions to this guide are very welcome.</p>
-<p>Other useful documentation:</p>
-<ul>
-<li><a href="https://forge.rust-lang.org/">https://forge.rust-lang.org/</a></li>
-<li><a href="https://rustc-dev-guide.rust-lang.org/">https://rustc-dev-guide.rust-lang.org/</a></li>
-</ul>
+                        <h1 id="feature-lifecycle"><a class="header" href="#feature-lifecycle">Feature lifecycle</a></h1>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="development/how-to-write-documentation.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
 
-                            <a rel="next" href="development/building-and-debugging.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="development/stabilization.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -173,8 +167,11 @@ Contributions to this guide are very welcome.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="development/how-to-write-documentation.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
 
-                    <a rel="next" href="development/building-and-debugging.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="development/stabilization.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
