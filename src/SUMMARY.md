@@ -6,7 +6,7 @@
     - [Building and debugging](./development/building-and-debugging.md)
     - [Performance optimizations and benchmarking](./development/perf-benchmarking.md)
     - [Writing documentation](./development/how-to-write-documentation.md)
-    - [Feature lifecycle](./feature-lifecycle.md)
+    - [Feature lifecycle](./development/feature-lifecycle.md)
     - [Stabilizing a feature](./development/stabilization.md)
 
 - [Breaking changes](./breaking-changes/summary.md)
