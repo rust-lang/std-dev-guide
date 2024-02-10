@@ -1,0 +1,9 @@
+# Runtime checks for preconditions of `unsafe fn`
+
+When possible, a debug assertion for the preconditions of an `unsafe fn` should be added inside the body of said function, before the implementation exploits the precondition.
+
+The compiler supports two kinds of debug assertions. Those that branch on `cfg(debug_assertions)` such as `debug_assert!` or `debug_assert_nounwind!` will be compiled out of the standard library distributed by rustup. Such checks are still valuable to add because they can be used by external tools like [cargo-careful](https://crates.io/crates/cargo-careful) or [cargo-fuzz](https://crates.io/crates/cargo-fuzz), users of `-Zbuild-std` or just our own CI (because it enables both optimizations and debug assertions).
+
+When it does not impose a significant compile-time burden, debug assertions should be implemented by branching on `intrinsics::debug_assertions()`. That intrinsic is only lowered after monomorphization, so calls to that intrinsic which appear in public and `#[inline]` or generic functions will be enabled by users in builds that enable debug assertions. We have a macro for automating the best use pattern for this intrinsic, `intrinsics::assert_unsafe_precondition!`. This macro shifts all the actual checking logic into a monomorphic and `#[inline(never)]` function, which ensures that the check and error reporting logic is compiled once instead of again and again for each monomorphization that uses the check.
+
+`assert_unsafe_precondition!` also uses `const_eval_select` internally so that it is only enabled at runtime. When you need a runtime-only check (for example, if your precondition is about pointer alignment) but the compile-time overhead of the branch and call that it expands to is too significant, it is fine to write `#[cfg(debug_assertions)] assert_unsafe_precondition!`.
