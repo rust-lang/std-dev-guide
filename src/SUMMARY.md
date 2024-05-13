@@ -21,6 +21,7 @@
     - [Doc alias policy](./policy/doc-alias.md)
     - [Safety comments policy](./policy/safety-comments.md)
     - [Reviewing target-specific code](./policy/target-code.md)
+    - [Policy for inclusion in the prelude](./policy/prelude.md)
 
 - [Tricky situations]()
     - [Drop and `#[may_dangle]`](./tricky/may-dangle.md)
