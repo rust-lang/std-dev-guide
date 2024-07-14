@@ -18,20 +18,33 @@ prelude for all Rust editions.
 When to use editions
 --------------------
 
+[Some kinds of additions to the prelude can cause breakage in existing
+code](../breaking-changes/prelude.md), so we must either avoid making such
+changes entirely or check carefully with crater before making them.
+
 Adding a trait to the prelude can break existing Rust code, by creating name
 resolution ambiguity where none previously existed. While introducing
 resolution ambiguities may be "permitted breakage", doing so is quite
 disruptive, and we want to avoid doing so. Thus, we generally never add a trait
-to the common prelude; we only add traits to the prelude for a new edition of
+to the common prelude; we only add traits to the preludes for new editions of
 Rust.
 
-Adding items *other* than traits to the prelude will never produce conflicts or
-other compatibility issues with existing code, since we allow shadowing and
-give other sources of names priority over names from the prelude. Thus, if we
-choose to add a non-trait item to the prelude, we should typically add it to
-the common prelude for all editions of Rust. (Exceptions to this would include
-names that form part of an edition transition, such that the same name resolves
-to something different in different editions.)
+Likewise, adding a macro to the prelude can break existing code, so we
+generally can't add macros to the common prelude, and can only add macros to
+the preludes for new editions of Rust.
+
+Finally, in some cases adding a type to the prelude can break existing code.
+The cases in which this arises are narrower, but still require at a minimum
+checking a crater run.
+
+Adding items other than traits, macros, or types to the prelude will never
+produce conflicts or other compatibility issues with existing code, since we
+allow shadowing and give other sources of names priority over names from the
+prelude. Thus, if we choose to add another kind of item to the prelude, we
+should typically add it to the common prelude for all editions of Rust.
+(Exceptions to this would include names that form part of an edition
+transition, such that the same name resolves to something different in
+different editions.)
 
 Criteria for including an item
 ------------------------------
