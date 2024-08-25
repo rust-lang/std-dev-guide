@@ -15,3 +15,19 @@ a different, older version.
 ## Breaking and the trains
 If a PR is merged and it turns out to have caused code to not compile during the nightly or beta release cycle,
 unless there is a trivial fix, the PR should be reverted and a crater run should assess the impact.
+
+### Model: A Trivial Fix
+
+On 2024, March 9th, [`Context::ext`] was added in [#123203]. It adds a `&mut dyn Any` field to Context.
+On 2024, May 16th regression [#125193] appeared in beta crater: `Context` was no longer `UnwindSafe`.
+Some code depended on it being so, but `&mut T` is `!UnwindSafe`, so Context also became `!UnwindSafe`.
+
+The PR to add `Context::ext` could have been reverted, but as the function is a nightly feature,
+its implications for unwind safety are limited to those actually using that nightly feature.
+Since nightly features are, by definition, permitted to have effects we may not want to stabilize,
+the question of whether the unwind safety regression should be accepted was deferred by [#125392]
+wrapping the field in `AssertUnwindSafe`. This allowed continued experimentation with the API.
+
+[#123203]: https://github.com/rust-lang/rust/pull/123203
+[#125193]: https://github.com/rust-lang/rust/pull/125193
+[#125392]: https://github.com/rust-lang/rust/pull/125392
