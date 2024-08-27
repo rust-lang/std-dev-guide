@@ -8,7 +8,7 @@ Running crater should be done if nontrivial breakage is expected, so the informa
 available during the final comment period.
 
 If the impact isn't too high, looping in maintainers of to-be-broken crates and submitting PRs
-to fix them can be a valid strategy. However, this can only affect the crates in question, and
+to fix them (and ensuring those PRs have been merged and released) can be a valid strategy. However, this can only affect the crates in question, and
 it does not automatically affect their dependents. Binary dependents may have already locked-in
 a different, older version.
 
