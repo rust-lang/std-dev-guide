@@ -35,7 +35,7 @@ Keep the following points in mind during the discussion:
   - An overly specific API does not cover all common use cases, and may require further API changes in the future to accomodate these use cases.
 - An alternative that should *always* be considered is simply adding this feature via a third party crate. This is even possible when adding new methods to standard library types by using extension traits.
 - In the case of "convenience" functions which are simply shorthands for something that is already possible with existing APIs, the cost of extending the standard library surface should be weighed against the ergonomic impact of the new functions.
-  - For example, too many convenience methods on a type makes nagivating the documentation more difficult.
+  - For example, too many convenience methods on a type makes navigating the documentation more difficult.
   - Additionally, consider whether this method is likely to be deprecated in the future if a language-level improvement makes it unnecessary.
 
 The library team itself is not directly involved in this discussion, but individual members may comment to provide feedback. If significant changes have occurred since the ACP, another one may be proposed at this point to have the design validated by the library API team.
