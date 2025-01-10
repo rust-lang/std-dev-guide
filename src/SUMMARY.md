@@ -21,6 +21,7 @@
     - [Doc alias policy](./policy/doc-alias.md)
     - [Safety comments policy](./policy/safety-comments.md)
     - [Reviewing target-specific code](./policy/target-code.md)
+    - [Why the standard library uses extension traits](./policy/extension-traits.md)
 
 - [Tricky situations]()
     - [Drop and `#[may_dangle]`](./tricky/may-dangle.md)
