@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Generics and unsafe - Standard library developers Guide</title>
+        <title>Why the standard library uses extension traits - Standard library developers Guide</title>
 
 
         <!-- Custom HTML head -->
@@ -80,7 +80,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../about.html"><strong aria-hidden="true">1.</strong> About this Guide</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Contributing to the standard libraries</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../development/building-and-debugging.html"><strong aria-hidden="true">2.1.</strong> Building and debugging</a></li><li class="chapter-item expanded "><a href="../development/perf-benchmarking.html"><strong aria-hidden="true">2.2.</strong> Performance optimizations and benchmarking</a></li><li class="chapter-item expanded "><a href="../development/how-to-write-documentation.html"><strong aria-hidden="true">2.3.</strong> Writing documentation</a></li><li class="chapter-item expanded "><a href="../development/feature-lifecycle.html"><strong aria-hidden="true">2.4.</strong> Feature lifecycle</a></li><li class="chapter-item expanded "><a href="../development/stabilization.html"><strong aria-hidden="true">2.5.</strong> Stabilizing a feature</a></li></ol></li><li class="chapter-item expanded "><a href="../breaking-changes/summary.html"><strong aria-hidden="true">3.</strong> Breaking changes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../breaking-changes/new-trait-impls.html"><strong aria-hidden="true">3.1.</strong> New trait implementations</a></li><li class="chapter-item expanded "><a href="../breaking-changes/prelude.html"><strong aria-hidden="true">3.2.</strong> Prelude</a></li><li class="chapter-item expanded "><a href="../breaking-changes/doc-changes.html"><strong aria-hidden="true">3.3.</strong> Doc changes</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Policies</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../policy/must-use.html"><strong aria-hidden="true">4.1.</strong> When to add #[must_use]</a></li><li class="chapter-item expanded "><a href="../policy/specialization.html"><strong aria-hidden="true">4.2.</strong> Specialization</a></li><li class="chapter-item expanded "><a href="../policy/inline.html"><strong aria-hidden="true">4.3.</strong> When to #[inline]</a></li><li class="chapter-item expanded "><a href="../policy/doc-alias.html"><strong aria-hidden="true">4.4.</strong> Doc alias policy</a></li><li class="chapter-item expanded "><a href="../policy/safety-comments.html"><strong aria-hidden="true">4.5.</strong> Safety comments policy</a></li><li class="chapter-item expanded "><a href="../policy/target-code.html"><strong aria-hidden="true">4.6.</strong> Reviewing target-specific code</a></li><li class="chapter-item expanded "><a href="../policy/extension-traits.html"><strong aria-hidden="true">4.7.</strong> Why the standard library uses extension traits</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Tricky situations</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tricky/may-dangle.html"><strong aria-hidden="true">5.1.</strong> Drop and #[may_dangle]</a></li><li class="chapter-item expanded "><a href="../tricky/generics-and-unsafe.html" class="active"><strong aria-hidden="true">5.2.</strong> Generics and unsafe</a></li></ol></li><li class="chapter-item expanded "><a href="../team/summary.html"><strong aria-hidden="true">6.</strong> The library team</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../team/meetings.html"><strong aria-hidden="true">6.1.</strong> Meetings</a></li><li class="chapter-item expanded "><a href="../team/membership.html"><strong aria-hidden="true">6.2.</strong> Membership</a></li><li class="chapter-item expanded "><a href="../team/reviewing.html"><strong aria-hidden="true">6.3.</strong> Reviewing</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../about.html"><strong aria-hidden="true">1.</strong> About this Guide</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">2.</strong> Contributing to the standard libraries</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../development/building-and-debugging.html"><strong aria-hidden="true">2.1.</strong> Building and debugging</a></li><li class="chapter-item expanded "><a href="../development/perf-benchmarking.html"><strong aria-hidden="true">2.2.</strong> Performance optimizations and benchmarking</a></li><li class="chapter-item expanded "><a href="../development/how-to-write-documentation.html"><strong aria-hidden="true">2.3.</strong> Writing documentation</a></li><li class="chapter-item expanded "><a href="../development/feature-lifecycle.html"><strong aria-hidden="true">2.4.</strong> Feature lifecycle</a></li><li class="chapter-item expanded "><a href="../development/stabilization.html"><strong aria-hidden="true">2.5.</strong> Stabilizing a feature</a></li></ol></li><li class="chapter-item expanded "><a href="../breaking-changes/summary.html"><strong aria-hidden="true">3.</strong> Breaking changes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../breaking-changes/new-trait-impls.html"><strong aria-hidden="true">3.1.</strong> New trait implementations</a></li><li class="chapter-item expanded "><a href="../breaking-changes/prelude.html"><strong aria-hidden="true">3.2.</strong> Prelude</a></li><li class="chapter-item expanded "><a href="../breaking-changes/doc-changes.html"><strong aria-hidden="true">3.3.</strong> Doc changes</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Policies</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../policy/must-use.html"><strong aria-hidden="true">4.1.</strong> When to add #[must_use]</a></li><li class="chapter-item expanded "><a href="../policy/specialization.html"><strong aria-hidden="true">4.2.</strong> Specialization</a></li><li class="chapter-item expanded "><a href="../policy/inline.html"><strong aria-hidden="true">4.3.</strong> When to #[inline]</a></li><li class="chapter-item expanded "><a href="../policy/doc-alias.html"><strong aria-hidden="true">4.4.</strong> Doc alias policy</a></li><li class="chapter-item expanded "><a href="../policy/safety-comments.html"><strong aria-hidden="true">4.5.</strong> Safety comments policy</a></li><li class="chapter-item expanded "><a href="../policy/target-code.html"><strong aria-hidden="true">4.6.</strong> Reviewing target-specific code</a></li><li class="chapter-item expanded "><a href="../policy/extension-traits.html" class="active"><strong aria-hidden="true">4.7.</strong> Why the standard library uses extension traits</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Tricky situations</div></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tricky/may-dangle.html"><strong aria-hidden="true">5.1.</strong> Drop and #[may_dangle]</a></li><li class="chapter-item expanded "><a href="../tricky/generics-and-unsafe.html"><strong aria-hidden="true">5.2.</strong> Generics and unsafe</a></li></ol></li><li class="chapter-item expanded "><a href="../team/summary.html"><strong aria-hidden="true">6.</strong> The library team</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../team/meetings.html"><strong aria-hidden="true">6.1.</strong> Meetings</a></li><li class="chapter-item expanded "><a href="../team/membership.html"><strong aria-hidden="true">6.2.</strong> Membership</a></li><li class="chapter-item expanded "><a href="../team/reviewing.html"><strong aria-hidden="true">6.3.</strong> Reviewing</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -118,7 +118,7 @@
                         <a href="https://github.com/rust-lang/std-dev-guide" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/std-dev-guide/edit/master/./src/tricky/generics-and-unsafe.md" title="Suggest an edit" aria-label="Suggest an edit">
+                        <a href="https://github.com/rust-lang/std-dev-guide/edit/master/./src/policy/extension-traits.md" title="Suggest an edit" aria-label="Suggest an edit">
                             <i id="git-edit-button" class="fa fa-edit"></i>
                         </a>
 
@@ -147,38 +147,34 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="generics-and-unsafe"><a class="header" href="#generics-and-unsafe">Generics and unsafe</a></h1>
-<p>Be careful of generic types that interact with unsafe code. Unless the generic type is bounded by an unsafe trait that specifies its contract, we can't rely on the results of generic types being reliable or correct.</p>
-<p>A place where this commonly comes up is with the <code>RangeBounds</code> trait. You might assume that the start and end bounds given by a <code>RangeBounds</code> implementation will remain the same since it works through shared references. That's not necessarily the case though, an adversarial implementation may change the bounds between calls:</p>
-<pre><code class="language-rust ignore">struct EvilRange(Cell&lt;bool&gt;);
-
-impl RangeBounds&lt;usize&gt; for EvilRange {
-    fn start_bound(&amp;self) -&gt; Bound&lt;&amp;usize&gt; {
-        Bound::Included(if self.0.get() {
-            &amp;1
-        } else {
-            self.0.set(true);
-            &amp;0
-        })
-    }
-    fn end_bound(&amp;self) -&gt; Bound&lt;&amp;usize&gt; {
-        Bound::Unbounded
-    }
-}</code></pre>
-<p>This has <a href="https://github.com/rust-lang/rust/issues/81138">caused problems in the past</a> for code making safety assumptions based on bounds without asserting they stay the same.</p>
-<p>Code using generic types to interact with unsafe should try convert them into known types first, then work with those instead of the generic. For our example with <code>RangeBounds</code>, this may mean converting into a concrete <code>Range</code>, or a tuple of <code>(Bound, Bound)</code>.</p>
-<h2 id="for-reviewers"><a class="header" href="#for-reviewers">For reviewers</a></h2>
-<p>Look out for generic functions that also contain unsafe blocks and consider how adversarial implementations of those generics could violate safety.</p>
+                        <h1 id="why-the-standard-library-uses-extension-traits-and-not-cfg-guarded-items"><a class="header" href="#why-the-standard-library-uses-extension-traits-and-not-cfg-guarded-items">Why the standard library uses extension traits (and not <code>cfg</code>-guarded items)</a></h1>
+<p>A common pattern in the standard library is to put target-specific methods into
+extension traits, rather than providing them as <code>cfg</code>-guarded methods directly
+on objects themselves. For example, the many extension traits in
+<a href="https://doc.rust-lang.org/std/os/unix/prelude/index.html"><code>std::os::unix::prelude</code></a>
+provide UNIX-specific methods on standard types.</p>
+<p>The standard library could, instead, provide these methods directly on the
+standard types, guarded by <code>#[cfg(unix)]</code>. However, it does not do so, and PRs
+adding <code>cfg</code>-guarded methods are often rejected.</p>
+<p>Providing these methods via extension traits forces code to explicitly use
+those extension traits in order to access the methods. This, effectively,
+requires code to declare whether it depends on target-specific functionality,
+either because the code is target-specific, or because it has appropriately
+<code>cfg</code>-guarded code for different targets. Without these extension traits, code
+could more easily use target-specific functionality &quot;accidentally&quot;.</p>
+<p>This policy may change in the future if Rust develops better mechanisms for
+helping code explicitly declare its portability, or lack of portability, before
+accessing target-specific functionality.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../tricky/may-dangle.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../policy/target-code.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../team/summary.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../tricky/may-dangle.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -188,11 +184,11 @@ impl RangeBounds&lt;usize&gt; for EvilRange {
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../tricky/may-dangle.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../policy/target-code.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../team/summary.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../tricky/may-dangle.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
