@@ -25,6 +25,8 @@ You can create an ACP in the `rust-lang/libs-team` repo using [this issue templa
 
 Note that an ACP is not strictly required: you can just go ahead and submit a pull request with an implementation of your proposed API, with the risk of wasted effort if the library team ends up rejecting this feature. However do note that this risk is always present even if an ACP is accepted, as the library team can end up rejecting a feature in the later parts of the stabilization process.
 
+Additionally, if you submit a pull request without an ACP, you should include all of the information that would have been in the ACP in the pull request description. In particular this should include clear motivating examples and a discussion of possible alternative APIs.
+
 ## API design exploration
 
 Once a feature is deemed suitable for inclusion in the standard library, the exact design should be iterated on to find the best way to express it as a Rust API. This iteration should happen in community forums such as [Rust internals](https://internals.rust-lang.org/) where all members of the community can comment and propose improvements.
