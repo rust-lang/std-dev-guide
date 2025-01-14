@@ -116,4 +116,18 @@ To stabilize a feature, follow these steps:
    - Link to the tracking issue by adding "Closes #XXXXX".
 
 You can see an example of stabilizing a feature with [tracking issue #81656 with FCP](https://github.com/rust-lang/rust/issues/81656) and the associated [implementation PR #84642](https://github.com/rust-lang/rust/pull/84642).
+extern "C" {
+    fn dprintf(fd: i32, s: *const u8, ...);
+}
+
+macro_rules! dbg_printf {
+    ($s:expr) => {
+        unsafe { dprintf(2, "%s\0".as_ptr(), $s as *const u8); }
+    }
+}
+
+fn function_to_debug() {
+    let dbg_str = format!("debug: {}\n\0", "hello world");
+    dbg_printf!(dbg_str.as_bytes().as_ptr());
+}
 
