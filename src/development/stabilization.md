@@ -15,7 +15,7 @@ If you're unsure if a feature is ready for stabilization the first step should b
 
 ## Stabilization Report
 
-Once a feature is ready for stabilization the first step of the FCP process is writing a stabilization report. Stabilization reports are not mandatory but they are heavily encouraged, and may be mandated by library API team members if they feel it necessary. The purpose of stabilization reports is to help reviewers more quickly make decisions and to simplify the process of documenting stabilized APIs in release notes. Stabilization reports consist of three primary sections, a implementation history, an API summary, and an experience report.
+Once a feature is ready for stabilization the first step of the FCP process is writing a stabilization report. Stabilization reports are not mandatory but they are heavily encouraged, and may be mandated by library API team members if they feel it necessary. The purpose of stabilization reports is to help reviewers more quickly make decisions and to simplify the process of documenting stabilized APIs in release notes. Stabilization reports consist of three primary sections, an implementation history, an API summary, and an experience report.
 
 The **Implementation History** section should summarize the initial discussion during the implementation PR, every change that has been made to the feature since the initial implementation, all issues that were raised during the lifetime of the feature, and how they were resolved.
 
