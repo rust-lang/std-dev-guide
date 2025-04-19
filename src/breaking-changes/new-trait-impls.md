@@ -37,6 +37,12 @@ let b = Arc::from("a");
 will no longer compile, because we've previously been relying on inference to figure out the `T` in `Box<T>`.
 
 This kind of breakage can be ok, but a [crater](https://github.com/rust-lang/crater/blob/master/docs/bot-usage.md) run should estimate the scope.
+When implementing traits known to have this problem, crater should be run before initiating FCP,
+so information on the scope of the breakage is available before deciding to accept the change.
+This can include, but is not limited to,
+
+- From
+- FromIterator
 
 ## Deref coercion breaks when a new impl is introduced
 
