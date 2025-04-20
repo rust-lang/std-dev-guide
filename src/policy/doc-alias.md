@@ -25,11 +25,12 @@ cases where we add doc aliases, and the cases where we omit those aliases.
   `remove_dir`, or `popcnt` and `popcount` for `count_ones`, or `umask` for
   `mode`. This feeds into the reasonable expectation that someone might search
   for the name and expect to find it ("what did Rust call `mkdir`").
-- There must be an obvious single target for the alias that is an *exact*
-  analogue of the aliased name. We will not add the same alias to multiple
-  declarations. (`const` and non-`const` versions of the same function are
-  fine.) We will also not add an alias for a function that's only somewhat
-  similar or related.
+- The same alias may be used for multiple declarations when the standard library
+  provides multiple interfaces to the same function (for example,
+  `slice::copy_from_slice` and `ptr::copy_nonoverlapping` are both aliased as
+  `memcpy`). The same alias for `const` and non-`const` versions of the same
+  function is also fine. We will not, however, add an alias for a function
+  that's only somewhat similar or related.
 - The alias must not conflict with the actual name of any existing declaration.
 - As a special case for stdarch, aliases from exact assembly instruction names
   to the corresponding intrinsic function are welcome, as long as they don't
