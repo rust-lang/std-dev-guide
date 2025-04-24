@@ -23,7 +23,7 @@ be merged and pass its eventual FCP.
 
 You can create an ACP in the `rust-lang/libs-team` repo using [this issue template](https://github.com/rust-lang/libs-team/issues/new?assignees=&labels=api-change-proposal%2C+T-libs-api&template=api-change-proposal.md&title=%28My+API+Change+Proposal%29). This should include a sketch of the proposed API, but does not have to be the final design that will be implemented.
 
-Note that an ACP is not strictly required: you can just go ahead and submit a pull request with an implementation of your proposed API, with the risk of wasted effort if the library team ends up rejecting this feature. However do note that this risk is always present even if an ACP is accepted, as the library team can end up rejecting a feature in the later parts of the stabilization process.
+Most standard library additions should start with an ACP. That's particularly true for things with substantial ecosystem impact, like traits that other libraries would be expected to implement, or expansion of the standard library into new areas. An ACP is not strictly required: reviewers may approve small things in existing areas. But while you can just go ahead and submit a pull request with an implementation of your proposed API, it's common that a reviewer will decide to ask for an ACP anyway. Note also that the library team can end up rejecting a feature in the later parts of the stabilization process, regardless of accepted ACPs or PRs.
 
 ## API design exploration
 
