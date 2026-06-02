@@ -37,6 +37,7 @@ omit those aliases.
   alias to that item. If the crate's functionality all exists in one module,
   and it's the primary functionality of that module, add the alias to that
   module.
+  - This is not meant to be a vehicle for self-promotion of arbitrary crates.
 - The alias must not conflict with the actual name of any existing declaration.
 - As a special case for stdarch, aliases from exact assembly instruction names
   to the corresponding intrinsic function are welcome, as long as they don't
