@@ -14,7 +14,7 @@ Unlike third party crates on crates.io, the Rust standard library is not version
 
 APIs that are well suited to the standard library are things that require language and/or compiler support, or that extend existing standard library types. Complex APIs that are expected to evolve over time (e.g. GUI frameworks) are a poor fit due to the lack of versioning.
 
-The API Change Proposal process is intended to be a lightweight first step to
+The API Change Proposal (ACP) process is intended to be a lightweight first step to
 getting new APIs added to the standard library. The goal of this process is to
 make sure proposed API changes have the best chance of success. The ACP process
 accomplishes this by ensuring all changes are reviewed by the library API team,
