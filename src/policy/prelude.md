@@ -40,7 +40,7 @@ checking a crater run.
 Adding items other than traits, macros, or types to the prelude will never
 produce conflicts or other compatibility issues with existing code, since we
 allow shadowing and give other sources of names priority over names from the
-prelude. Thus, if we choose to add another kind of item to the prelude, we
+prelude. This [includes](https://doc.rust-lang.org/reference/names/namespaces.html#r-names.namespaces.kinds) statics, constants and functions. Thus, if we choose to add another kind of item to the prelude, we
 should typically add it to the common prelude for all editions of Rust.
 (Exceptions to this would include names that form part of an edition
 transition, such that the same name resolves to something different in
