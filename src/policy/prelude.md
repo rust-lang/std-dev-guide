@@ -15,6 +15,11 @@ This policy sets out the requirements for what items we add to the prelude, and
 whether we add those items to the prelude for a future edition or to the common
 prelude for all Rust editions.
 
+This policy provides guidelines, and documents cases where adding things to the
+prelude can potentially cause breakage, such that we should consider a crater
+run or waiting until an edition. This policy does not attempt to mandate what
+we must add to the prelude.
+
 When to use editions
 --------------------
 
