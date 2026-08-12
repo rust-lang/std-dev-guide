@@ -373,7 +373,7 @@ make sure proposed API changes have the best chance of success. The ACP process
 accomplishes this by ensuring all changes are reviewed by the library API team,
 who will evaluate the proposal and accept it if they are optimistic that the proposal will
 be merged and pass its eventual FCP.</p>
-<p>You can create an ACP in the <code>rust-lang/libs-team</code> repo using <a href="https://github.com/rust-lang/libs-team/issues/new?assignees=&amp;labels=api-change-proposal%2C+T-libs-api&amp;template=api-change-proposal.md&amp;title=%28My+API+Change+Proposal%29">this issue template</a>. This should include a sketch of the proposed API, but does not have to be the final design that will be implemented.</p>
+<p>You can create an ACP in the <code>rust-lang/libs-team</code> repo using <a href="https://github.com/rust-lang/libs-team/issues/new?assignees=&amp;labels=api-change-proposal%2C+T-libs&amp;template=api-change-proposal.md&amp;title=%28My+API+Change+Proposal%29">this issue template</a>. This should include a sketch of the proposed API, but does not have to be the final design that will be implemented.</p>
 <p>Note that an ACP is not strictly required: you can just go ahead and submit a pull request with an implementation of your proposed API, with the risk of wasted effort if the library team ends up rejecting this feature. However do note that this risk is always present even if an ACP is accepted, as the library team can end up rejecting a feature in the later parts of the stabilization process.</p>
 <h2 id="api-design-exploration"><a class="header" href="#api-design-exploration">API design exploration</a></h2>
 <p>Once a feature is deemed suitable for inclusion in the standard library, the exact design should be iterated on to find the best way to express it as a Rust API. This iteration should happen in community forums such as <a href="https://internals.rust-lang.org/">Rust internals</a> where all members of the community can comment and propose improvements.</p>
@@ -423,7 +423,7 @@ be merged and pass its eventual FCP.</p>
 <p>The <strong>Experience Report</strong> section should include concrete usecases of users who have wanted to use the feature and who have tested that it works for their needs. The experience report should include a brief summary of the experience of using that feature. Ideally this would include links to commits or branches where the feature was integrated with their project, but this is not a requirement. Alternatively, users can provide usage examples of crates that export an identical API to the one being stabilized.</p>
 <p>You can see an example of a stabilization report in <a href="https://github.com/rust-lang/rust/issues/88581#issuecomment-1054642118">#88581</a>.</p>
 <h2 id="before-writing-a-pr-to-stabilize-a-feature"><a class="header" href="#before-writing-a-pr-to-stabilize-a-feature">Before writing a PR to stabilize a feature</a></h2>
-<p>Check to see if a FCP has completed first. If not, either ping <code>@rust-lang/libs-api</code> if you're a member of the <code>rust-lang</code> organization,
+<p>Check to see if a FCP has completed first. If not, either ping <code>@rust-lang/libs</code> if you're a member of the <code>rust-lang</code> organization,
 or leave a comment asking about the status of the feature.</p>
 <p>This will save you from opening a stabilization PR and having it need regular rebasing while the FCP process runs its course.</p>
 <h2 id="partial-stabilizations"><a class="header" href="#partial-stabilizations">Partial Stabilizations</a></h2>
@@ -468,13 +468,13 @@ pub fn total_cmp(&amp;self, other: &amp;Self) -&gt; crate::cmp::Ordering { ... }
 <ol start="0">
 <li>Create a stabilization report in the tracking issue for the feature being stabilized.</li>
 <li>(Optional) For partial stabilizations, create a new partial stabilization PR for the subset of the issue being stabilized.</li>
-<li>Ask a <strong>@rust-lang/libs-api</strong> member to start an FCP on the tracking issue and wait for the FCP to complete (with <code>disposition-merge</code>).</li>
+<li>Ask a <strong>@rust-lang/libs</strong> member to start an FCP on the tracking issue and wait for the FCP to complete (with <code>disposition-merge</code>).</li>
 <li>Change <code>#[unstable(...)]</code> to <code>#[stable(since = &quot;CURRENT_RUSTC_VERSION&quot;)]</code>. <code>CURRENT_RUSTC_VERSION</code> here is meant in a literal sense and not to be replaced with the spelled out version number.</li>
 <li>Remove <code>#![feature(...)]</code> from any test or doc-test for this API. If the feature is used in the compiler or tools, remove it from there as well.</li>
 <li>If applicable, change <code>#[rustc_const_unstable(...)]</code> to <code>#[rustc_const_stable(since = &quot;CURRENT_RUSTC_VERSION&quot;)]</code>.</li>
 <li>Open a PR against <code>rust-lang/rust</code>.
 <ul>
-<li>Add the appropriate labels: <code>@rustbot modify labels: +T-libs-api</code>.</li>
+<li>Add the appropriate labels: <code>@rustbot modify labels: +T-libs</code>.</li>
 <li>Link to the tracking issue by adding &quot;Closes #XXXXX&quot;.</li>
 </ul>
 </li>
@@ -908,7 +908,7 @@ If you want to participate in meeting discussions through text, you can do so th
 <p>Agendas are generated by the <a href="https://github.com/rust-lang/libs-team/tree/main/tools/agenda-generator"><code>fully-automatic-rust-libs-team-triage-meeting-agenda-generator</code></a>,
 which will include all relevant issues and PRs, such as those tagged with <code>I-nominated</code> or <code>S-waiting-on-team</code>.</p>
 <p>If you have any specific topics you'd like to have discussed in a meeting, feel free to open an issue on the <a href="https://github.com/rust-lang/libs-team/"><code>libs-team</code></a> repository
-and mark it as <code>I-nominated</code> and <code>T-libs</code> or <code>T-libs-api</code>. Or just leave a message in the Zulip channel.</p>
+and mark it as <code>I-nominated-libs</code>. Or just leave a message in the Zulip channel.</p>
 <p>All the meetings, including those of the library working groups, can be found on our Google Calendar:</p>
 <iframe width="100%" height="500px" src="https://calendar.google.com/calendar/embed?src=9kuu8evq4eh6uacm262k0phri8%40group.calendar.google.com"></iframe>
 <p><a href="https://calendar.google.com/calendar/ical/9kuu8evq4eh6uacm262k0phri8%40group.calendar.google.com/public/basic.ics">ICS link</a></p>
@@ -964,7 +964,7 @@ However, do not approve PRs unless:
 <li>It does not change the public API, including any stable promises we make in documentation, unless there's a finished FCP for the change.
 <ul>
 <li>For unstable API changes/additions, it can be acceptable to skip the RFC process if the design is small and the change is uncontroversial.
-Make sure to involve <code>@rust-lang/libs-api</code> on such changes.</li>
+Make sure to involve <code>@rust-lang/libs</code> on such changes.</li>
 </ul>
 </li>
 </ul>
