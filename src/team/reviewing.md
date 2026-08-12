@@ -14,7 +14,7 @@ But please keep in mind:
     - You are confident it will not cause any breakage or regress performance.
     - It does not change the public API, including any stable promises we make in documentation, unless there's a finished FCP for the change.
       - For unstable API changes/additions, it can be acceptable to skip the RFC process if the design is small and the change is uncontroversial.
-        Make sure to involve `@rust-lang/libs-api` on such changes.
+        Make sure to involve `@rust-lang/libs` on such changes.
 - Always be polite when reviewing: you are a representative of the Rust project, so it is expected that you will go above and beyond when it comes to the Code of Conduct.
 
 See <https://forge.rust-lang.org/compiler/reviews.html> for more information on reviewing.

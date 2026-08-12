@@ -29,7 +29,7 @@ You can see an example of a stabilization report in [#88581](https://github.com/
 
 ## Before writing a PR to stabilize a feature
 
-Check to see if a FCP has completed first. If not, either ping `@rust-lang/libs-api` if you're a member of the `rust-lang` organization,
+Check to see if a FCP has completed first. If not, either ping `@rust-lang/libs` if you're a member of the `rust-lang` organization,
 or leave a comment asking about the status of the feature.
 
 This will save you from opening a stabilization PR and having it need regular rebasing while the FCP process runs its course.
@@ -107,12 +107,12 @@ To stabilize a feature, follow these steps:
 
 0. Create a stabilization report in the tracking issue for the feature being stabilized.
 0. (Optional) For partial stabilizations, create a new partial stabilization PR for the subset of the issue being stabilized.
-0. Ask a **@rust-lang/libs-api** member to start an FCP on the tracking issue and wait for the FCP to complete (with `disposition-merge`).
+0. Ask a **@rust-lang/libs** member to start an FCP on the tracking issue and wait for the FCP to complete (with `disposition-merge`).
 0. Change `#[unstable(...)]` to `#[stable(since = "CURRENT_RUSTC_VERSION")]`. `CURRENT_RUSTC_VERSION` here is meant in a literal sense and not to be replaced with the spelled out version number.
 0. Remove `#![feature(...)]` from any test or doc-test for this API. If the feature is used in the compiler or tools, remove it from there as well.
 0. If applicable, change `#[rustc_const_unstable(...)]` to `#[rustc_const_stable(since = "CURRENT_RUSTC_VERSION")]`.
 0. Open a PR against `rust-lang/rust`.
-   - Add the appropriate labels: `@rustbot modify labels: +T-libs-api`.
+   - Add the appropriate labels: `@rustbot modify labels: +T-libs`.
    - Link to the tracking issue by adding "Closes #XXXXX".
 
 You can see an example of stabilizing a feature with [tracking issue #81656 with FCP](https://github.com/rust-lang/rust/issues/81656) and the associated [implementation PR #84642](https://github.com/rust-lang/rust/pull/84642).
