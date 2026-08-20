@@ -32,10 +32,12 @@ feel free to reassign it to someone else.
 To assign it to another random person picked from the high-five rotation,
 use `r? rust-lang/libs`.
 
+To manage your review queue, you can send commands to [triagebot](https://rust-lang.zulipchat.com/#user/261224)
+via a private message on zulip. Message `--help` to see the available commands.
+
 If you find yourself unable to do any reviews for an extended period of time,
-it might be a good idea to (temporarily) remove yourself from the list.
-To add or remove yourself from the list, send a PR to change the
-[triagebot configuration file](https://github.com/rust-lang/rust/blob/master/triagebot.toml).
+it might be a good idea to (temporarily) remove yourself from the work queue.
+To add or remove yourself from the queue, send `work set-rotation-mode off`.
 
 ## Rolling up
 
