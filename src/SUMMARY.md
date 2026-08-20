@@ -19,6 +19,7 @@
     - [Specialization](./policy/specialization.md)
     - [When to `#[inline]`](./policy/inline.md)
     - [Doc alias policy](./policy/doc-alias.md)
+    - [LLM usage policy](./policy/llm-usage.md)
     - [Safety comments policy](./policy/safety-comments.md)
     - [Reviewing target-specific code](./policy/target-code.md)
     - [Why the standard library uses extension traits](./policy/extension-traits.md)
