@@ -2,10 +2,11 @@ doc alias policy
 ================
 
 Rust's documentation supports adding aliases to any declaration (such as a
-function, type, or constant), using the syntax `#[doc(alias = "name")]`. We
-want to use doc aliases to help people find what they're looking for, while
-keeping those aliases maintainable and high-value. This policy outlines the
-cases where we add doc aliases, and the cases where we omit those aliases.
+function, type, or constant, or an entire module), using the syntax
+`#[doc(alias = "name")]`. We want to use doc aliases to help people find what
+they're looking for, while keeping those aliases maintainable and high-value.
+This policy outlines the cases where we add doc aliases, and the cases where we
+omit those aliases.
 
 - We must have a reasonable expectation that people might search for the term
   in the documentation search. Rust's documentation provides a name search, not
@@ -30,6 +31,13 @@ cases where we add doc aliases, and the cases where we omit those aliases.
   declarations. (`const` and non-`const` versions of the same function are
   fine.) We will also not add an alias for a function that's only somewhat
   similar or related.
+- We also add aliases for popular crate names, if we've added functionality to
+  the standard library that provides most or all of the functionality of the
+  crate. If the crate consists of one function, type, or other item, add the
+  alias to that item. If the crate's functionality all exists in one module,
+  and it's the primary functionality of that module, add the alias to that
+  module.
+  - This is not meant to be a vehicle for self-promotion of arbitrary crates.
 - The alias must not conflict with the actual name of any existing declaration.
 - As a special case for stdarch, aliases from exact assembly instruction names
   to the corresponding intrinsic function are welcome, as long as they don't
