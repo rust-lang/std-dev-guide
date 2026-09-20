@@ -21,7 +21,7 @@ elif [ "$CI" = "true" ] ; then # running in PR CI build
   echo "Checking files changed in $TRAVIS_COMMIT_RANGE: $CHANGED_FILES"
   set -x
 else # running locally
-  COMMIT_RANGE=master...
+  COMMIT_RANGE=main...
   CHANGED_FILES=$(git diff --name-only $COMMIT_RANGE | tr '\n' ' ')
   FLAGS="-f $CHANGED_FILES"
 

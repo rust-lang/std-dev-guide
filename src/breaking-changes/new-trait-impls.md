@@ -36,7 +36,7 @@ let b = Arc::from("a");
 
 will no longer compile, because we've previously been relying on inference to figure out the `T` in `Box<T>`.
 
-This kind of breakage can be ok, but a [crater](https://github.com/rust-lang/crater/blob/master/docs/bot-usage.md) run should estimate the scope.
+This kind of breakage can be ok, but a [crater](https://github.com/rust-lang/crater/blob/main/docs/bot-usage.md) run should estimate the scope.
 
 ## Deref coercion breaks when a new impl is introduced
 

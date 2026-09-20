@@ -22,7 +22,7 @@ when they instantiate generic library functions, e.g. iterators.
 ## rustc-perf
 
 For parts of the standard library that are heavily used by rustc itself it can be convenient to use
-[the benchmark server](https://github.com/rust-lang/rustc-perf/tree/master/collector#benchmarking).
+[the benchmark server](https://github.com/rust-lang/rustc-perf/tree/main/collector#benchmarking).
 
 Since it only measures compile-time but not runtime performance of crates it can't be used to benchmark for features
 that aren't used by the compiler, e.g. floating point code, linked lists, mpsc channels, etc.
