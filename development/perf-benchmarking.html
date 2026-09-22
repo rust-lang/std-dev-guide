@@ -118,7 +118,7 @@
                         <a href="https://github.com/rust-lang/std-dev-guide" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/std-dev-guide/edit/master/./src/development/perf-benchmarking.md" title="Suggest an edit" aria-label="Suggest an edit">
+                        <a href="https://github.com/rust-lang/std-dev-guide/edit/main/./src/development/perf-benchmarking.md" title="Suggest an edit" aria-label="Suggest an edit">
                             <i id="git-edit-button" class="fa fa-edit"></i>
                         </a>
 
@@ -163,7 +163,7 @@ backend's auto-vectorization passes can understand. This benefits user crates co
 when they instantiate generic library functions, e.g. iterators.</p>
 <h2 id="rustc-perf"><a class="header" href="#rustc-perf">rustc-perf</a></h2>
 <p>For parts of the standard library that are heavily used by rustc itself it can be convenient to use
-<a href="https://github.com/rust-lang/rustc-perf/tree/master/collector#benchmarking">the benchmark server</a>.</p>
+<a href="https://github.com/rust-lang/rustc-perf/tree/main/collector#benchmarking">the benchmark server</a>.</p>
 <p>Since it only measures compile-time but not runtime performance of crates it can't be used to benchmark for features
 that aren't used by the compiler, e.g. floating point code, linked lists, mpsc channels, etc.
 For those explicit benchmarks must be written or extracted from real-world code.</p>

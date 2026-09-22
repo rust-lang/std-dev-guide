@@ -118,7 +118,7 @@
                         <a href="https://github.com/rust-lang/std-dev-guide" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/std-dev-guide/edit/master/./src/breaking-changes/new-trait-impls.md" title="Suggest an edit" aria-label="Suggest an edit">
+                        <a href="https://github.com/rust-lang/std-dev-guide/edit/main/./src/breaking-changes/new-trait-impls.md" title="Suggest an edit" aria-label="Suggest an edit">
                             <i id="git-edit-button" class="fa fa-edit"></i>
                         </a>
 
@@ -167,7 +167,7 @@ let b = Arc::from(&quot;a&quot;);</code></pre>
 <p>then</p>
 <pre><code class="language-rust ignore">let b = Arc::from(&quot;a&quot;);</code></pre>
 <p>will no longer compile, because we've previously been relying on inference to figure out the <code>T</code> in <code>Box&lt;T&gt;</code>.</p>
-<p>This kind of breakage can be ok, but a <a href="https://github.com/rust-lang/crater/blob/master/docs/bot-usage.md">crater</a> run should estimate the scope.</p>
+<p>This kind of breakage can be ok, but a <a href="https://github.com/rust-lang/crater/blob/main/docs/bot-usage.md">crater</a> run should estimate the scope.</p>
 <h2 id="deref-coercion-breaks-when-a-new-impl-is-introduced"><a class="header" href="#deref-coercion-breaks-when-a-new-impl-is-introduced">Deref coercion breaks when a new impl is introduced</a></h2>
 <p>Rust will use deref coercion to find a valid trait impl if the arguments don't type check directly.
 This only seems to occur if there's a single impl so introducing a new one may break consumers relying on deref coercion.
