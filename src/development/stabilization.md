@@ -11,7 +11,7 @@ Stabilization goes through the Libs FCP (Final Comment Period) process, which ty
 
 Once an unstable feature's API design space (e.g. alternative APIs) has been fully explored with no outstanding concerns, anyone may push for its stabilization.
 
-If you're unsure if a feature is ready for stabilization the first step should be to ask in the relevant tracking issue and get assistance from other participants in that discussion. In some cases the tracking issue may not have many other active participants, so if you're ever having trouble getting any feedback please ping one of the [libs team reviewers](https://github.com/rust-lang/rust/blob/master/triagebot.toml) directly to request assistance.
+If you're unsure if a feature is ready for stabilization the first step should be to ask in the relevant tracking issue and get assistance from other participants in that discussion. In some cases the tracking issue may not have many other active participants, so if you're ever having trouble getting any feedback please ping one of the [libs team reviewers](https://github.com/rust-lang/rust/blob/main/triagebot.toml) directly to request assistance.
 
 ## Stabilization Report
 
@@ -38,7 +38,7 @@ This will save you from opening a stabilization PR and having it need regular re
 
 When you only wish to stabilize a subset of an existing feature you should skip creating a new tracking issue and instead create a partial stabilization PR for the subset of the feature being stabilized.
 
-If you're unsure if a feature is ready for partial stabilization the first step should be to ask in the relevant tracking issue and get assistance from other participants in that discussion. In some cases the tracking issue may not have many other active participants, so if you're ever having trouble getting any feedback please ping one of the [libs team reviewers](https://github.com/rust-lang/rust/blob/master/triagebot.toml) directly to request assistance.
+If you're unsure if a feature is ready for partial stabilization the first step should be to ask in the relevant tracking issue and get assistance from other participants in that discussion. In some cases the tracking issue may not have many other active participants, so if you're ever having trouble getting any feedback please ping one of the [libs team reviewers](https://github.com/rust-lang/rust/blob/main/triagebot.toml) directly to request assistance.
 
 You can see an example of partially stabilizing a feature with tracking issue [#71146](https://github.com/rust-lang/rust/issues/71146) and partial stabilization PR [#94640](https://github.com/rust-lang/rust/pull/94640).
 
