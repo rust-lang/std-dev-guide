@@ -87,13 +87,16 @@ All the doctests on the items being stabilized will be enabling the unstable fea
  /// ```
 `````
 
-The most obvious place to find these is on the item itself, but it's worth searching the whole library.  Often you'll find other unstable methods that were also using it in their tests.
+The most obvious place to find these is on the item itself, but it's worth searching the whole library. Often you'll find other unstable methods that were also using it in their tests.
 
-### Remove feature gates from the compiler
+### Update feature gates in the compiler
 
-The compiler builds with nightly features allowed, so you may find uses of the feature there as well.  These also need to be removed.
+The compiler builds with nightly features allowed, so you may find uses of the feature there as well. These need to be updated to only apply to the bootstrap compiler (since it uses the beta `std`, where the feature being stabilized is *still* unstable).
+You can use `#![cfg_attr(bootstrap, feature(total_cmp))]` for that, it'll get removed in the next bootstrap-toolchain bump.
+(Notice that this will probably break the ordering of the list of feature flags, which is often enforced by `tidy`, so you might need to run `x.py test tidy --bless` before committing.)
 
 ```diff
++#![cfg_attr(bootstrap, feature(total_cmp))]
  #![feature(once_cell)]
  #![feature(never_type)]
 -#![feature(total_cmp)]
