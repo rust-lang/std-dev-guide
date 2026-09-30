@@ -11,7 +11,7 @@ allow-unauthenticated = [
 zulip_stream = 639962 # #t-libs/nominated
 topic = "std-dev-guide#{number}: {title}"
 message_on_add = """\
-@*T-libs-ping* [std-dev-guide#{number} "{title}"](https://github.com/rust-lang/std-dev-guide/pull/{number}) has been nominated for discussion.
+[std-dev-guide#{number} "{title}"](https://github.com/rust-lang/std-dev-guide/pull/{number}) has been nominated for discussion.
 """
 message_on_remove = """\
 std-dev-guide#{number} is no longer nominated.
