@@ -9,6 +9,8 @@
     - [Feature lifecycle](./development/feature-lifecycle.md)
     - [Stabilizing a feature](./development/stabilization.md)
 
+- [Maintaining `std`](./maintaining-std.md)
+
 - [Breaking changes](./breaking-changes/summary.md)
     - [New trait implementations](./breaking-changes/new-trait-impls.md)
     - [Prelude](./breaking-changes/prelude.md)
