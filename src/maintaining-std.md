@@ -285,6 +285,30 @@ Rust doesn't guarantee destructors will run when a value is leaked (which can be
 
 It's ok not to run a destructor when a value is leaked because its storage isn't deallocated or repurposed. If the storage is initialized and is being deallocated or repurposed then destructors need to be run first, because [memory may be pinned][Drop guarantee]. Having said that, there can still be exceptions for skipping destructors when deallocating if you can guarantee there's never pinning involved.
 
+### What about Miri?
+
+CI runs the tests for libcore, liballoc, and libstd in Miri (on x86_64-unknown-linux-gnu and for std also on aarch64-apple-darwin).
+You can run them yourself as follows:
+
+```sh
+MIRIFLAGS="-Zmiri-disable-isolation --cfg skip_missing_miri_shims" ./x miri std --tests
+```
+
+This can be quite slow, so it is a good idea to add `--test-args <name>` to run only the tests you care about.
+
+Miri can run most regular Rust code, but there are two situations where you may have to account for Miri's peculiarities:
+- Miri is slow. So if your test runs something in a loop on the order of hundreds or more times, the iteration counter should be reduced in Miri.
+  Something like `let count = if cfg!(miri) { 50 } else { 5_000 };` should work well.
+  Some tests can't be meaningfully sped up, they should be disabled entirely with `#[cfg_attr(miri, ignore)]` or `#[cfg(not(miri))]`.
+- Miri cannot call non-Rust functions unless it has a shim for the specific function.
+  New tests will therefore often fail with Miri saying that some function is unsupported.
+  Such tests should be disabled when `skip_unsupported_miri_tests` is set, e.g. by adding `#[cfg(not(skip_unsupported_miri_tests))]`.
+  (We use a separate `cfg` value here so that [miri-test-libstd](https://github.com/rust-lang/miri-test-libstd) can keep track of which tests are missing shims.)
+
+  If CI fails in Miri's own test suite because an old std API now uses a different operation, `skip_unsupported_miri_tests` won't help.
+  At this point there are only two options: `cfg(miri)` inside the standard library to keep using the old implementation (which should always have a FIXME pointing at a Miri issue tracking this), or implementing enough of a new shim in the same PR to keep Miri working.
+  If absolutely necessary we can also disable the Miri test, effectively de-supporting that API in Miri. Please consult with the Miri team before doing that.
+
 ### How is performance impacted?
 
 Changes to hot code might impact performance in consumers, for better or for worse. Appropriate benchmarks should give an idea of how performance characteristics change. For changes that affect `rustc` itself, you can also do a [`rust-timer`] run.
