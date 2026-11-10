@@ -666,6 +666,29 @@ impl&lt;T&gt; Drop for OptionCell&lt;T&gt; {
 <h4 id="memforget"><a class="header" href="#memforget"><code>mem::forget</code></a></h4>
 <p>Rust doesn't guarantee destructors will run when a value is leaked (which can be done with <code>mem::forget</code>), so code should avoid relying on them for maintaining safety. Remember, <a href="https://faultlore.com/blah/everyone-poops/">everyone poops</a>.</p>
 <p>It's ok not to run a destructor when a value is leaked because its storage isn't deallocated or repurposed. If the storage is initialized and is being deallocated or repurposed then destructors need to be run first, because <a href="https://doc.rust-lang.org/nightly/std/pin/index.html#drop-guarantee">memory may be pinned</a>. Having said that, there can still be exceptions for skipping destructors when deallocating if you can guarantee there's never pinning involved.</p>
+<h3 id="what-about-miri"><a class="header" href="#what-about-miri">What about Miri?</a></h3>
+<p>CI runs the tests for libcore, liballoc, and libstd in Miri (on x86_64-unknown-linux-gnu and for std also on aarch64-apple-darwin).
+You can run them yourself as follows:</p>
+<pre><code class="language-sh">MIRIFLAGS=&quot;-Zmiri-disable-isolation --cfg skip_missing_miri_shims&quot; ./x miri std --tests
+</code></pre>
+<p>This can be quite slow, so it is a good idea to add <code>--test-args &lt;name&gt;</code> to run only the tests you care about.</p>
+<p>Miri can run most regular Rust code, but there are two situations where you may have to account for Miri's peculiarities:</p>
+<ul>
+<li>
+<p>Miri is slow. So if your test runs something in a loop on the order of hundreds or more times, the iteration counter should be reduced in Miri.
+Something like <code>let count = if cfg!(miri) { 50 } else { 5_000 };</code> should work well.
+Some tests can't be meaningfully sped up, they should be disabled entirely with <code>#[cfg_attr(miri, ignore)]</code> or <code>#[cfg(not(miri))]</code>.</p>
+</li>
+<li>
+<p>Miri cannot call non-Rust functions unless it has a shim for the specific function.
+New tests will therefore often fail with Miri saying that some function is unsupported.
+Such tests should be disabled when <code>skip_unsupported_miri_tests</code> is set, e.g. by adding <code>#[cfg(not(skip_unsupported_miri_tests))]</code>.
+(We use a separate <code>cfg</code> value here so that <a href="https://github.com/rust-lang/miri-test-libstd">miri-test-libstd</a> can keep track of which tests are missing shims.)</p>
+<p>If CI fails in Miri's own test suite because an old std API now uses a different operation, <code>skip_unsupported_miri_tests</code> won't help.
+At this point there are only two options: <code>cfg(miri)</code> inside the standard library to keep using the old implementation (which should always have a FIXME pointing at a Miri issue tracking this), or implementing enough of a new shim in the same PR to keep Miri working.
+If absolutely necessary we can also disable the Miri test, effectively de-supporting that API in Miri. Please consult with the Miri team before doing that.</p>
+</li>
+</ul>
 <h3 id="how-is-performance-impacted"><a class="header" href="#how-is-performance-impacted">How is performance impacted?</a></h3>
 <p>Changes to hot code might impact performance in consumers, for better or for worse. Appropriate benchmarks should give an idea of how performance characteristics change. For changes that affect <code>rustc</code> itself, you can also do a <a href="https://github.com/rust-lang-nursery/rustc-perf"><code>rust-timer</code></a> run.</p>
 <h3 id="is-the-commit-log-tidy"><a class="header" href="#is-the-commit-log-tidy">Is the commit log tidy?</a></h3>
